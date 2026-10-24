@@ -1,0 +1,19 @@
+name: Поделиться опытом
+description: Что оказалось полезным и где возникло неудобство.
+title: "Отзыв: "
+body:
+  - type: markdown
+    attributes:
+      value: "Спасибо за конкретный опыт. Всё написанное здесь видно публично; используйте вымышленные данные."
+  - type: textarea
+    id: experience
+    attributes:
+      label: Какую задачу вы решали?
+      description: Что получилось, а где пришлось остановиться?
+    validations:
+      required: true
+  - type: textarea
+    id: return
+    attributes:
+      label: Хотелось ли вернуться к приложению?
+      description: Что повлияло на это решение?

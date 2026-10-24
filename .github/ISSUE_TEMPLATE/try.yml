@@ -1,0 +1,24 @@
+name: Запросить тестовую сборку
+description: Расскажите, на каком устройстве и для чего хотите попробовать Orvim.
+title: "Хочу попробовать Orvim"
+body:
+  - type: markdown
+    attributes:
+      value: "Заявка публичная. Не указывайте почту, телефон, личные записи или ключи. Ответ будет здесь; срок выдачи сборки не гарантируется."
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Устройство
+      options:
+        - Windows
+        - Android
+        - Windows и Android
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: Что хотите попробовать?
+      description: Например, вести один проект или планировать день.
+    validations:
+      required: true
