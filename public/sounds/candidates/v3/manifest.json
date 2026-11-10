@@ -1,0 +1,68 @@
+[
+  {
+    "file": "fairy-01-soft.wav",
+    "label": "Нежная",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.95,
+    "peak": 0.26,
+    "rms": 0.0613,
+    "source": "v2/wellbeing-01-fairy.wav",
+    "enabled": false
+  },
+  {
+    "file": "fairy-02-sparkle.wav",
+    "label": "Искра",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.85,
+    "peak": 0.26,
+    "rms": 0.0572,
+    "source": "v2/wellbeing-01-fairy.wav",
+    "enabled": false
+  },
+  {
+    "file": "fairy-03-short.wav",
+    "label": "Короткая",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.25,
+    "peak": 0.26,
+    "rms": 0.0615,
+    "source": "v2/wellbeing-01-fairy.wav",
+    "enabled": false
+  },
+  {
+    "file": "warm-keys-01-velvet.wav",
+    "label": "Бархатная",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 1.95,
+    "peak": 0.26,
+    "rms": 0.05,
+    "source": "v2/schedule-02-warm-keys.wav",
+    "enabled": false
+  },
+  {
+    "file": "warm-keys-02-bright.wav",
+    "label": "Светлая",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 1.8,
+    "peak": 0.26,
+    "rms": 0.0594,
+    "source": "v2/schedule-02-warm-keys.wav",
+    "enabled": false
+  },
+  {
+    "file": "warm-keys-03-short.wav",
+    "label": "Короткая",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 1.15,
+    "peak": 0.26,
+    "rms": 0.061,
+    "source": "v2/schedule-02-warm-keys.wav",
+    "enabled": false
+  }
+]

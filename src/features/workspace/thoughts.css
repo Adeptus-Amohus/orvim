@@ -1,0 +1,529 @@
+#life-os-workspace .thought-feed {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+#life-os-workspace .thought-feed button {
+  touch-action: manipulation;
+}
+#life-os-workspace .thought-feed button,
+#life-os-workspace .thought-feed input,
+#life-os-workspace .thought-feed textarea,
+#life-os-workspace .thought-feed select {
+  font: inherit;
+  min-width: 0;
+  color: inherit;
+}
+#life-os-workspace .thought-feed-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 20px;
+}
+#life-os-workspace .thought-feed-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: min(100%, 260px);
+  border-bottom: 1px solid var(--lo-line);
+  color: var(--lo-muted);
+}
+#life-os-workspace .thought-feed-search input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 9px 0;
+  color: var(--lo-ink);
+}
+#life-os-workspace .thought-feed svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.7;
+  flex-shrink: 0;
+}
+#life-os-workspace .thought-feed-capture {
+  padding: 17px 19px;
+  margin-bottom: 18px;
+  border: 1px solid var(--lo-line);
+  border-radius: 13px;
+  background: var(--lo-surface);
+}
+#life-os-workspace .thought-feed-capture textarea {
+  width: 100%;
+  display: block;
+  min-height: 64px;
+  resize: vertical;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--lo-ink);
+}
+#life-os-workspace .thought-feed-capture-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+#life-os-workspace .thought-feed-capture-footer small,
+#life-os-workspace .thought-feed-detail-footer small {
+  font-size: 12px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .thought-feed-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+  font-size: 13px !important;
+}
+#life-os-workspace .thought-feed-primary {
+  background: var(--lo-accent-soft);
+  color: var(--lo-accent-text);
+}
+#life-os-workspace .thought-feed-button:hover,
+#life-os-workspace .thought-feed-icon:hover {
+  background: var(--lo-line);
+}
+#life-os-workspace .thought-feed-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+#life-os-workspace .thought-feed-filter {
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 10px;
+  min-height: 34px;
+  color: var(--lo-muted);
+  font-size: 13px !important;
+}
+#life-os-workspace .thought-feed-filter[aria-pressed="true"] {
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+}
+#life-os-workspace .thought-feed-filters select {
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  max-width: 170px;
+  padding: 7px;
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+#life-os-workspace .thought-feed-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 22px;
+  align-items: start;
+}
+#life-os-workspace .thought-feed[data-reading="false"] .thought-feed-workspace {
+  grid-template-columns: minmax(0, 1fr);
+}
+#life-os-workspace .thought-feed-list {
+  display: grid;
+  gap: 10px;
+}
+#life-os-workspace .thought-swipe-row {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+#life-os-workspace .thought-swipe-row .thought-feed-note {
+  position: relative;
+  z-index: 1;
+  background: var(--lo-surface);
+  transform: translateX(var(--thought-swipe-offset, 0px));
+  transition: transform 180ms ease;
+  touch-action: pan-y;
+}
+#life-os-workspace .thought-swipe-row > .thought-card {
+  position: relative;
+  z-index: 1;
+  background: var(--lo-surface);
+  transform: translateX(var(--thought-swipe-offset, 0px));
+  transition: transform 180ms ease;
+  touch-action: pan-y;
+}
+#life-os-workspace .thought-swipe-row[data-swiping="true"] > .thought-card {
+  transition: none;
+}
+#life-os-workspace .thought-swipe-row[data-swiping="true"] .thought-feed-note {
+  transition: none;
+}
+#life-os-workspace .thought-swipe-row .thought-swipe-delete {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 64px;
+  height: 100%;
+  border-radius: 0;
+  color: var(--finance-expense, #b94750);
+  background: color-mix(
+    in srgb,
+    var(--finance-expense, #b94750) 10%,
+    var(--lo-surface)
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+#life-os-workspace .thought-swipe-row[data-open="true"] .thought-swipe-delete,
+#life-os-workspace
+  .thought-swipe-row[data-swiping="true"]
+  .thought-swipe-delete {
+  opacity: 1;
+}
+#life-os-workspace .thought-swipe-row[data-open="true"] .thought-swipe-delete {
+  pointer-events: auto;
+}
+#life-os-workspace .thought-feed-note {
+  display: block;
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+  padding: 16px 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 18px;
+  background: transparent;
+  color: var(--lo-ink);
+}
+#life-os-workspace .thought-feed-note:hover {
+  background: var(--lo-soft);
+}
+#life-os-workspace .thought-feed-note[aria-pressed="true"] {
+  background: var(--lo-soft);
+  border-color: var(--lo-accent);
+  box-shadow: none;
+}
+#life-os-workspace #thoughts-screen .thought-swipe-row {
+  border-radius: 18px;
+}
+#life-os-workspace .thought-feed-note-title {
+  display: block;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-feed-note-title svg {
+  display: inline;
+  vertical-align: -2px;
+  margin-right: 7px;
+  width: 13px;
+  height: 13px;
+  color: var(--lo-accent-text);
+}
+#life-os-workspace .thought-feed-excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  color: var(--lo-muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+#life-os-workspace .thought-feed-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .thought-feed-meta svg {
+  width: 13px;
+  height: 13px;
+}
+#life-os-workspace .thought-feed-tag {
+  padding: 2px 6px;
+  background: var(--lo-soft);
+  border-radius: 5px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-feed-detail {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--lo-line);
+  border-radius: 13px;
+  background: var(--lo-surface);
+}
+#life-os-workspace .thought-feed-detail-head,
+#life-os-workspace .thought-feed-detail-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .thought-feed-head-actions,
+#life-os-workspace .thought-feed-mode,
+#life-os-workspace .thought-feed-format {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .thought-feed-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--lo-muted);
+}
+#life-os-workspace .thought-feed-icon[aria-pressed="true"] {
+  color: var(--lo-accent-text);
+  background: var(--lo-accent-soft);
+}
+#life-os-workspace .thought-feed-mode {
+  background: var(--lo-soft);
+  padding: 3px;
+  border-radius: 7px;
+}
+#life-os-workspace .thought-feed-mode button {
+  padding: 5px 8px;
+  min-height: 28px;
+  font-size: 12px !important;
+  background: transparent;
+}
+#life-os-workspace .thought-feed-mode button[aria-pressed="true"] {
+  background: var(--lo-surface);
+}
+#life-os-workspace .thought-feed-reading {
+  min-height: 200px;
+  margin-top: 18px;
+  padding-bottom: 15px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-feed-reading p {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+#life-os-workspace .thought-feed-reading h3 {
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+#life-os-workspace .thought-feed-reading ul {
+  padding-left: 21px;
+  margin: 0 0 13px;
+}
+#life-os-workspace .thought-feed-reading li {
+  margin: 5px 0;
+}
+#life-os-workspace .thought-feed-format {
+  margin: 12px 0 7px;
+}
+#life-os-workspace .thought-feed-editor {
+  display: block;
+  width: 100%;
+  min-height: 240px;
+  border: 0;
+  resize: vertical;
+  background: transparent;
+  color: var(--lo-ink);
+  padding: 8px 0;
+}
+#life-os-workspace .thought-feed-detail-footer {
+  border-top: 1px solid var(--lo-line);
+  padding-top: 12px;
+}
+#life-os-workspace .thought-feed-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+#life-os-workspace .thought-feed-menu {
+  display: grid;
+  gap: 3px;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .thought-feed-menu button {
+  background: transparent;
+  text-align: left;
+  justify-content: flex-start;
+}
+#life-os-workspace .thought-feed-danger {
+  color: var(--lo-danger, #bd4557) !important;
+}
+#life-os-workspace .thought-feed-panel {
+  display: grid;
+  gap: 13px;
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid var(--lo-line);
+}
+#life-os-workspace .thought-feed-panel h3 {
+  font-size: 16px;
+  margin: 0;
+}
+#life-os-workspace .thought-feed-field {
+  display: grid;
+  gap: 6px;
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+#life-os-workspace .thought-feed-field input,
+#life-os-workspace .thought-feed-field select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid var(--lo-line);
+  border-radius: 8px;
+  background: var(--lo-bg);
+  color: var(--lo-ink);
+}
+#life-os-workspace .thought-feed-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+#life-os-workspace .thought-feed-hint,
+#life-os-workspace .thought-feed-empty,
+#life-os-workspace .thought-feed-optional summary {
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+#life-os-workspace .thought-feed-empty {
+  padding: 20px 8px;
+}
+#life-os-workspace .thought-feed-linked {
+  display: grid;
+  gap: 5px;
+  margin-top: 12px;
+}
+#life-os-workspace .thought-feed-target {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  padding: 6px 0;
+  text-align: left;
+  color: var(--lo-accent-text);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-feed-target span {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  #life-os-workspace .thought-feed-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #life-os-workspace
+    .thought-feed[data-reading="true"]
+    .thought-feed-workspace
+    > div,
+  #life-os-workspace .thought-feed[data-reading="true"] .thought-feed-capture {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+  #life-os-workspace .thought-feed-toolbar {
+    justify-content: stretch;
+  }
+  #life-os-workspace .thought-feed-search {
+    width: 100%;
+  }
+  #life-os-workspace .thought-feed-capture {
+    padding: 14px;
+  }
+  #life-os-workspace .thought-feed-capture-footer small {
+    display: none;
+  }
+  #life-os-workspace .thought-feed-capture-footer {
+    justify-content: flex-end;
+  }
+  #life-os-workspace .thought-feed-detail {
+    padding: 14px;
+  }
+  #life-os-workspace .thought-feed-filters select {
+    max-width: 135px;
+  }
+  #life-os-workspace .thought-feed-field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #life-os-workspace .thought-feed input,
+  #life-os-workspace .thought-feed textarea,
+  #life-os-workspace .thought-feed select {
+    font-size: 16px;
+  }
+}
+@media (pointer: coarse) {
+  #life-os-workspace .thought-feed-button,
+  #life-os-workspace .thought-feed-filter,
+  #life-os-workspace .thought-feed-icon,
+  #life-os-workspace .thought-feed-mode button,
+  #life-os-workspace .thought-feed-target {
+    min-height: 44px;
+  }
+  #life-os-workspace .thought-feed-icon {
+    width: 44px;
+  }
+}
+#life-os-workspace .thought-feed-reading {
+  cursor: text;
+  min-height: 96px;
+}
+#life-os-workspace .thought-feed-restore {
+  color: var(--lo-accent-text);
+  margin-left: auto;
+}
+/* Keep the page title and capture controls still while the feed scrolls. */
+#life-os-workspace .main:has(> #thoughts-screen:not([hidden])) {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#life-os-workspace .main:has(> #thoughts-screen:not([hidden])) > .header {
+  flex: none;
+}
+#life-os-workspace #thoughts-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+#life-os-workspace #thoughts-screen > :not(.thought-feed-workspace) {
+  flex: none;
+}
+#life-os-workspace .thought-feed-workspace {
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+#life-os-workspace .thought-feed-scroll,
+#life-os-workspace .thought-feed-detail {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
+@media (max-width: 520px) {
+  #life-os-workspace .thought-feed-toolbar,
+  #life-os-workspace .thought-feed-capture,
+  #life-os-workspace .thought-feed-filters {
+    margin-bottom: 12px;
+  }
+  #life-os-workspace .thought-feed-capture textarea {
+    min-height: 44px;
+  }
+}

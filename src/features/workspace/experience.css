@@ -1,0 +1,620 @@
+#life-os-workspace .experience-details {
+  margin-block: 12px;
+  min-width: 0;
+}
+#life-os-workspace .experience-details > summary {
+  cursor: pointer;
+  color: var(--lo-muted, #7e8a94);
+  font-size: 12px;
+  padding-block: 6px;
+}
+#life-os-workspace .experience-details[open] > summary {
+  margin-bottom: 8px;
+}
+#life-os-workspace .experience-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+#life-os-workspace .experience-chip {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--lo-line, #d9dee3);
+  border-radius: 9px;
+  padding: 8px 11px;
+  cursor: pointer;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+#life-os-workspace .experience-chip:hover,
+#life-os-workspace .experience-chip[aria-pressed="true"] {
+  border-color: var(--lo-accent);
+  background: color-mix(in srgb, var(--lo-accent) 10%, transparent);
+}
+#life-os-workspace .experience-choice-list {
+  max-height: min(40dvh, 320px);
+  overflow-y: auto;
+  overscroll-behavior: auto;
+}
+#life-os-workspace .experience-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .experience-choice input[type="checkbox"] {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--lo-accent);
+}
+#life-os-workspace .experience-choice .text-button {
+  margin-left: auto;
+}
+#life-os-workspace .experience-error {
+  color: var(--lo-danger, #ce4355);
+  font-size: 12px;
+}
+#life-os-workspace .experience-error:empty,
+#life-os-workspace .portion-preview:empty {
+  display: none;
+}
+#life-os-workspace .food-source-label {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+}
+#life-os-workspace .food-recent .experience-chip {
+  padding: 6px 9px;
+}
+#life-os-workspace .experience-day-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  text-align: left;
+  width: 100%;
+  padding: 10px 0;
+  gap: 3px 10px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--lo-line, #d9dee3);
+  font: inherit;
+}
+#life-os-workspace .experience-day-row time {
+  color: var(--lo-muted);
+  font-size: 11px;
+  grid-row: span 2;
+}
+#life-os-workspace .experience-day-row strong {
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .experience-day-row small {
+  grid-column: 2;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace button.experience-day-row {
+  cursor: pointer;
+}
+#life-os-workspace .experience-project-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+#life-os-workspace .project-search-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1 1 180px;
+  max-width: 420px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 14px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .project-search-field:focus-within {
+  border-color: color-mix(in srgb, var(--lo-accent) 45%, var(--lo-line));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--lo-accent) 10%, transparent);
+}
+#life-os-workspace .project-search-field > svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--lo-muted);
+}
+#life-os-workspace .project-search-field input,
+#life-os-workspace .project-search-field input:focus,
+#life-os-workspace .project-search-field input:focus-visible {
+  min-width: 0;
+  width: 100%;
+  padding: 11px 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 14px;
+}
+#life-os-workspace .project-search-field input::-webkit-search-cancel-button,
+#life-os-workspace .project-search-field input::-webkit-search-decoration {
+  display: none;
+}
+#life-os-workspace .project-search-clear {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  padding: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--lo-muted);
+  cursor: pointer;
+}
+#life-os-workspace .project-search-clear svg {
+  width: 16px;
+  height: 16px;
+}
+#life-os-workspace .experience-project-tools .experience-chips {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .experience-project-tools .experience-chip {
+  min-height: 36px;
+  border: 0;
+  background: transparent;
+}
+#life-os-workspace
+  .experience-project-tools
+  .experience-chip[aria-pressed="true"] {
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  box-shadow: 0 1px 3px #0001;
+}
+#life-os-workspace .project-next-task {
+  border-top: 1px solid var(--lo-line, #d9dee3);
+  margin-top: 12px;
+  padding-top: 12px;
+}
+#life-os-workspace .project-next-task:empty,
+#life-os-workspace .project-related-thoughts:empty {
+  display: none;
+}
+#life-os-workspace .project-next-title {
+  display: block;
+  text-align: left;
+  margin-top: 5px;
+  background: none;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .project-related-thoughts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 12px;
+}
+#life-os-workspace .project-related-thoughts > small {
+  width: 100%;
+}
+#life-os-workspace #project-task-list[data-view="list"] {
+  display: flex;
+  flex-direction: column;
+}
+#life-os-workspace #project-task-list[data-view="list"] .project-column {
+  width: 100%;
+  min-width: 0;
+}
+#life-os-workspace #project-task-list[data-view="list"] .project-column-body {
+  display: flex;
+  flex-direction: column;
+}
+#life-os-workspace #project-task-list[data-view="list"] .project-board-card {
+  width: 100%;
+}
+#life-os-workspace .finance-account-strip {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-block: 8px 20px;
+}
+#life-os-workspace .finance-account-card {
+  border: 1px solid var(--lo-line, #d9dee3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: grid;
+  gap: 4px;
+  min-width: 120px;
+  max-width: 100%;
+}
+#life-os-workspace .finance-account-card strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .finance-account-card small {
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-account-date {
+  width: 100%;
+}
+#life-os-workspace .finance-template-chip {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+#life-os-workspace .finance-budget-progress {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 5px;
+  accent-color: var(--lo-accent);
+}
+#life-os-workspace .finance-budget-caption {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-entry[data-type="transfer"] strong,
+#life-os-workspace .finance-entry[data-type="transfer"] .finance-type-badge {
+  color: var(--lo-muted) !important;
+}
+#life-os-workspace .training-set-details {
+  grid-column: 1 / -1;
+  margin-left: 28px;
+  width: calc(100% - 28px);
+}
+#life-os-workspace .training-set-row {
+  display: grid;
+  grid-template-columns: 22px 30px minmax(70px, 1fr) minmax(65px, 1fr);
+  gap: 8px;
+  align-items: center;
+  margin-block: 8px;
+}
+#life-os-workspace .training-set-row .task-check {
+  width: 20px;
+  height: 20px;
+}
+#life-os-workspace .training-set-row input {
+  min-width: 0;
+  width: 100%;
+  padding: 8px;
+}
+#life-os-workspace .training-set-row small {
+  font-size: 11px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .training-previous {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .training-rest {
+  position: fixed;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  right: 24px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--lo-line, #d9dee3);
+  background: var(--lo-surface, #fff);
+  color: var(--lo-ink, #1b2227);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #0002;
+}
+#life-os-workspace .training-timer-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  margin: 3px;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  background: var(--lo-surface);
+  color: var(--lo-muted);
+  cursor: pointer;
+}
+#life-os-workspace .training-timer-icon:hover {
+  color: var(--lo-accent);
+  border-color: var(--lo-accent);
+}
+#life-os-workspace .training-timer-icon svg {
+  width: 18px;
+  height: 18px;
+}
+#life-os-workspace .training-rest-ring,
+#life-os-workspace .rest-duration-dial {
+  position: relative;
+  width: 80px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+}
+#life-os-workspace .training-rest-ring {
+  cursor: pointer;
+  border-radius: 50%;
+}
+#life-os-workspace .training-rest-ring:focus-visible {
+  outline: 2px solid var(--lo-accent);
+  outline-offset: 4px;
+}
+#life-os-workspace .training-rest-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  max-width: min(180px, 35vw);
+}
+#life-os-workspace .training-rest-session {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--lo-muted);
+}
+#life-os-workspace .rest-duration-dial {
+  width: 190px;
+  margin: 16px auto;
+  cursor: grab;
+  touch-action: none;
+  border-radius: 50%;
+}
+#life-os-workspace .rest-duration-dial:focus-visible {
+  outline: 2px solid var(--lo-accent);
+  outline-offset: 5px;
+}
+#life-os-workspace .rest-duration-dial:active {
+  cursor: grabbing;
+}
+#life-os-workspace .rest-ring-value {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  font-size: 17px;
+}
+#life-os-workspace .rest-duration-dial .rest-ring-value {
+  font-size: 30px;
+}
+#life-os-workspace .training-rest-ring svg,
+#life-os-workspace .rest-duration-dial svg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#life-os-workspace .rest-timer-dialog {
+  max-width: 360px;
+}
+#life-os-workspace .rest-timer-dialog .experience-chips {
+  justify-content: center;
+  margin-bottom: 16px;
+}
+#life-os-workspace .rest-timer-dialog .experience-choice {
+  margin-block: 12px;
+}
+#life-os-workspace .finance-all-balances {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+  margin: 18px 0;
+}
+#life-os-workspace .finance-all-balances small {
+  flex-basis: 100%;
+}
+#life-os-workspace .finance-account-card {
+  text-align: left;
+  cursor: pointer;
+  color: var(--lo-ink);
+}
+#life-os-workspace .finance-account-card[aria-pressed="true"] {
+  border-color: var(--lo-accent);
+  background: color-mix(in srgb, var(--lo-accent) 8%, var(--lo-surface));
+}
+#life-os-workspace .finance-period select {
+  max-width: min(240px, 100%);
+  min-width: 0;
+}
+#life-os-workspace .life-day-category {
+  width: 100%;
+  border: 0;
+  background: none;
+  color: var(--lo-ink);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+}
+#life-os-workspace .life-day-category:hover {
+  background: var(--lo-bg);
+  color: var(--lo-accent);
+}
+#life-os-workspace .thought-convert > summary {
+  list-style: none;
+  cursor: pointer;
+}
+#life-os-workspace .thought-convert[open] > button {
+  margin: 8px 8px 0 0;
+}
+#life-os-workspace .event[data-done="true"] {
+  opacity: 0.7;
+  border-style: dashed;
+}
+#life-os-workspace .event-completion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  margin-right: 5px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+#life-os-workspace .event-completion svg {
+  width: 13px;
+  height: 13px;
+}
+#life-os-workspace .training-rest[hidden] {
+  display: none;
+}
+#life-os-workspace .search-fragment {
+  font-size: 12px;
+  color: var(--lo-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-feed-reading mark,
+#life-os-workspace .search-fragment mark,
+#life-os-workspace .thought-feed-excerpt mark {
+  color: inherit;
+  background: color-mix(in srgb, var(--lo-accent) 23%, transparent);
+  border-radius: 2px;
+}
+#life-os-workspace .thought-draft-status {
+  color: var(--lo-muted);
+  font-size: 10px;
+}
+@media (max-width: 600px) {
+  #life-os-workspace .training-rest {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    right: 12px;
+    left: 12px;
+    justify-content: space-between;
+  }
+  #life-os-workspace .experience-project-tools .experience-chips {
+    width: auto;
+  }
+  #life-os-workspace .project-search-field {
+    max-width: none;
+    flex-basis: 160px;
+  }
+  #life-os-workspace .project-search-field input,
+  #life-os-workspace .project-search-field input:focus,
+  #life-os-workspace .project-search-field input:focus-visible {
+    font-size: 16px;
+  }
+  #life-os-workspace .finance-account-card {
+    flex: 1 1 120px;
+  }
+}
+#life-os-workspace .sleep-quick-hours {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+#life-os-workspace .sleep-quick-hours > span {
+  flex-basis: 100%;
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+#life-os-workspace .sleep-quick-hours .button {
+  min-width: 54px;
+}
+#life-os-workspace .food-entry-disclosure > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 4px 0;
+}
+#life-os-workspace .food-entry-disclosure[open] > summary {
+  margin-bottom: 16px;
+}
+#life-os-workspace #food-ai-open {
+  margin: 10px 0;
+}
+#life-os-workspace .home-clock-line {
+  display: grid;
+  grid-template-columns: 36px auto 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 36px;
+}
+#life-os-workspace .home-clock-line > #local-time,
+#life-os-workspace .home-clock-line > #home-illness {
+  grid-column: 2;
+  padding: 0;
+}
+#life-os-workspace #home-sleep-prompt {
+  grid-column: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 7px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--lo-accent-soft);
+  color: var(--lo-accent-text);
+}
+#life-os-workspace #home-sleep-prompt svg {
+  width: 20px;
+  height: 20px;
+}
+#life-os-workspace #home-sleep-prompt[hidden] {
+  display: inline-flex !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+#life-os-workspace .sleep-entry-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+  min-height: 44px;
+}
+#life-os-workspace .sleep-entry-heading strong {
+  font-size: 18px;
+}
+#life-os-workspace .sleep-entry-heading span {
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+#life-os-workspace .sleep-entry-heading::after {
+  content: "⌄";
+  color: var(--lo-muted);
+}
+#life-os-workspace #sleep-entry-disclosure[open] > summary::after {
+  content: "⌃";
+}
+#life-os-workspace #sleep-entry-disclosure[open] > summary {
+  margin-bottom: 12px;
+}
+#life-os-workspace #sleep-history {
+  margin-top: 14px;
+}
+#life-os-workspace #sleep-log {
+  max-height: 260px;
+  overflow-y: auto;
+}

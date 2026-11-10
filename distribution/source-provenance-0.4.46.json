@@ -1,0 +1,33 @@
+{
+  "application": "Orvim",
+  "version": "0.4.46",
+  "applicationOriginalSourceCommit": "d632f6b0d536968b1564fcdd0abfe6c4d6b95d55",
+  "importedSnapshotBaseCommit": "313d25178a071cdf6a02432ab28d593a6b054647",
+  "originalSourceHistoryPublished": false,
+  "publicParentCommit": "0ac426ffa262cdcd333164f6607edfdc898031a3",
+  "publicSourceRef": "source-v0.4.46",
+  "oldDistributionTag": "v0.4.46",
+  "oldDistributionTagCommit": "e0384a58f94a82fe3f450f7b6e6f37ab461c0232",
+  "oldDistributionTagMoved": false,
+  "applicationBuildInputsCompared": 367,
+  "applicationBuildInputsUnchanged": true,
+  "binariesRebuilt": false,
+  "androidPackageId": "local.lifeos.client",
+  "androidVersionCode": 4046,
+  "androidSignerCertificateSha256": "69769e705d33225d37d62da35c3d549c219d6235cf658118a16649056591c386",
+  "files": [
+    {
+      "file": "Orvim-0.4.46-Android-arm64.apk",
+      "sha256": "5074d836addbc37fb54e538d2424f88a563e5276730f1d399697d2d2bb921382"
+    },
+    {
+      "file": "Orvim-0.4.46-Windows-x64-setup.exe",
+      "sha256": "268c4b34bbacbdfcad0a590661ceba92df371d90f4d10fbae9f111b9d1e81a2b"
+    }
+  ],
+  "scopeOfChanges": [
+    "Repository layout and Pages workflow",
+    "README, documentation and finished design/site handoffs",
+    "Optional developer-tool paths made portable; no personal machine paths"
+  ]
+}

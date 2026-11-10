@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noUncheckedIndexedAccess": false,
+    "lib": ["ES2022"]
+  },
+  "include": [
+    "src/features/workspace/life-period.js",
+    "src/features/workspace/finance-period.js"
+  ]
+}

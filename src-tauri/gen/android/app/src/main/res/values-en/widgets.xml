@@ -1,0 +1,4 @@
+<resources>
+  <string name="widget_day">Orvim · Schedule and tasks</string><string name="widget_food">Orvim · Nutrition</string><string name="widget_thought">Orvim · Write a thought</string>
+  <string name="widget_day_description">Schedule grid, tasks and quick entries.</string><string name="widget_food_description">Calories for your personal day and a quick food entry.</string><string name="widget_thought_description">Open a new thought with one tap.</string>
+</resources>

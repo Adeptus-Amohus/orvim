@@ -1,0 +1,517 @@
+#life-os-workspace
+  :where(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea
+  ) {
+  border-radius: 11px;
+}
+#life-os-workspace :where(button, summary) {
+  border-radius: 9px;
+}
+#life-os-workspace :where(button, input, textarea, summary):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--lo-accent) 65%, transparent);
+  outline-offset: 2px;
+}
+#life-os-workspace .segments {
+  border-radius: 12px;
+}
+#life-os-workspace .segments :is(button, label) {
+  border-radius: 9px;
+}
+#life-os-workspace input[type="file"]::file-selector-button {
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-right: 10px;
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+  font: inherit;
+  cursor: pointer;
+}
+#life-os-workspace input[type="checkbox"] {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 1px solid var(--lo-line);
+  border-radius: 6px;
+  background: var(--lo-surface);
+  vertical-align: middle;
+  cursor: pointer;
+}
+#life-os-workspace input[type="checkbox"]:checked {
+  background: var(--lo-accent);
+  border-color: var(--lo-accent);
+}
+#life-os-workspace input[type="checkbox"]:checked::before {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--lo-on-accent, white);
+  border-bottom: 2px solid var(--lo-on-accent, white);
+  transform: translateY(-1px) rotate(-45deg);
+}
+#life-os-workspace input[type="checkbox"]:indeterminate::before {
+  content: "";
+  width: 9px;
+  height: 2px;
+  background: var(--lo-ink);
+}
+#life-os-workspace input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+#life-os-workspace .control-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 36px;
+  padding: 8px 11px;
+  border: 1px solid var(--lo-line);
+  border-radius: 11px;
+  background: var(--lo-bg);
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+#life-os-workspace .control-caption {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#life-os-workspace .control-chevron {
+  flex: none;
+  color: var(--lo-muted);
+}
+#life-os-workspace .field > .control-trigger {
+  width: 100%;
+  min-height: 42px;
+  font-size: 14px;
+}
+#life-os-workspace .native-control-source {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 1px !important;
+  max-height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  opacity: 0;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+#life-os-workspace .rounded-combobox {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  min-width: 0;
+}
+#life-os-workspace .rounded-combobox > input {
+  flex: 1;
+  min-width: 0;
+  width: 0;
+}
+#life-os-workspace .control-datalist-trigger {
+  flex: 0 0 34px;
+  justify-content: center;
+  padding-inline: 8px;
+}
+#life-os-workspace .rounded-picker-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: #0006;
+  overscroll-behavior: contain;
+}
+#life-os-workspace .rounded-picker {
+  width: min(420px, 100%);
+  min-width: 0;
+  max-height: calc(100dvh - 36px);
+  overflow-y: auto;
+  border: 1px solid var(--lo-line);
+  border-radius: 20px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  padding: 18px;
+  box-shadow: 0 16px 60px #0003;
+}
+#life-os-workspace .rounded-picker-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+#life-os-workspace .rounded-picker h2 {
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .rounded-picker-content > input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--lo-line);
+  background: var(--lo-bg);
+  color: var(--lo-ink);
+  margin-bottom: 10px;
+}
+#life-os-workspace .rounded-options {
+  display: grid;
+  gap: 4px;
+  max-height: min(320px, 46dvh);
+  overflow-y: auto;
+  border-radius: 12px;
+  scrollbar-width: thin;
+}
+#life-os-workspace .rounded-option {
+  text-align: left;
+  padding: 11px 12px;
+  min-height: 42px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--lo-ink);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .rounded-option:hover,
+#life-os-workspace .rounded-option[aria-selected="true"] {
+  background: var(--lo-accent-soft);
+  color: var(--lo-accent-text);
+}
+#life-os-workspace .rounded-picker-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+#life-os-workspace .rounded-picker-actions > .text-button {
+  margin-right: auto;
+}
+#life-os-workspace .rounded-date-navigation {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+#life-os-workspace .rounded-date-navigation strong {
+  text-transform: capitalize;
+  font-size: 13px;
+}
+#life-os-workspace .rounded-date-navigation input {
+  width: 80px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--lo-line);
+  background: var(--lo-bg);
+  color: var(--lo-ink);
+}
+#life-os-workspace .rounded-date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 12px;
+}
+#life-os-workspace .rounded-month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 12px;
+}
+#life-os-workspace .rounded-weekday {
+  text-align: center;
+  color: var(--lo-muted);
+  padding-bottom: 6px;
+  font-size: 11px;
+}
+#life-os-workspace .rounded-date-option {
+  min-height: 38px;
+  padding: 6px;
+  border: 0;
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+}
+#life-os-workspace .rounded-date-option[aria-pressed="true"] {
+  background: var(--lo-accent);
+  color: var(--lo-on-accent, white);
+}
+#life-os-workspace .rounded-time-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+#life-os-workspace .rounded-color-preview {
+  height: 54px;
+  border-radius: 13px;
+  margin-bottom: 12px;
+  border: 1px solid var(--lo-line);
+}
+#life-os-workspace .rounded-color-range {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  margin: 12px 0;
+}
+#life-os-workspace .rounded-color-range input {
+  width: 100%;
+  accent-color: var(--lo-accent);
+}
+#life-os-workspace .life-checkin-entry {
+  border-radius: 12px;
+}
+#life-os-workspace .thought-swipe-row .thought-swipe-delete {
+  border-radius: 0 14px 14px 0;
+}
+#life-os-workspace .ai-cover-preview {
+  width: 60px;
+  max-height: 86px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 8px 0;
+  background: var(--lo-soft);
+}
+#life-os-workspace .ai-cover-warning {
+  color: var(--lo-muted);
+  line-height: 1.5;
+}
+#life-os-workspace #ai-dialog .ai-voice-popup {
+  position: absolute;
+  bottom: 100%;
+  left: -90px;
+  width: min(300px, calc(100vw - 40px));
+  padding: 16px;
+  border: 1px solid var(--lo-line);
+  background: var(--lo-surface);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px #0002;
+  z-index: 3;
+}
+#life-os-workspace #ai-dialog .ai-voice-popup .ai-voice-consent {
+  position: static;
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+#life-os-workspace #ai-dialog .ai-voice-popup > button {
+  margin-top: 12px;
+  color: var(--lo-accent-text);
+  text-align: left;
+}
+#life-os-workspace .collection-menu {
+  position: relative;
+  margin-left: auto;
+}
+#life-os-workspace .collection-menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px;
+}
+#life-os-workspace .collection-menu > summary::-webkit-details-marker {
+  display: none;
+}
+#life-os-workspace .collection-menu-body {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 4;
+  min-width: 210px;
+  padding: 6px;
+  border: 1px solid var(--lo-line);
+  border-radius: 14px;
+  background: var(--lo-surface);
+  box-shadow: 0 8px 24px #0002;
+}
+#life-os-workspace .collection-menu-body .icon-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+  text-align: left;
+}
+#life-os-workspace .db-add-entry {
+  min-height: 40px;
+  font-weight: 650;
+  font-size: 13px;
+  padding: 10px 14px;
+}
+#life-os-workspace .db-card-rating {
+  gap: 5px;
+}
+#life-os-workspace .db-card-rating[data-rated="true"] > svg {
+  fill: currentColor;
+  stroke-width: 1.4;
+}
+#life-os-workspace .db-rating-number {
+  color: var(--lo-ink);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .db-rating-maximum {
+  color: var(--lo-muted);
+  font-size: 11px;
+}
+#life-os-workspace .rating-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+  min-width: 0;
+}
+#life-os-workspace .rating-slider {
+  min-width: 0;
+  flex: 0 1 210px;
+  border-radius: 12px;
+  padding: 8px 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+#life-os-workspace .rating-slider .rating-display {
+  --rating-size: clamp(25px, 6.5vw, 34px);
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: none;
+}
+#life-os-workspace .rating-display {
+  --rating-size: 16px;
+  align-items: center;
+}
+#life-os-workspace .rating-display .rating-star {
+  width: var(--rating-size);
+  height: var(--rating-size);
+  display: block;
+  flex: 0 0 var(--rating-size);
+  line-height: 0;
+}
+#life-os-workspace .rating-display .rating-star > svg,
+#life-os-workspace .rating-display .rating-star-fill,
+#life-os-workspace .rating-display .rating-star-fill > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: auto;
+  width: var(--rating-size);
+  height: var(--rating-size);
+  display: block;
+}
+#life-os-workspace .rating-display .rating-star-fill {
+  width: var(--star-fill);
+  overflow: hidden;
+}
+#life-os-workspace .rating-picker .rating-value {
+  margin: 0;
+  min-width: 48px;
+  font-size: 13px;
+}
+#life-os-workspace .exercise-order-handle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 34px;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--lo-muted);
+  cursor: grab;
+  touch-action: none;
+}
+#life-os-workspace .exercise-order-handle svg {
+  width: 16px;
+  height: 16px;
+}
+#life-os-workspace .workout-exercise-heading > strong {
+  flex: 1;
+  min-width: 0;
+}
+#life-os-workspace .exercise-order-dragging {
+  outline: 1px solid var(--lo-accent);
+  border-radius: 12px;
+  background: var(--lo-accent-soft);
+}
+#life-os-workspace .training-inline-entry {
+  grid-template-columns: 24px 24px minmax(0, 1fr) auto;
+}
+#life-os-workspace .training-inline-entry > .training-entry-progress,
+#life-os-workspace .training-inline-entry > .training-set-details {
+  grid-column: 3 / -1;
+}
+@media (max-width: 600px) {
+  #life-os-workspace .rounded-options {
+    max-height: min(220px, 30dvh);
+  }
+  #life-os-workspace #ai-dialog .assistant-shell {
+    border-radius: 20px 20px 0 0;
+  }
+  #life-os-workspace .rounded-picker-layer {
+    padding: 12px;
+    align-items: end;
+  }
+  #life-os-workspace .rounded-picker {
+    width: 100%;
+    max-height: min(520px, calc(100dvh - 24px));
+    border-radius: 22px;
+  }
+  #life-os-workspace .collection-menu {
+    margin-left: 0;
+  }
+  #life-os-workspace .training-inline-entry {
+    grid-template-columns: 22px 22px minmax(0, 1fr);
+  }
+  #life-os-workspace .training-inline-entry > .training-inline-measure {
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+}
+/* Flat controls throughout the workspace; keep focus visible without bevels. */
+#life-os-workspace
+  :is(.panel, .dialog, .button, .project-board-card, .thought-card) {
+  box-shadow: none;
+}
+#life-os-workspace :where(button) {
+  border-radius: 12px;
+  min-width: 0;
+}
+#life-os-workspace
+  :is(
+    input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select
+  ) {
+  border-radius: 12px;
+  min-width: 0;
+}
+#life-os-workspace :is(.field, .field-row, .life-panel-head, .panel-head) {
+  min-width: 0;
+}
+#life-os-workspace :is(.panel, .dialog, .project-board-card, .thought-card) {
+  border-radius: 18px;
+}
+#life-os-workspace .life-core {
+  border-radius: 50%;
+}
+#life-os-workspace .life-tile {
+  border-radius: 28px;
+}

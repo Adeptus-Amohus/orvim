@@ -1,0 +1,62 @@
+[
+  {
+    "file": "wellbeing-01-fairy.wav",
+    "label": "Маленькая радость",
+    "group": "wellbeing",
+    "duration": 2.0,
+    "peak": 0.26,
+    "rms": 0.0539,
+    "original": true,
+    "enabled": false
+  },
+  {
+    "file": "wellbeing-02-ocarina.wav",
+    "label": "Окарина",
+    "group": "wellbeing",
+    "duration": 1.95,
+    "peak": 0.26,
+    "rms": 0.0752,
+    "original": true,
+    "enabled": false
+  },
+  {
+    "file": "wellbeing-03-musicbox.wav",
+    "label": "Музыкальная шкатулка",
+    "group": "wellbeing",
+    "duration": 2.1,
+    "peak": 0.26,
+    "rms": 0.0532,
+    "original": true,
+    "enabled": false
+  },
+  {
+    "file": "schedule-01-harp.wav",
+    "label": "Тихая арфа",
+    "group": "schedule",
+    "duration": 1.55,
+    "peak": 0.26,
+    "rms": 0.0476,
+    "original": true,
+    "enabled": false
+  },
+  {
+    "file": "schedule-02-warm-keys.wav",
+    "label": "Тёплые клавиши",
+    "group": "schedule",
+    "duration": 1.65,
+    "peak": 0.26,
+    "rms": 0.0657,
+    "original": true,
+    "enabled": false
+  },
+  {
+    "file": "schedule-03-forest.wav",
+    "label": "Лесной зов",
+    "group": "schedule",
+    "duration": 1.65,
+    "peak": 0.26,
+    "rms": 0.0784,
+    "original": true,
+    "enabled": false
+  }
+]

@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+# Temporary QA output and local experiments; never required by build scripts.
+.artifacts/
+.codex-remote-attachments/
+/releases/
+__pycache__/
+*.pyc
+src-tauri/gen/android/app/src/main/assets/tauri.conf.json
+src-tauri/gen/android/app/src/main/assets/life-os-icon-*.ico
+src-tauri/gen/android/app/src/main/assets/life-os-ceramic-*.ico
+src-tauri/gen/android/app/src/main/assets/orvim-launcher.ico
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.credentials.xml
+**/keystore.properties
+
+# Local databases and SQLite sidecars
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Organized local creative assets.
+/materials/presentation/
+/materials/design/source/

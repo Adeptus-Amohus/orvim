@@ -4,14 +4,22 @@ Original Orvim source code, documentation and original project resources are
 distributed under the Apache License, Version 2.0. See LICENSE.
 
 Third-party software and fonts retain their upstream licenses and notices.
+See THIRD_PARTY_LICENSES.txt, third-party/inventory.json and docs/LICENSES.md.
 No additional copyright holder is asserted by this notice.
 
-This website includes Nunito, licensed under SIL Open Font License 1.1.
-Upstream attribution and license: assets/OFL-Nunito.txt.
+Android desugar_jdk_libs is licensed under GPL v2 with the Classpath Exception.
+Its complete license is included in THIRD_PARTY_LICENSES.txt; corresponding
+source distribution requirements are described in docs/LICENSES.md.
 
-The ceramic launcher artwork was prepared using image generation. The website
-uses the existing Orvim artwork unchanged. Interface screenshots contain
-fictional demonstration records.
+Bundled fonts:
+- Nunito: SIL Open Font License 1.1, upstream attribution in the license bundle.
+- IBM Plex Sans: SIL Open Font License 1.1, upstream attribution in the bundle.
+- Libron: SIL Open Font License 1.1; Newsreader, Readerly and Libron attribution
+  is preserved in src/assets/fonts/libron/COPYRIGHT.txt and LICENSE.txt.
+
+Notification and rest-timer WAV files are original synthesized project audio.
+The ceramic launcher artwork was prepared using image generation; vector
+sources and the recorded provenance are in src/assets/branding/README.md.
 
 This notice does not relicense user data, imported covers, reference images
 or other third-party media. No third-party trademark rights are granted.

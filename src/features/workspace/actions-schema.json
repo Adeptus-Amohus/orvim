@@ -1,0 +1,177 @@
+{
+  "tasks": [
+    "title",
+    "description",
+    "context",
+    "date",
+    "time",
+    "duration",
+    "done",
+    "status"
+  ],
+  "events": [
+    "title",
+    "description",
+    "context",
+    "date",
+    "start",
+    "end",
+    "tone",
+    "done"
+  ],
+  "projects": ["name", "description", "tone"],
+  "thoughts": ["title", "body", "context", "date", "pinned", "topic"],
+  "archiveItems": [
+    "name",
+    "category",
+    "date",
+    "rating",
+    "ratingMax",
+    "review",
+    "status",
+    "genre",
+    "kind",
+    "coverUrl",
+    "coverQuery"
+  ],
+  "sleepLogs": ["date", "hours", "quality", "note"],
+  "foodLogs": ["date", "name", "calories", "protein", "fat", "carbs"],
+  "waterLogs": ["date", "ml"],
+  "workouts": ["date", "name", "time", "duration", "done", "description"],
+  "trainingGoals": ["name", "unit", "focus", "baseline", "current", "target"],
+  "financeLogs": [
+    "date",
+    "type",
+    "amount",
+    "currency",
+    "category",
+    "note",
+    "accountKey",
+    "toAccountKey"
+  ],
+  "exercises": ["name", "duration", "description"],
+  "stepLogs": ["date", "count"],
+  "_constraints": {
+    "coverUrl": { "type": "string", "maxLength": 2048, "nullable": true },
+    "coverQuery": { "type": "string", "maxLength": 200, "nullable": true },
+    "date": {
+      "type": "date"
+    },
+    "count": {
+      "type": "number",
+      "min": 0,
+      "max": 200000
+    },
+    "time": {
+      "type": "time",
+      "empty": true
+    },
+    "start": {
+      "type": "time"
+    },
+    "end": {
+      "type": "time"
+    },
+    "done": {
+      "type": "boolean"
+    },
+    "pinned": {
+      "type": "boolean"
+    },
+    "duration": {
+      "type": "number",
+      "min": 1,
+      "max": 1439
+    },
+    "hours": {
+      "type": "number",
+      "min": 0,
+      "max": 24
+    },
+    "quality": {
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "nullable": true
+    },
+    "rating": {
+      "type": "number",
+      "min": 0,
+      "max": 10,
+      "nullable": true
+    },
+    "ratingMax": {
+      "type": "number",
+      "min": 5,
+      "max": 10,
+      "enum": [5, 10]
+    },
+    "calories": {
+      "type": "number",
+      "min": 0,
+      "max": 10000
+    },
+    "protein": {
+      "type": "number",
+      "min": 0,
+      "max": 1000
+    },
+    "fat": {
+      "type": "number",
+      "min": 0,
+      "max": 1000
+    },
+    "carbs": {
+      "type": "number",
+      "min": 0,
+      "max": 1000
+    },
+    "ml": {
+      "type": "number",
+      "min": 1,
+      "max": 10000
+    },
+    "amount": {
+      "type": "number",
+      "min": 0.01,
+      "max": 1000000000
+    },
+    "baseline": {
+      "type": "number",
+      "min": 0,
+      "max": 1000000
+    },
+    "current": {
+      "type": "number",
+      "min": 0,
+      "max": 1000000
+    },
+    "target": {
+      "type": "number",
+      "min": 0.01,
+      "max": 1000000
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["sun", "winter", "pine", "scarlet"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["income", "expense"]
+    }
+  },
+  "_collectionConstraints": {
+    "archiveItems": {
+      "kind": {
+        "type": "string",
+        "enum": ["book", "film", "anime", "game", "material"]
+      }
+    },
+    "tasks": {
+      "status": {
+        "type": "string",
+        "enum": ["planned", "active", "done"]
+      }
+    }
+  }
+}

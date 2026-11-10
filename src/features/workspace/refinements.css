@@ -1,0 +1,263 @@
+#life-os-workspace .refinement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 10px;
+  border: 1px solid var(--lo-line);
+  border-radius: 14px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  cursor: pointer;
+  list-style: none;
+}
+#life-os-workspace .refinement-icon svg {
+  width: 20px;
+  height: 20px;
+}
+#life-os-workspace .finance-options {
+  margin-left: auto;
+}
+#life-os-workspace .finance-options > summary::-webkit-details-marker {
+  display: none;
+}
+#life-os-workspace .finance-options[open] {
+  width: 100%;
+}
+#life-os-workspace .finance-options[open] > summary {
+  margin-left: auto;
+}
+#life-os-workspace .finance-options-body {
+  display: grid;
+  gap: 16px;
+  padding: 16px 0;
+}
+#life-os-workspace .finance-options-body .finance-period {
+  width: 100%;
+}
+#life-os-workspace .finance-quick-add {
+  display: flex;
+  justify-content: flex-end;
+  margin: 12px 0 20px;
+}
+#life-os-workspace .appearance-icon-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+#life-os-workspace .appearance-icon-choice svg,
+#life-os-workspace .custom-theme > span svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+#life-os-workspace .custom-theme > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+#life-os-workspace .custom-font-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+#life-os-workspace .custom-font-tools p {
+  flex-basis: 100%;
+  margin: 0;
+}
+#life-os-workspace .project-card-title {
+  align-items: center;
+}
+#life-os-workspace .project-card-title .project-item-name {
+  height: auto;
+  min-height: 32px;
+  padding: 5px 2px;
+  line-height: 1.5;
+  overflow: visible;
+  display: block;
+}
+#life-os-workspace .collection-status-row {
+  grid-template-columns: minmax(0, 1fr) minmax(125px, 0.8fr) auto;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 16px;
+  align-items: end;
+}
+#life-os-workspace .collection-status-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+#life-os-workspace .collection-status-row input,
+#life-os-workspace .collection-status-row select {
+  background: var(--lo-surface);
+  border-radius: 12px;
+  min-height: 40px;
+}
+#life-os-workspace .collection-status-tools {
+  display: flex;
+  gap: 4px;
+  align-self: center;
+}
+#life-os-workspace .collection-status-tools .db-icon {
+  width: 32px;
+  height: 36px;
+}
+#life-os-workspace .wellbeing-frequency {
+  margin: 0 0 14px;
+  padding: 0 14px;
+}
+@media (max-width: 520px) {
+  #life-os-workspace .finance-quick-add button {
+    width: 100%;
+  }
+  #life-os-workspace .collection-status-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  #life-os-workspace .collection-status-field:first-child {
+    grid-column: 1/-1;
+  }
+  #life-os-workspace .collection-status-field:nth-child(2) {
+    grid-column: 1;
+  }
+  #life-os-workspace .collection-status-tools {
+    grid-column: 2;
+  }
+}
+#life-os-workspace #life-finances-view .life-panel-head {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#life-os-workspace .finance-options:not([open]) {
+  flex: 0 0 auto;
+  width: auto;
+}
+#life-os-workspace .settings-appearance .appearance-icon-choice {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 5px;
+  text-align: center;
+}
+#life-os-workspace .appearance-choice-label {
+  display: block;
+  text-align: center;
+}
+#life-os-workspace .appearance-choice-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+}
+#life-os-workspace .appearance-choice-icon svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.8;
+}
+#life-os-workspace [data-theme="sun"] .appearance-choice-icon {
+  background: #fff0c6;
+  color: #946000;
+}
+#life-os-workspace [data-theme="pine"] .appearance-choice-icon {
+  background: #d9f2e5;
+  color: #176c4d;
+}
+#life-os-workspace [data-theme="scarlet"] .appearance-choice-icon {
+  background: #ffe0e4;
+  color: #ad3147;
+}
+#life-os-workspace [data-theme="winter"] .appearance-choice-icon {
+  background: #dceffc;
+  color: #236c9a;
+}
+#life-os-workspace button[data-appearance="light"] .appearance-choice-icon {
+  background: #fff0c6;
+  color: #946000;
+}
+#life-os-workspace button[data-appearance="dark"] .appearance-choice-icon {
+  background: #e6e1ff;
+  color: #574299;
+}
+#life-os-workspace .themes .appearance-icon-choice {
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+}
+#life-os-workspace .custom-font-tools:has(> button[hidden]):has(> p:empty) {
+  margin: 0;
+  gap: 0;
+}
+#life-os-workspace .life-core {
+  width: 154px;
+  height: 154px;
+  border-width: 8px;
+  padding: 8px;
+  gap: 5px;
+}
+#life-os-workspace .life-core-caption {
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+}
+@media (max-width: 520px) {
+  #life-os-workspace .life-core {
+    width: 142px;
+    height: 142px;
+    border-width: 7px;
+  }
+  #life-os-workspace .life-core-caption {
+    font-size: 11px;
+  }
+}
+@media (max-width: 520px) {
+  #life-os-workspace .life-tile {
+    min-height: 200px;
+  }
+}
+#life-os-workspace .themes .appearance-icon-choice {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: center;
+  justify-content: initial;
+  padding: 10px 14px;
+}
+#life-os-workspace .themes .appearance-choice-label {
+  text-align: left;
+  min-width: 0;
+}
+/* A device-only preference; keep the checkbox and label together. */
+#life-os-workspace .tray-setting-row {
+  display: block;
+}
+#life-os-workspace .tray-setting-row .aux-note {
+  margin: 4px 0 0 28px;
+}
+#life-os-workspace .tray-setting-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+}
+#life-os-workspace .tray-setting-label input {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}

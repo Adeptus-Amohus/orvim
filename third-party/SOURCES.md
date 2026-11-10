@@ -1,0 +1,7 @@
+# Corresponding sources distributed with Orvim 0.4.46
+
+`desugar_jdk_libs` 2.1.5 is used unchanged through Android Gradle core library desugaring. Its license is GPLv2 with the Classpath Exception. The release includes `third-party-sources.zip`, containing the complete upstream source archive and build files at commit `ec1741f99ecc2c6595cd91e8f2c0f8298af03eed` from https://github.com/google/desugar_jdk_libs. Both `VERSION_JDK11.txt` and `CHANGELOG.md` identify version 2.1.5. Source archive URL: https://codeload.github.com/google/desugar_jdk_libs/zip/ec1741f99ecc2c6595cd91e8f2c0f8298af03eed.
+
+The Maven artifact is `com.android.tools:desugar_jdk_libs:2.1.5`; its POM is https://dl.google.com/dl/android/maven2/com/android/tools/desugar_jdk_libs/2.1.5/desugar_jdk_libs-2.1.5.pom. The Gradle dependency resolution report and artifact hashes accompany the release. Android Gradle/D8 selects and rewrites the used library classes; Orvim does not modify this library's source files. The archive retains upstream LICENSE, notices and build instructions. SHA-256 is listed in the release checksums.
+
+Unchanged Rust MPL components, including selectors, retain their licenses and exact-version crates.io source URLs in `inventory.json` / `THIRD_PARTY_LICENSES.txt`. Source packages can be obtained from `https://crates.io/api/v1/crates/NAME/VERSION/download` using those exact names and versions. Orvim's Rust wrappers do not replace the individual component licenses. See [LICENSES.md](../docs/LICENSES.md).

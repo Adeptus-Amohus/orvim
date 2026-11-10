@@ -1,0 +1,758 @@
+#life-os-workspace .button-hint {
+  position: fixed;
+  z-index: 100;
+  max-width: min(260px, calc(100vw - 24px));
+  padding: 7px 10px;
+  border: 1px solid var(--lo-line);
+  border-radius: 8px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  box-shadow: 0 3px 12px #0001;
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  overflow-wrap: anywhere;
+}
+@media (hover: none), (pointer: coarse) {
+  #life-os-workspace .button-hint {
+    display: none !important;
+  }
+}
+#life-os-workspace .home-task-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+#life-os-workspace {
+  -webkit-user-select: none;
+  user-select: none;
+}
+#life-os-workspace input,
+#life-os-workspace textarea,
+#life-os-workspace [contenteditable="true"],
+#life-os-workspace [data-user-content],
+#life-os-workspace .thought-feed-reading,
+#life-os-workspace .ai-markdown {
+  -webkit-user-select: text;
+  user-select: text;
+}
+#life-os-workspace .home-add-control {
+  position: relative;
+  flex: none;
+}
+#life-os-workspace .home-add-button {
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 9px;
+  flex: none;
+}
+#life-os-workspace .home-add-button svg {
+  width: 18px;
+  height: 18px;
+}
+#life-os-workspace .home-add-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 12;
+  display: grid;
+  min-width: 175px;
+  padding: 6px;
+  border: 1px solid var(--lo-line);
+  border-radius: 12px;
+  background: var(--lo-surface);
+  box-shadow: 0 6px 20px #0002;
+}
+#life-os-workspace .home-add-menu button {
+  display: block;
+  text-align: left;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--lo-ink);
+  margin: 0;
+}
+#life-os-workspace .home-add-menu.opens-up {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+#life-os-workspace .tasks.home-menu-open {
+  overflow: visible;
+  position: relative;
+  z-index: 20;
+}
+#life-os-workspace .home-add-menu button:hover,
+#life-os-workspace .home-add-menu button:focus-visible {
+  background: var(--lo-soft);
+}
+#life-os-workspace .event,
+#life-os-workspace .event button {
+  -webkit-tap-highlight-color: transparent;
+}
+#life-os-workspace .event {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+#life-os-workspace .event:focus:not(:focus-visible),
+#life-os-workspace .event button:focus:not(:focus-visible) {
+  outline: none;
+}
+#life-os-workspace .event:focus-visible,
+#life-os-workspace .event button:focus-visible {
+  outline: 2px solid var(--lo-muted);
+  outline-offset: -2px;
+}
+#life-os-workspace textarea:focus {
+  border-color: color-mix(in srgb, var(--lo-accent) 45%, var(--lo-line));
+  outline: 2px solid color-mix(in srgb, var(--lo-accent) 25%, transparent);
+  outline-offset: 2px;
+}
+#life-os-workspace textarea:focus-visible {
+  outline-color: color-mix(in srgb, var(--lo-accent) 65%, var(--lo-line));
+}
+#life-os-workspace .overlay .dialog {
+  scroll-padding-block: 16px 80px;
+}
+#life-os-workspace .project-list-panel {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-block: 10px;
+}
+#life-os-workspace .project-list-panel .panel-head {
+  margin-bottom: 0;
+}
+#life-os-workspace .project-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  padding: 8px 10px;
+  text-align: left;
+  border: 0;
+  border-radius: 12px;
+  background: var(--lo-soft);
+  color: var(--lo-ink);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+#life-os-workspace .project-selector span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#life-os-workspace .project-selector svg {
+  margin-left: auto;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  transform: rotate(90deg);
+}
+#life-os-workspace .project-selector[aria-expanded="true"] svg {
+  transform: rotate(-90deg);
+}
+#life-os-workspace #project-add {
+  flex-shrink: 0;
+}
+#life-os-workspace .project-list {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-gutter: stable;
+  align-content: start;
+  max-height: min(280px, 38dvh);
+  margin-top: 10px;
+}
+#life-os-workspace .project-option {
+  flex-shrink: 0;
+}
+#life-os-workspace .finance-money-group {
+  margin: 0 0 18px;
+  padding: 14px 12px 0;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  min-width: 0;
+}
+#life-os-workspace .finance-money-group legend {
+  font-size: 12px;
+  font-weight: 600;
+}
+#life-os-workspace .finance-form-help {
+  color: var(--lo-muted);
+  font-size: 12px;
+  margin: 0 0 14px;
+}
+#life-os-workspace #finance-form-error {
+  margin: 0 0 12px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid
+    color-mix(in srgb, var(--finance-expense) 30%, var(--lo-line));
+  background: color-mix(in srgb, var(--finance-expense) 6%, var(--lo-surface));
+  color: var(--lo-ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+#life-os-workspace .finance-period select,
+#life-os-workspace #finance-entry-currency,
+#life-os-workspace .finance-all-balances strong {
+  color: var(--lo-ink);
+  background: var(--lo-surface);
+  border-color: var(--lo-line);
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .finance-panel > .life-panel-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 16px;
+}
+#life-os-workspace .finance-period {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr) minmax(80px, 1fr);
+  align-items: end;
+  gap: 10px;
+  width: min(100%, 620px);
+}
+#life-os-workspace .finance-filter-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-period-value {
+  min-width: 0;
+}
+#life-os-workspace
+  .finance-period
+  :is(
+    .control-trigger,
+    input:not(.native-control-source),
+    select:not(.native-control-source)
+  ) {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-size: 14px;
+}
+#life-os-workspace .finance-range-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  grid-column: 1 / -1;
+}
+#life-os-workspace .finance-period > .experience-error {
+  grid-column: 1 / -1;
+}
+#life-os-workspace .finance-period [hidden] {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  #life-os-workspace .finance-period {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  #life-os-workspace .finance-period-value {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  #life-os-workspace .finance-period .control-trigger {
+    font-size: 14px;
+    min-height: 46px;
+  }
+  #life-os-workspace .finance-account-filter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  #life-os-workspace .finance-account-filter .control-trigger {
+    width: 100%;
+  }
+}
+#life-os-workspace .finance-account-card[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--lo-ink) 30%, var(--lo-line));
+  background: var(--lo-soft);
+}
+#life-os-workspace .finance-account-tools {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+#life-os-workspace .finance-account-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-account-filter select {
+  max-width: 230px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--lo-line);
+  border-radius: 8px;
+  color: var(--lo-ink);
+  background: var(--lo-surface);
+}
+#life-os-workspace .finance-category-toolbar h3 {
+  font-size: 16px;
+}
+#life-os-workspace .finance-category-popover {
+  position: static;
+  margin-top: 6px;
+  box-shadow: none;
+}
+#life-os-workspace .finance-category-options {
+  max-height: min(160px, calc(var(--dialog-viewport-height, 100dvh) * 0.35));
+  touch-action: pan-y;
+}
+@media (max-width: 720px) {
+  #life-os-workspace .project-list-panel {
+    position: static;
+  }
+  #life-os-workspace .finance-account-tools .button {
+    min-height: 42px;
+  }
+  #life-os-workspace .finance-account-filter {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+}
+#life-os-workspace .calendar-now {
+  background: var(--lo-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--lo-accent) 55%, var(--lo-line));
+  color: var(--lo-accent-text);
+  font-weight: 650;
+  padding: 7px 12px;
+  border-radius: 9px;
+}
+#life-os-workspace .calendar-now:hover {
+  background: color-mix(in srgb, var(--lo-accent) 18%, var(--lo-surface));
+}
+#life-os-workspace .tasks .task {
+  display: grid;
+  /* Controls grow to their touch targets on Android; reserve their actual width. */
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 4px;
+}
+#life-os-workspace .tasks {
+  overflow-anchor: none;
+}
+#life-os-workspace .tasks .task > .task-name {
+  grid-column: 3;
+}
+#life-os-workspace .tasks .task > .schedule-task {
+  grid-column: 4;
+}
+#life-os-workspace .tasks .task > .task-more {
+  grid-column: 5;
+}
+#life-os-workspace .tasks .task > .task-name {
+  align-self: center;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .tasks .task-title {
+  display: block;
+  max-width: 100%;
+}
+#life-os-workspace .tasks .task > .training-inline-results {
+  padding-left: 50px;
+}
+#life-os-workspace .tasks .task-context {
+  font-size: 10px;
+  line-height: 1.4;
+}
+#life-os-workspace .tasks .home-thoughts {
+  grid-auto-rows: max-content;
+  align-content: start;
+  padding: 2px 4px 10px 0;
+  gap: 10px;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+}
+#life-os-workspace .home-thoughts > .thought-swipe-row {
+  min-height: max-content;
+  border-radius: 14px;
+}
+#life-os-workspace .home-thoughts .thought-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  margin: 0;
+  border-radius: 14px;
+  padding: 12px;
+  align-items: flex-start;
+}
+#life-os-workspace .home-thoughts .thought-card > .entity-more {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  width: 24px;
+  padding-inline: 0;
+}
+#life-os-workspace .home-thoughts .thought-card-copy {
+  flex: 1 1 auto;
+}
+#life-os-workspace .home-thoughts .thought-card-copy strong {
+  font-size: 12px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#life-os-workspace .home-thoughts .thought-card-copy p {
+  -webkit-line-clamp: 2;
+  font-size: 11px;
+}
+#life-os-workspace .home-thoughts .thought-card-copy small {
+  display: block;
+  flex: none;
+  font-size: 10px;
+}
+#life-os-workspace .calendar-day-label {
+  display: block;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--lo-accent-text);
+}
+#life-os-workspace .hour[data-midnight="true"]::after {
+  border-top-color: var(--lo-line);
+}
+@media (min-width: 721px) {
+  #life-os-workspace .workspace {
+    grid-template-rows: minmax(110px, max-content) minmax(420px, 1fr);
+    row-gap: 16px;
+  }
+}
+@media (max-width: 720px) {
+  #life-os-workspace #now-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+  }
+  #life-os-workspace #now-workspace > :is(.quick-row, .calendar, .tasks) {
+    width: 100%;
+    margin: 0;
+    flex: none;
+  }
+  #life-os-workspace #now-workspace > .tasks {
+    height: auto;
+    min-height: 0;
+  }
+  #life-os-workspace #now-workspace .tasks :is(.task-list, .home-thoughts) {
+    contain: none;
+    flex: none;
+    min-height: 0;
+    max-height: min(60dvh, 520px);
+  }
+}
+#life-os-workspace .quick-row {
+  align-self: stretch;
+  align-items: stretch;
+}
+
+/* Settings: one hierarchy, with technical details behind explicit disclosures. */
+#life-os-workspace .file-transfer-card {
+  display: grid;
+  gap: 12px;
+}
+#life-os-workspace
+  .sync-review-object[data-file-choice="local"]
+  .sync-review-columns
+  > :first-child,
+#life-os-workspace
+  .sync-review-object[data-file-choice="incoming"]
+  .sync-review-columns
+  > :last-child {
+  background: var(--lo-accent-soft);
+  border-radius: 12px;
+  padding: 10px;
+}
+#life-os-workspace .sync-review-object .connection-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .file-transfer-card p {
+  margin: 0;
+}
+#life-os-workspace .file-transfer-card .connection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#life-os-workspace .file-transfer-card .button {
+  min-height: 40px;
+  font-size: 12px;
+}
+#life-os-workspace #file-transfer-dialog {
+  display: grid;
+  gap: 12px;
+}
+#life-os-workspace #file-transfer-dialog input {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+#life-os-workspace .lan-network-notice {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--lo-accent-soft);
+}
+#life-os-workspace .settings-disclosure {
+  background: var(--lo-surface);
+  border-radius: 18px;
+}
+#life-os-workspace .settings-disclosure > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  list-style: none;
+  min-height: 72px;
+}
+#life-os-workspace .settings-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+#life-os-workspace .settings-disclosure > summary > svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .settings-disclosure > summary > svg:last-child {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+  transition: transform 160ms ease;
+}
+#life-os-workspace .settings-disclosure[open] > summary > svg:last-child {
+  transform: rotate(180deg);
+}
+#life-os-workspace .settings-disclosure-copy {
+  display: grid;
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  gap: 4px;
+}
+#life-os-workspace .settings-disclosure-copy strong {
+  font-size: 15px;
+  line-height: 1.4;
+}
+#life-os-workspace .settings-disclosure-copy small {
+  font-size: 12px;
+  line-height: 1.45;
+}
+#life-os-workspace .settings-disclosure[open] > summary {
+  min-height: 58px;
+  padding-bottom: 12px;
+}
+#life-os-workspace .settings-disclosure[open] .settings-disclosure-copy small {
+  display: none;
+}
+#life-os-workspace .settings-disclosure > .settings-data-card {
+  padding: 4px 18px 18px;
+  background: transparent;
+}
+#life-os-workspace .settings-data-card .aux-note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+#life-os-workspace .settings-secondary {
+  min-width: 0;
+  border: 0;
+  border-top: 1px solid var(--lo-line);
+  border-radius: 0;
+  padding-top: 12px;
+}
+#life-os-workspace .settings-secondary > summary {
+  cursor: pointer;
+  color: var(--lo-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  padding-block: 4px;
+}
+#life-os-workspace .settings-secondary[open] > summary {
+  margin-bottom: 12px;
+}
+#life-os-workspace .settings-secondary > p {
+  margin-block: 8px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .lan-status-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .lan-status-box .connection-status {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+#life-os-workspace .lan-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 8px;
+  background: var(--lo-muted);
+  margin-top: 7px;
+}
+#life-os-workspace .lan-last-sync {
+  min-height: 16px;
+  line-height: 16px;
+}
+#life-os-workspace .lan-status-box[data-mode="host"] .lan-status-dot,
+#life-os-workspace .lan-status-box[data-mode="client"] .lan-status-dot {
+  background: var(--lo-accent);
+}
+#life-os-workspace .lan-card .connection-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .lan-card .button,
+#life-os-workspace .backup-card .button {
+  min-height: 40px;
+  font-size: 12px;
+  padding: 10px 14px;
+  white-space: normal;
+}
+#life-os-workspace .lan-card #lan-error {
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.6;
+  border-radius: 12px;
+  background: color-mix(in srgb, #ce5260 9%, transparent);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .lan-pairing-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--lo-line);
+  border-radius: 14px;
+}
+#life-os-workspace .lan-pairing-box .lan-qr {
+  width: 100px;
+  height: 100px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 10px;
+}
+#life-os-workspace .lan-pair-code strong {
+  font-size: clamp(18px, 3vw, 24px);
+  letter-spacing: 0.1em;
+}
+#life-os-workspace .lan-peers {
+  display: grid;
+  gap: 10px;
+}
+#life-os-workspace .lan-peer {
+  font-size: 13px;
+}
+#life-os-workspace .lan-technical .field {
+  margin-bottom: 12px;
+}
+#life-os-workspace .lan-technical .text-button {
+  margin-top: 12px;
+}
+#life-os-workspace .lan-card [data-user-content],
+#life-os-workspace .lan-technical p {
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .backup-card {
+  display: grid;
+  gap: 0;
+}
+#life-os-workspace .settings-action-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--lo-line);
+}
+#life-os-workspace .settings-action-row > svg {
+  width: 20px;
+  height: 20px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .settings-action-copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+#life-os-workspace .settings-action-copy strong {
+  font-size: 13px;
+  line-height: 1.5;
+}
+#life-os-workspace .settings-action-copy p {
+  margin: 0;
+}
+#life-os-workspace .backup-card .settings-secondary {
+  margin-top: 12px;
+  border-top: 0;
+}
+#life-os-workspace .backup-card .backup-formats {
+  order: 1;
+}
+#life-os-workspace .backup-card .settings-data-groups {
+  display: grid;
+  gap: 12px;
+}
+#life-os-workspace .backup-card .settings-data-groups > section {
+  padding: 12px 0;
+  border: 0;
+  background: transparent;
+}
+@media (max-width: 520px) {
+  #life-os-workspace .settings-disclosure > summary {
+    padding-inline: 14px;
+  }
+  #life-os-workspace .settings-disclosure > .settings-data-card {
+    padding-inline: 14px;
+  }
+  #life-os-workspace .settings-action-row {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 8px 10px;
+  }
+  #life-os-workspace .settings-action-row > button {
+    grid-column: 2;
+    justify-self: start;
+  }
+  #life-os-workspace .lan-pairing-box {
+    flex-wrap: wrap;
+  }
+  #life-os-workspace .lan-pair-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

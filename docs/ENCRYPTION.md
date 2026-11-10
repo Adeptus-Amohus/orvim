@@ -1,0 +1,15 @@
+# Encryption implementation and verification
+
+Native storage uses rusqlite with bundled SQLCipher and vendored OpenSSL. A randomly generated 256-bit key is wrapped by DPAPI CurrentUser on Windows and AES-GCM Android Keystore on Android. The key is accessible only inside Rust/platform code; the public credential command rejects `storage-key` for every operation. SQLCipher uses a raw key, with temp_store=MEMORY. Data pages in WAL are encrypted. The version marker and file names are not confidential.
+
+Plain SQLite migration checkpoints WAL, exports to a distinct encrypted database, checks integrity, syncs the new file, then renames the old database aside. It removes the original only after successfully reopening the replacement with the key. An interrupted first rename is recovered on next open. Migration requires enough free disk for a second database. User data is never replaced by an empty default on decryption errors.
+
+Snapshot envelope v1 is JSON with fixed format/version/mode, base64 salt (16 bytes), nonce (24 bytes) and AEAD ciphertext. Password mode uses Argon2id v19, 64 MiB, t=3, p=1, output 32 bytes. Parameters are fixed by version, not attacker-controlled. Device mode uses the device database key with a random nonce and the dedicated `orvim-encrypted-backup-v1` AAD. XChaCha20-Poly1305 authenticates data before parsing/validation. Input size and salt/nonce lengths are bounded. Passwords/derived keys and decrypted buffers use zeroize where practical; this does not make JavaScript/WebView memory secret from a compromised process.
+
+Portable exports exclude connection and pairing settings. Automatic snapshots are device-bound; they are deliberately not mirrored outside the app as if they were portable recovery copies. Portable password export is manual. Existing external backups and exports cannot be retroactively secured by the app.
+
+SQLCipher 4.14 bundled by libsqlite3-sys 0.38.2 has a documented Windows recursion with `cipher_memory_security=ON` when VirtualLock fails. We reproduced this in the isolated repository test and retain the default allocator instead. At-rest encryption is unaffected. Reference: https://github.com/sqlcipher/sqlcipher/issues/619 . Avoid enabling this pragma until the bundled implementation is upgraded and verified.
+
+Tests cover plaintext migration, wrong keys, ciphertext/WAL sentinel inspection, encrypted automatic backups, pre-version SQLite restore, portable password restore, wrong password/tampering and random nonces. Tests operate on synthetic files. Check release build-info for platform execution evidence; a successful compile is not physical-device QA.
+
+Threat boundaries: system notifications may reveal event titles; explicit JSON/CSV/attachment exports are plaintext; browser preview IndexedDB is plaintext; data in unlocked process memory and selected AI requests is readable. API provider retention is separate from local history deletion. No claim of SSD secure erasure or protection from arbitrary code execution in the logged-in account is made.

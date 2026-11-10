@@ -1,0 +1,74 @@
+[
+  {
+    "file": "short-01-smooth.wav",
+    "label": "Плавнее",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.25,
+    "peak": 0.26,
+    "rms": 0.0626,
+    "source": "v3/fairy-03-short.wav",
+    "enabled": false,
+    "selected_family": "Short"
+  },
+  {
+    "file": "short-02-resolved.wav",
+    "label": "Ясный финал",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.25,
+    "peak": 0.26,
+    "rms": 0.0623,
+    "source": "v3/fairy-03-short.wav",
+    "enabled": false,
+    "selected_family": "Short"
+  },
+  {
+    "file": "short-03-compact.wav",
+    "label": "Ещё короче",
+    "family": "Fairy",
+    "group": "wellbeing",
+    "duration": 1.05,
+    "peak": 0.26,
+    "rms": 0.0612,
+    "source": "v3/fairy-03-short.wav",
+    "enabled": false,
+    "selected_family": "Short"
+  },
+  {
+    "file": "velvet-01-warm.wav",
+    "label": "Теплее",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 1.9,
+    "peak": 0.26,
+    "rms": 0.0504,
+    "source": "v3/warm-keys-01-velvet.wav",
+    "enabled": false,
+    "selected_family": "Velvet"
+  },
+  {
+    "file": "velvet-02-full.wav",
+    "label": "Объёмнее",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 2.05,
+    "peak": 0.26,
+    "rms": 0.0504,
+    "source": "v3/warm-keys-01-velvet.wav",
+    "enabled": false,
+    "selected_family": "Velvet"
+  },
+  {
+    "file": "velvet-03-simple.wav",
+    "label": "Лаконичнее",
+    "family": "Warm Keys",
+    "group": "schedule",
+    "duration": 1.7,
+    "peak": 0.26,
+    "rms": 0.0618,
+    "source": "v3/warm-keys-01-velvet.wav",
+    "enabled": false,
+    "selected_family": "Velvet"
+  }
+]

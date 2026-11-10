@@ -1,0 +1,5 @@
+<resources>
+  <color name="widget_surface">#FCFDFB</color><color name="widget_ink">#273A31</color><color name="widget_muted">#667367</color><color name="widget_tint">#E7EEDE</color>
+  <string name="widget_day">Orvim · Расписание и задачи</string><string name="widget_food">Orvim · Питание</string><string name="widget_thought">Orvim · Записать мысль</string>
+  <string name="widget_day_description">Сетка расписания, задачи и быстрые записи.</string><string name="widget_food_description">Калории вашего дня и добавление еды.</string><string name="widget_thought_description">Открыть новую мысль одним нажатием.</string>
+</resources>

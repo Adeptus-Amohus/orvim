@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 272" fill="none"><rect width="272" height="272" fill="#fff"/><g transform="translate(2 5)"><defs>
+    <clipPath id="ceramic-body"><path d="M83 35 160 20Q168 18 175 24L222 67Q228 72 231 80L248 137Q250 144 246 152L216 204Q212 212 202 217L131 241Q121 245 113 239L48 189Q43 185 40 178L23 139Q19 130 23 122L75 43Q78 38 83 35Z"/></clipPath>
+    <linearGradient id="ceramic-top" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#fff1cc"/><stop offset="1" stop-color="#fff0c7"/></linearGradient>
+    <linearGradient id="ceramic-front" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#eed594"/><stop offset="1" stop-color="#ecd18b"/></linearGradient>
+    <linearGradient id="ceramic-left" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#fff2ca"/><stop offset="1" stop-color="#fcedc0"/></linearGradient>
+    <linearGradient id="ceramic-right" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#c9a754"/><stop offset="1" stop-color="#cdac5b"/></linearGradient>
+    <linearGradient id="ceramic-wall" x1="0%" y1="0%" x2="0%" y2="100%"><stop stop-color="#ae985a"/><stop offset="1" stop-color="#342d1d"/></linearGradient>
+    <linearGradient id="ceramic-inside" x1="0%" y1="0%" x2="0%" y2="100%"><stop stop-color="#342d1d"/><stop offset="1" stop-color="#433a24"/></linearGradient>
+  </defs>
+  <g clip-path="url(#ceramic-body)">
+    <path d="M83 35 160 20Q168 18 175 24L222 67Q228 72 231 80L248 137Q250 144 246 152L216 204Q212 212 202 217L131 241Q121 245 113 239L48 189Q43 185 40 178L23 139Q19 130 23 122L75 43Q78 38 83 35Z" fill="#af8d46"/>
+    <path d="M80 36 95 104Q97 111 91 121L46 184 23 139Q19 130 23 122L75 43Q78 38 80 36Z" fill="url(#ceramic-left)"/>
+    <path d="M99 112 174 127Q184 129 185 140L194 198Q196 207 187 211L124 242Q117 244 109 238L46 184 88 121Q93 111 99 112Z" fill="url(#ceramic-front)"/>
+    <path d="M224 73 248 137Q250 144 246 152L216 204Q212 212 204 215L202 215Q195 210 194 199L186 141Q184 132 191 125Z" fill="url(#ceramic-right)"/>
+    <path d="M80 36 160 20Q168 18 175 24L222 67Q229 73 222 80L187 123Q181 130 174 127L103 112Q95 111 92 102Z" fill="url(#ceramic-top)"/>
+    <g fill="none" stroke="#fff9e8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M81 38 92 101Q95 110 103 112L174 127Q181 130 187 123L222 80" stroke-width="1.8"/>
+      <path d="M185 142 194 199Q195 207 200 211" stroke-width="1.1" opacity=".65"/>
+      <path d="M88 125 48 181" stroke-width="1" opacity=".55"/>
+    </g>
+    <ellipse cx="149" cy="65" rx="34" ry="20" fill="url(#ceramic-wall)"/>
+    <ellipse cx="149" cy="71" rx="32" ry="15" fill="url(#ceramic-inside)"/>
+    <path d="M115 66C114 40 181 38 183 63" fill="none" stroke="#fff9e8" stroke-width="1.4" stroke-linecap="round"/>
+    <g transform="rotate(17 54 116)">
+      <ellipse cx="54" cy="116" rx="14" ry="30" fill="url(#ceramic-wall)"/>
+      <ellipse cx="56.5" cy="115" rx="11.5" ry="28.5" fill="url(#ceramic-inside)"/>
+      <path d="M51 86C32 91 33 139 50 146" fill="none" stroke="#fff9e8" stroke-width="1.3" stroke-linecap="round"/>
+    </g>
+    <ellipse cx="117" cy="177" rx="29" ry="31" fill="url(#ceramic-wall)"/>
+    <ellipse cx="119" cy="175.5" rx="26.5" ry="29.3" fill="url(#ceramic-inside)"/>
+    <path d="M89 177C88 216 139 217 146 184" fill="none" stroke="#fff9e8" stroke-width="1.5" stroke-linecap="round"/>
+    <g transform="rotate(4 213 157)">
+      <ellipse cx="213" cy="157" rx="16" ry="31" fill="url(#ceramic-wall)"/>
+      <ellipse cx="211" cy="156" rx="14" ry="29.5" fill="url(#ceramic-inside)"/>
+      <path d="M216 127C235 136 234 182 215 188" fill="none" stroke="#fff9e8" stroke-width="1.4" stroke-linecap="round"/>
+    </g>
+  </g></g></svg>

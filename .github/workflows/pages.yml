@@ -1,0 +1,53 @@
+name: Documentation and Pages
+on:
+  push:
+    branches: [main, "codex/**"]
+    paths:
+      - "README.md"
+      - "docs/**"
+      - "site/**"
+      - "distribution/**"
+      - "scripts/verify-doc-links.mjs"
+      - "scripts/verify-site.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/pages.yml"
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/verify-doc-links.mjs
+      - run: node scripts/verify-site.mjs
+      - run: node --check site/app.js
+  deploy:
+    if: github.repository == 'Adeptus-Amohus/orvim' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        id: deployment

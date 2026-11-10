@@ -1,0 +1,44 @@
+[
+  {
+    "file": "wellbeing-01.wav",
+    "label": "Две ноты",
+    "group": "wellbeing",
+    "duration": 1.15,
+    "peak": 0.28
+  },
+  {
+    "file": "wellbeing-02.wav",
+    "label": "Капля",
+    "group": "wellbeing",
+    "duration": 0.95,
+    "peak": 0.28
+  },
+  {
+    "file": "wellbeing-03.wav",
+    "label": "Мягкий аккорд",
+    "group": "wellbeing",
+    "duration": 1.35,
+    "peak": 0.28
+  },
+  {
+    "file": "schedule-01.wav",
+    "label": "Двойной сигнал",
+    "group": "schedule",
+    "duration": 0.7,
+    "peak": 0.28
+  },
+  {
+    "file": "schedule-02.wav",
+    "label": "Стекло",
+    "group": "schedule",
+    "duration": 0.8,
+    "peak": 0.28
+  },
+  {
+    "file": "schedule-03.wav",
+    "label": "Три ноты",
+    "group": "schedule",
+    "duration": 0.95,
+    "peak": 0.28
+  }
+]

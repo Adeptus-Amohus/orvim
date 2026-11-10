@@ -1,0 +1,259 @@
+#life-os-workspace .life-tracking-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(560px, 100%);
+  min-width: 0;
+}
+#life-os-workspace .life-tracking-dialog .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+#life-os-workspace .life-tracking-dialog input:not([type="checkbox"]),
+#life-os-workspace .life-tracking-dialog select {
+  width: 100%;
+  min-width: 0;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid var(--lo-line);
+  background: var(--lo-surface);
+  color: inherit;
+  font: inherit;
+}
+#life-os-workspace .life-tracking-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+#life-os-workspace .life-tracking-toggle input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--lo-accent);
+}
+#life-os-workspace .life-tracking-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+#life-os-workspace .life-tracking-row > * {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+#life-os-workspace .life-tracking-period {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .life-tracking-records {
+  display: grid;
+  gap: 12px;
+  max-height: 300px;
+  overflow: auto;
+  padding: 2px;
+}
+#life-os-workspace .body-weight-chart svg {
+  width: 100%;
+  height: 140px;
+  color: var(--lo-accent);
+}
+#life-os-workspace .life-tracking-value {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+#life-os-workspace .workout-effort {
+  grid-column: 1/-1;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 13px;
+}
+#life-os-workspace .workout-effort summary {
+  cursor: pointer;
+  color: var(--lo-muted);
+}
+#life-os-workspace .workout-effort-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 8px;
+}
+#life-os-workspace .workout-effort-options button[aria-pressed="true"] {
+  background: var(--lo-accent);
+  color: var(--lo-bg);
+}
+#life-os-workspace .illness-note {
+  display: block;
+  color: var(--lo-muted);
+  font-size: 13px;
+}
+
+#life-os-workspace .time-card {
+  position: relative;
+}
+#life-os-workspace .time-health-open {
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: inherit;
+  padding: 4px 10px;
+  cursor: pointer;
+  font: inherit;
+}
+#life-os-workspace .time-health-open:hover,
+#life-os-workspace .time-health-open[data-active="true"] {
+  background: var(--lo-accent-soft);
+}
+#life-os-workspace .health-clock-caption {
+  color: var(--lo-muted);
+  font-size: 11px;
+}
+#life-os-workspace .recovery-emblem {
+  color: var(--lo-accent);
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+#life-os-workspace .nutrition-weight-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: var(--lo-ink);
+  background: var(--lo-soft);
+  border: 1px solid var(--lo-line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+#life-os-workspace #life-food-view .life-panel-head {
+  flex-wrap: wrap;
+}
+#life-os-workspace #life-food-view .life-panel-head h2 {
+  margin-right: auto;
+}
+#life-os-workspace .personal-day-settings {
+  margin-bottom: 14px;
+}
+#life-os-workspace .settings-personal-day {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px;
+  text-align: left;
+  border: 1px solid var(--lo-line);
+  border-radius: 18px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+}
+#life-os-workspace .settings-personal-day .settings-card-copy {
+  flex: 1;
+  min-width: 0;
+}
+#life-os-workspace .settings-personal-day svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--lo-accent-text);
+}
+#life-os-workspace .illness-actions {
+  display: grid;
+  gap: 10px;
+}
+#life-os-workspace .illness-status {
+  font-weight: 700;
+  margin: 0;
+}
+#life-os-workspace .illness-period-details > summary,
+#life-os-workspace .food-calorie-details > summary {
+  cursor: pointer;
+  color: var(--lo-muted);
+  padding-block: 10px;
+}
+#life-os-workspace .illness-period-details .field {
+  margin-block: 12px;
+}
+#life-os-workspace .illness-section-notice {
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 14px;
+  background: var(--lo-accent-soft);
+  padding: 12px 14px;
+  margin: 0 0 16px;
+}
+#life-os-workspace #life-food-view > .life-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+#life-os-workspace .food-journal-summary {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 16px;
+}
+#life-os-workspace .food-journal-summary .life-stat {
+  margin: 0;
+  font-size: 28px;
+}
+#life-os-workspace .food-journal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .food-journal-actions #food-ai-open {
+  margin: 0;
+}
+#life-os-workspace .food-entry-disclosure {
+  margin-top: 10px;
+}
+#life-os-workspace .food-entry-disclosure > summary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--lo-accent);
+  font-size: 14px;
+}
+#life-os-workspace .food-entry-disclosure[open] {
+  border-radius: 16px;
+  padding: 12px 16px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .food-entry-disclosure .food-add-head:has(> h2[hidden]) {
+  display: none;
+}
+#life-os-workspace #food-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 700px;
+}
+#life-os-workspace #food-form > .food-recent,
+#life-os-workspace #food-form > .portion-preview,
+#life-os-workspace #food-form > details,
+#life-os-workspace #food-form > .inline-choice {
+  grid-column: 1/-1;
+}
+#life-os-workspace .food-calorie-details {
+  border-top: 1px solid var(--lo-line);
+  margin-top: 16px;
+}
+#life-os-workspace .food-calorie-details > .field {
+  max-width: 260px;
+}
+@media (max-width: 540px) {
+  #life-os-workspace #food-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #life-os-workspace .food-entry-disclosure[open] {
+    padding: 10px;
+  }
+}

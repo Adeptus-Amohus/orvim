@@ -1,0 +1,1061 @@
+@font-face {
+  font-family: Libron;
+  src: url("../../assets/fonts/libron/Libron-Regular.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: Libron;
+  src: url("../../assets/fonts/libron/Libron-Bold.woff2") format("woff2");
+  font-weight: 600 900;
+  font-display: swap;
+}
+#life-os-workspace[data-font="libron"] {
+  font-family: Libron, Nunito, system-ui, sans-serif;
+}
+#life-os-workspace .timeline-window {
+  overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#life-os-workspace .calendar-body[data-range="day"] .timeline-window {
+  overflow: visible;
+  touch-action: pan-y;
+  overscroll-behavior: auto;
+}
+#life-os-workspace .section-toolbar,
+#life-os-workspace .finance-period,
+#life-os-workspace .exercise-toolbar,
+#life-os-workspace .connection-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#life-os-workspace .section-toolbar h2,
+#life-os-workspace .section-toolbar h3 {
+  margin-right: auto;
+}
+#life-os-workspace .thoughts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+#life-os-workspace .thought-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--lo-line);
+  border-radius: 16px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .thought-card p {
+  white-space: pre-wrap;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#life-os-workspace .thought-card small {
+  color: var(--lo-muted);
+}
+#life-os-workspace .home-thoughts {
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+  contain: size;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+#life-os-workspace .compact-tabs {
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+#life-os-workspace .project-view-tabs {
+  margin: 14px 0;
+}
+#life-os-workspace .project-archive-list,
+#life-os-workspace .project-thoughts-list {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+#life-os-workspace .completed-screen {
+  min-width: 0;
+}
+#life-os-workspace .completed-heading {
+  margin-right: auto;
+}
+#life-os-workspace .completed-heading h2 {
+  margin: 0 0 4px;
+}
+#life-os-workspace .completed-heading small {
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .completed-screen select,
+#life-os-workspace .completed-screen input {
+  min-width: 0;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 9px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  font: inherit;
+}
+#life-os-workspace .completed-list {
+  margin: 20px 0;
+}
+#life-os-workspace .completed-row > svg {
+  width: 18px;
+  height: 18px;
+  color: var(--lo-muted);
+  flex: none;
+}
+#life-os-workspace .completed-row-body {
+  flex: 1;
+  min-width: 0;
+}
+#life-os-workspace .completed-row-body .project-item-name {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color: var(--lo-ink);
+  font-weight: 600;
+  white-space: normal;
+  padding: 0;
+  line-height: 1.45;
+}
+#life-os-workspace .completed-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--lo-muted);
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .completed-restore {
+  flex: none;
+  white-space: normal;
+}
+#life-os-workspace .completed-empty {
+  padding: 20px 0;
+}
+#life-os-workspace .completed-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px;
+  border-bottom: 1px solid var(--lo-line);
+}
+#life-os-workspace .completed-row .project-item-name {
+  flex: 1;
+  text-align: left;
+  min-width: 120px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #project-name[role="button"] {
+  cursor: pointer;
+}
+#life-os-workspace .finance-totals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+#life-os-workspace .finance-total {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .finance-total small {
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-total strong {
+  font-size: clamp(16px, 2.3vw, 28px);
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .finance-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 28px;
+}
+#life-os-workspace .finance-category-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 12px 0;
+  overflow-wrap: anywhere;
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: var(--lo-ink);
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+}
+#life-os-workspace .finance-category-row:hover,
+#life-os-workspace .finance-category-row[aria-pressed="true"] {
+  background: var(--lo-soft);
+}
+#life-os-workspace .finance-category-row:focus-visible {
+  outline: 2px solid var(--lo-accent);
+  outline-offset: 3px;
+}
+#life-os-workspace .finance-category-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+#life-os-workspace .finance-category-dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--category-color);
+}
+#life-os-workspace .finance-category-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-end;
+}
+#life-os-workspace .finance-category-amount small {
+  font-size: 11px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-category-bar {
+  grid-column: 1/-1;
+  height: 4px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--category-color) var(--category-percent),
+    var(--lo-line) var(--category-percent)
+  );
+}
+#life-os-workspace .finance-chart {
+  width: min(100%, 210px);
+  aspect-ratio: 1;
+  margin: 16px auto;
+  display: grid;
+  place-items: center;
+}
+#life-os-workspace .finance-chart[hidden] {
+  display: none;
+}
+#life-os-workspace .finance-chart > svg,
+#life-os-workspace .finance-chart-center {
+  grid-area: 1 / 1;
+}
+#life-os-workspace .finance-chart > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#life-os-workspace .finance-chart-center {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 57%;
+  min-width: 0;
+  text-align: center;
+  pointer-events: none;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .finance-chart-center small {
+  color: var(--lo-muted);
+  font-size: 11px;
+}
+#life-os-workspace .finance-chart-center strong {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .project-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#life-os-workspace .project-delete-name {
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .finance-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 0;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lo-line);
+  color: var(--lo-ink);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .finance-entry small {
+  grid-column: 1/-1;
+  color: var(--lo-muted);
+}
+#life-os-workspace .finance-entry[data-type="income"] strong {
+  color: var(--lo-energy-color);
+}
+#life-os-workspace .rating-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+#life-os-workspace .rating-star {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: var(--lo-accent);
+  flex: none;
+}
+#life-os-workspace .rating-star > svg,
+#life-os-workspace .rating-star-fill {
+  position: absolute;
+  inset: 0;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+}
+#life-os-workspace .rating-star svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  width: 30px;
+  height: 30px;
+}
+#life-os-workspace .rating-star-fill {
+  width: var(--star-fill);
+  overflow: hidden;
+}
+#life-os-workspace .rating-star-fill svg {
+  fill: currentColor;
+}
+#life-os-workspace .rating-half {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 3px;
+}
+#life-os-workspace .rating-half[data-half="1"] {
+  left: 0;
+}
+#life-os-workspace .rating-half[data-half="2"] {
+  right: 0;
+}
+#life-os-workspace .rating-half:focus-visible {
+  outline: 2px solid var(--lo-ink);
+  outline-offset: 2px;
+}
+#life-os-workspace .rating-display {
+  display: inline-flex;
+  gap: 2px;
+}
+#life-os-workspace .rating-display .rating-star,
+#life-os-workspace .rating-display .rating-star svg,
+#life-os-workspace .rating-display .rating-star-fill {
+  width: 16px;
+  height: 16px;
+}
+#life-os-workspace .rating-display .rating-star-fill {
+  width: var(--star-fill);
+}
+#life-os-workspace .rating-value {
+  margin: 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .upgrade-dialog {
+  width: min(660px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#life-os-workspace .upgrade-dialog .field,
+#life-os-workspace .upgrade-dialog > label {
+  display: grid;
+  gap: 7px;
+  margin: 12px 0;
+  min-width: 0;
+}
+#life-os-workspace .upgrade-dialog input,
+#life-os-workspace .upgrade-dialog select,
+#life-os-workspace .upgrade-dialog textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+#life-os-workspace .upgrade-dialog textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+#life-os-workspace .connection-section {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+#life-os-workspace .connection-section label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+#life-os-workspace .connection-status {
+  min-height: 1.3em;
+  color: var(--lo-muted);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace [data-error="true"] {
+  color: var(--lo-stress-color);
+}
+#life-os-workspace .settings-connections,
+#life-os-workspace .settings-notifications {
+  margin-top: 18px;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+#life-os-workspace .notification-toggle {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+  min-width: min(100%, 190px);
+  cursor: pointer;
+}
+#life-os-workspace .notification-choice input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  accent-color: var(--lo-accent);
+  margin: 0;
+}
+#life-os-workspace
+  .notification-choice:has(input:disabled)
+  .settings-card-copy {
+  opacity: 0.5;
+}
+#life-os-workspace label.notification-choice {
+  cursor: pointer;
+}
+#life-os-workspace .settings-notifications > .text-button {
+  justify-self: start;
+}
+#life-os-workspace #settings-dialog .dialog,
+#life-os-workspace #connections-dialog .dialog {
+  width: min(760px, 100%);
+}
+#life-os-workspace #settings-dialog .dialog {
+  padding: 22px;
+}
+#life-os-workspace .settings-layout {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+  min-width: 0;
+}
+#life-os-workspace .settings-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-right: 1px solid var(--lo-line);
+  padding-right: 14px;
+}
+#life-os-workspace .settings-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 9px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--lo-muted);
+  text-align: left;
+  font: inherit;
+  font-size: 12px;
+}
+#life-os-workspace .settings-tabs button[aria-selected="true"] {
+  color: var(--lo-ink);
+  background: var(--lo-soft);
+  font-weight: 600;
+}
+#life-os-workspace .settings-tabs button:hover {
+  color: var(--lo-ink);
+}
+#life-os-workspace .settings-tabs svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+#life-os-workspace .settings-panels {
+  min-width: 0;
+  min-height: 375px;
+}
+#life-os-workspace .settings-panel-title {
+  margin: 0 0 20px;
+  font-size: 15px;
+}
+#life-os-workspace .settings-panel[hidden],
+#life-os-workspace .connection-section[hidden] {
+  display: none;
+}
+#life-os-workspace .settings-panel .settings-data,
+#life-os-workspace .settings-panel .settings-notifications {
+  margin-top: 0;
+}
+#life-os-workspace .settings-data-groups,
+#life-os-workspace .settings-connection-choices {
+  display: grid;
+  gap: 10px;
+}
+#life-os-workspace .settings-card,
+#life-os-workspace .settings-connection-choice {
+  padding: 15px;
+  border: 1px solid var(--lo-line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--lo-ink);
+  min-width: 0;
+}
+#life-os-workspace .settings-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+#life-os-workspace .settings-card-copy {
+  display: grid;
+  gap: 5px;
+  flex: 1;
+  min-width: min(100%, 160px);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .settings-card h4,
+#life-os-workspace .settings-card strong,
+#life-os-workspace .settings-connection-choice strong {
+  font-size: 13px;
+  margin: 0;
+}
+#life-os-workspace .settings-card .aux-note,
+#life-os-workspace .settings-connection-choice .aux-note {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+#life-os-workspace .settings-restore-card {
+  display: grid;
+  gap: 14px;
+}
+#life-os-workspace .settings-restore-card .field {
+  margin: 0;
+  min-width: 0;
+}
+#life-os-workspace .settings-restore-card input {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+#life-os-workspace .settings-connection-choice {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+}
+#life-os-workspace .settings-connection-choice:hover {
+  background: var(--lo-soft);
+}
+#life-os-workspace .settings-connection-choice > svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--lo-muted);
+}
+#life-os-workspace .settings-connection-choice > svg:last-child {
+  width: 16px;
+  height: 16px;
+}
+#life-os-workspace .connections-back {
+  margin-bottom: 16px;
+}
+#life-os-workspace .connection-group {
+  padding: 16px;
+  border: 1px solid var(--lo-line);
+  border-radius: 12px;
+  min-width: 0;
+}
+#life-os-workspace .connection-group h3 {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+#life-os-workspace .connection-group .field:first-of-type {
+  margin-top: 0;
+}
+#life-os-workspace .connection-group > .text-button {
+  margin: 8px 8px 0 0;
+}
+#life-os-workspace .inline-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#life-os-workspace .assistant-open {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  background: var(--lo-surface);
+  color: var(--lo-accent-text);
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+}
+#life-os-workspace .assistant-context {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  margin: 10px 0;
+}
+#life-os-workspace .assistant-context label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+#life-os-workspace .ai-conversation {
+  display: grid;
+  gap: 12px;
+  max-height: 35dvh;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .ai-message {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--lo-soft);
+}
+#life-os-workspace .assistant-shell {
+  width: min(900px, calc(100vw - 32px));
+  max-width: 100%;
+}
+#life-os-workspace .ai-dialog {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+#life-os-workspace .ai-context {
+  border: 1px solid var(--lo-line);
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 0;
+}
+#life-os-workspace .ai-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+#life-os-workspace .ai-context input:not([type="checkbox"]),
+#life-os-workspace .ai-context select {
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--lo-line);
+  border-radius: 9px;
+  padding: 9px 11px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 13px;
+}
+#life-os-workspace .ai-context summary {
+  cursor: pointer;
+}
+#life-os-workspace .ai-context-picker,
+#life-os-workspace .ai-context-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+#life-os-workspace .ai-context-presets input,
+#life-os-workspace .ai-context-presets select {
+  min-width: 0;
+  flex: 1 1 180px;
+}
+#life-os-workspace #ai-context-items {
+  width: 100%;
+  max-height: 150px;
+  overflow: auto;
+  display: grid;
+  gap: 6px;
+}
+#life-os-workspace .ai-context-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-context-preview {
+  max-height: 180px;
+  overflow: auto;
+  white-space: pre-wrap;
+  font-size: 11px;
+}
+#life-os-workspace .ai-message-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+#life-os-workspace .ai-markdown {
+  line-height: 1.6;
+  white-space: normal;
+}
+#life-os-workspace .ai-markdown p {
+  margin: 8px 0;
+}
+#life-os-workspace .ai-markdown ul,
+#life-os-workspace .ai-markdown ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+#life-os-workspace .ai-markdown pre {
+  overflow: auto;
+  max-width: 100%;
+  padding: 12px;
+  background: var(--lo-bg);
+  border-radius: 8px;
+}
+#life-os-workspace .ai-markdown a {
+  color: var(--lo-accent);
+}
+#life-os-workspace .ai-voice-consent {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--lo-muted);
+}
+#life-os-workspace .ai-change {
+  display: grid;
+  gap: 6px;
+}
+#life-os-workspace .ai-change {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--lo-line);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-changes {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+}
+#life-os-workspace .tasks .task-list {
+  overscroll-behavior-y: auto;
+}
+#life-os-workspace .event,
+#life-os-workspace .event-open {
+  touch-action: pan-y;
+}
+#life-os-workspace .ai-open {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 7px;
+  color: var(--lo-accent-text);
+  border: 1px solid var(--lo-line);
+  background: var(--lo-surface);
+  border-radius: 10px;
+}
+#life-os-workspace .ai-scopes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+#life-os-workspace .ai-scopes label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 12px;
+}
+#life-os-workspace .ai-messages {
+  max-height: 30dvh;
+  overflow: auto;
+  display: grid;
+  gap: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .import-preview-list {
+  max-height: 42dvh;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+}
+#life-os-workspace .import-preview-row {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-bottom: 1px solid var(--lo-line);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .home-thoughts[hidden],
+#life-os-workspace .project-archive-list[hidden],
+#life-os-workspace .project-thoughts-list[hidden],
+#life-os-workspace .connection-section[hidden],
+#life-os-workspace #ai-changes[hidden] {
+  display: none;
+}
+@media (max-width: 760px) {
+  #life-os-workspace .finance-columns {
+    grid-template-columns: 1fr;
+  }
+  #life-os-workspace .mobile-nav {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  #life-os-workspace .mobile-nav button {
+    min-width: 0;
+    font-size: clamp(9px, 2.7vw, 11px);
+    padding-inline: 2px;
+  }
+  #life-os-workspace .mobile-nav button span {
+    padding: 0;
+    font-size: inherit;
+    line-height: 1.2;
+    min-height: 2.4em;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+  #life-os-workspace .finance-totals {
+    gap: 8px;
+  }
+  #life-os-workspace .assistant-open {
+    margin-left: 10px;
+  }
+}
+@media (max-width: 580px) {
+  #life-os-workspace #settings-dialog .dialog,
+  #life-os-workspace #connections-dialog .dialog {
+    padding: 16px;
+  }
+  #life-os-workspace .settings-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  #life-os-workspace .settings-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: 0;
+    border-bottom: 1px solid var(--lo-line);
+    padding: 0 0 12px;
+  }
+  #life-os-workspace .settings-tabs button {
+    width: auto;
+    flex: 1 0 calc(50% - 5px);
+    font-size: 12px;
+  }
+  #life-os-workspace .settings-panels {
+    min-height: 0;
+  }
+  #life-os-workspace .completed-screen .section-toolbar input,
+  #life-os-workspace .completed-screen .section-toolbar select {
+    flex: 1 1 140px;
+    width: 100%;
+  }
+  #life-os-workspace .completed-restore {
+    margin-left: 30px;
+  }
+}
+#life-os-workspace .lan-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+#life-os-workspace .lan-card h3,
+#life-os-workspace .lan-card h4,
+#life-os-workspace .lan-card p {
+  margin: 0;
+}
+#life-os-workspace .lan-off,
+#life-os-workspace .lan-host,
+#life-os-workspace .lan-client {
+  display: grid;
+  gap: 12px;
+}
+#life-os-workspace .lan-pair-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.65fr);
+  gap: 10px;
+}
+#life-os-workspace .lan-pair-fields > :last-child {
+  grid-column: 1 / -1;
+}
+#life-os-workspace .lan-pair-code {
+  display: grid;
+  gap: 6px;
+}
+#life-os-workspace .lan-pair-code strong {
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+}
+#life-os-workspace .lan-peer,
+#life-os-workspace .lan-conflict-choice {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+#life-os-workspace .lan-peer span,
+#life-os-workspace .lan-conflict-choice span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace .lan-last-sync {
+  display: block;
+  color: var(--lo-muted);
+  font-size: 11px;
+  margin-top: 6px;
+}
+#life-os-workspace .lan-conflict {
+  display: grid;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--lo-line);
+}
+#life-os-workspace .lan-conflict-choice .button {
+  flex-shrink: 0;
+}
+#life-os-workspace .lan-address-edit summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--lo-muted);
+}
+#life-os-workspace .lan-address-edit[open] {
+  display: grid;
+  gap: 10px;
+}
+@media (max-width: 420px) {
+  #life-os-workspace .lan-pair-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #life-os-workspace .lan-conflict-choice {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+.lan-qr {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  max-width: 100%;
+  background: #fff;
+  padding: 8px;
+  border-radius: 12px;
+}
+.lan-devices {
+  display: grid;
+  gap: 8px;
+}
+.sync-review-list {
+  overflow: auto;
+  min-height: 0;
+  max-height: 55dvh;
+}
+.sync-review-object {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--lo-line);
+}
+.sync-review-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sync-review-columns pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  max-height: 180px;
+  overflow: auto;
+}
+.sync-review-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+@media (max-width: 600px) {
+  .sync-review-columns {
+    grid-template-columns: 1fr;
+  }
+}
+.all-tasks-list,
+.backup-list,
+.update-list {
+  overflow: auto;
+  max-height: 55dvh;
+  min-height: 0;
+}
+.all-task-row {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--lo-line);
+}
+.backup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 0;
+  align-items: center;
+  border-bottom: 1px solid var(--lo-line);
+}
+.backup-row > span {
+  flex: 1 1 220px;
+  overflow-wrap: anywhere;
+}
+.update-release {
+  padding: 12px 0;
+  border-top: 1px solid var(--lo-line);
+}
+.license-text {
+  white-space: pre-wrap;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  max-height: 55dvh;
+  font-size: 12px;
+}

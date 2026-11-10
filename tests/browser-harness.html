@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+  <body>
+    <div class="full-app"><div id="life-os-workspace"></div></div>
+    <script type="module">
+      import "../src/features/workspace/workspace.css";
+      import "../src/features/workspace/appearance.css";
+      import "../src/features/workspace/upgrades.css";
+      import "../src/features/workspace/usability.css";
+      import "../src/features/workspace/thoughts.css";
+      import "../src/features/workspace/database.css";
+      import "../src/features/workspace/assistant.css";
+      import "../src/features/workspace/training.css";
+      import "../src/features/workspace/experience.css";
+      import "../src/features/workspace/life-tracking.css";
+      import "../src/features/workspace/interactions.css";
+      import "../src/styles/application.css";
+      import "../src/features/workspace/controls.css";
+      import "../src/features/workspace/refinements.css";
+      import "@fontsource/nunito/cyrillic-400.css";
+      import "@fontsource/nunito/cyrillic-500.css";
+      import "@fontsource/nunito/cyrillic-600.css";
+      import "@fontsource/nunito/cyrillic-700.css";
+      import "@fontsource/nunito/latin-400.css";
+      import "@fontsource/nunito/latin-600.css";
+      import "@fontsource/ibm-plex-sans/cyrillic-400.css";
+      import "@fontsource/ibm-plex-sans/cyrillic-600.css";
+      import "@fontsource/ibm-plex-sans/latin-400.css";
+      import "@fontsource/ibm-plex-sans/latin-600.css";
+      import markup from "../src/features/workspace/markup.html?raw";
+      import { mountWorkspace } from "../src/features/workspace/runtime.js";
+      import { startLanSync } from "../src/features/workspace/lan.ts";
+      import { createIcons } from "lucide";
+      import { workspaceIcons as icons } from "../src/features/workspace/icons.ts";
+      const root = document.querySelector("#life-os-workspace");
+      root.innerHTML = markup;
+      const day = new Date().toLocaleDateString("en-CA"),
+        collections = [
+          "tasks",
+          "events",
+          "projects",
+          "thoughts",
+          "checkins",
+          "sleepLogs",
+          "foodLogs",
+          "waterLogs",
+          "workouts",
+          "trainingGoals",
+          "archiveItems",
+          "savedMeals",
+          "taskTemplates",
+          "financeLogs",
+          "exercises",
+          "recoveryLogs",
+          "stepLogs",
+        ];
+      let stored = JSON.parse(
+        localStorage.getItem("test-workspace") || "null",
+      ) || {
+        data: {
+          ...Object.fromEntries(collections.map((c) => [c, []])),
+          version: 31,
+          nextId: 5,
+          archiveCategories: [],
+          waterTarget: 2000,
+          foodTarget: 0,
+          activePage: "home",
+          languageMode: "ru",
+          selectedDate: day,
+          connectionSettings: { aiProvider: "openai", aiModel: "test-model" },
+          uiPreferences: {},
+          projects: [{ id: 1, name: "Проверка", description: "", tone: "sun" }],
+          tasks: [
+            {
+              id: 2,
+              title: "Сегодня с временем",
+              description: "Описание",
+              context: "Проверка",
+              date: day,
+              time: "10:00",
+              done: false,
+            },
+            {
+              id: 3,
+              title: "Без времени",
+              context: "Проверка",
+              date: day,
+              done: false,
+            },
+          ],
+          thoughts: [
+            {
+              id: 4,
+              title: "Мысль",
+              body: "Тест сохранения",
+              context: "Личное",
+              date: day,
+            },
+          ],
+        },
+        covers: [],
+      };
+      window.testRequests = [];
+      // Isolated, artificial screenshot fixture; never reads the installed DB.
+      if (new URLSearchParams(location.search).has("ux22")) {
+        stored = {
+          data: {
+            ...Object.fromEntries(collections.map((c) => [c, []])),
+            version: 31,
+            nextId: 1000,
+            archiveCategories: [],
+            waterTarget: 2000,
+            foodTarget: 2200,
+            activePage: "home",
+            languageMode: "ru",
+            selectedDate: day,
+            homeView: "tasks",
+            palette: "winter",
+            appearance: "light",
+            fontMode: "soft",
+            connectionSettings: {
+              aiProvider: "deepseek",
+              aiModel: "test-model",
+            },
+            uiPreferences: { backupFolderPrompted: true },
+            projects: [
+              { id: 1, name: "Проверка", description: "", tone: "winter" },
+            ],
+            tasks: [
+              {
+                id: 2,
+                title: "Подготовить вещи к поездке",
+                context: "Проверка",
+                date: day,
+                done: false,
+              },
+              {
+                id: 3,
+                title: "Записаться на следующий курс",
+                context: "Проверка",
+                date: day,
+                done: false,
+              },
+            ],
+            events: [
+              {
+                id: 10,
+                title: "Растяжка",
+                context: "Проверка",
+                date: day,
+                start: "17:00",
+                end: "17:30",
+                workoutId: 20,
+                done: false,
+                tone: "pine",
+              },
+            ],
+            workouts: [
+              {
+                id: 20,
+                trainingKey: "preview-stretch",
+                name: "Растяжка",
+                focus: "Растяжка",
+                date: day,
+                time: "17:00",
+                duration: 30,
+                done: false,
+                result: "",
+                entries: [],
+              },
+            ],
+            thoughts: Array.from({ length: 15 }, (_, i) => ({
+              id: 50 + i,
+              date: day,
+              context: "Личное",
+              title:
+                i % 2
+                  ? "Короткая мысль " + (i + 1)
+                  : "Длинная мысль о том, как сделать приложение удобнее и понятнее, без обрезанных карточек и пропавшей даты",
+              body: "Подробности доступны после нажатия на карточку. Каждая мысль сохраняет свою дату.",
+            })),
+            stepLogs: Array.from({ length: 60 }, (_, i) => {
+              const d = new Date(day + "T12:00:00");
+              d.setDate(d.getDate() - i);
+              return {
+                date:
+                  d.getFullYear() +
+                  "-" +
+                  String(d.getMonth() + 1).padStart(2, "0") +
+                  "-" +
+                  String(d.getDate()).padStart(2, "0"),
+                count: i % 9 === 0 ? 0 : 3000 + i * 101,
+                manualOverride: true,
+              };
+            }),
+          },
+          covers: [],
+        };
+      }
+      window.testError = false;
+      window.testAnswer = {
+        message: "# Готово\n\n**Проект**\n1. Первый шаг\n2. Второй шаг",
+        changes: [],
+      };
+      window.testCopies = [];
+      const services = {
+        mobile: new URLSearchParams(location.search).get("mobile") === "1",
+        persist: (snapshot) => {
+          if (window.testError) throw Error("Тестовая ошибка записи");
+          stored = structuredClone(snapshot);
+          localStorage.setItem("test-workspace", JSON.stringify(stored));
+        },
+        flush: async () => {
+          if (window.testError) throw Error("Тестовая ошибка записи");
+        },
+        refreshIcons: (element) => createIcons({ icons, root: element }),
+        openFile: async () => null,
+        saveFile: async () => true,
+        saveAttachment: async () => true,
+        openExternal: async () => {},
+        platform: async (operation) =>
+          new URLSearchParams(location.search).has("slow")
+            ? new Promise(() => {})
+            : new URLSearchParams(location.search).has("deferSetup") &&
+                operation === "backupFolderStatus"
+              ? new Promise((resolve) => {
+                  window.testReleaseSetup = resolve;
+                })
+              : {
+                  status: "unavailable",
+                  available: false,
+                  copies: [],
+                  calendars: [],
+                  granted: [],
+                  mode: "off",
+                },
+        credential: async () => ({ configured: true }),
+        request: async (args) => {
+          window.testRequests.push(args);
+          if (window.testProviderError)
+            throw Error("HTTP 401 — тестовая ошибка ключа");
+          return args.operation === "models"
+            ? { models: ["test-model"] }
+            : window.testAnswer;
+        },
+        backups: async (operation, name) => {
+          if (operation === "list")
+            return {
+              copies: window.testCopies,
+              folder: "Test folder",
+              keep: 24,
+            };
+          if (operation === "create") {
+            window.testCopies.push({
+              name: "lifeos-test.json",
+              at: new Date().toISOString(),
+              bytes: 1000,
+              document: structuredClone(stored),
+            });
+            return { created: true };
+          }
+          if (operation === "prepareRestore")
+            return window.testCopies.find((c) => c.name === name).document;
+          return {};
+        },
+        updates: async () => ({
+          configured: false,
+          installed: "0.4.0",
+          message: "Ключ подписания ещё не настроен.",
+        }),
+        localSync: true,
+        lan: async (operation, args, doc) => {
+          if (operation === "discover")
+            return {
+              devices: [
+                {
+                  id: "11111111-1111-4111-8111-111111111111",
+                  name: "Тестовый ПК",
+                  address: "192.168.1.2:42673",
+                },
+              ],
+            };
+          if (operation === "webdavStatus") return { configured: false };
+          if (operation === "status") return { mode: "off" };
+          return { mode: "off" };
+        },
+      };
+      window.testRuntime = mountWorkspace(
+        root,
+        { ...stored, revision: 0 },
+        services,
+      );
+      window.testLan = startLanSync(window.testRuntime, services, services);
+      window.testServices = services;
+      window.testDay = day;
+    </script>
+  </body>
+</html>

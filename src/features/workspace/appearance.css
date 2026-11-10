@@ -1,0 +1,418 @@
+/* Explicit appearance fallback for Android WebViews. */
+#life-os-workspace[data-rendered-appearance="light"] {
+  --lo-bg: #f3f5f7;
+  --lo-surface: #fff;
+  --lo-ink: #171b20;
+  --lo-muted: #606a74;
+  --lo-line: #d7dde3;
+  --lo-hair: #edf0f3;
+  --lo-soft: #eef1f3;
+  --lo-accent: #d99c00;
+  --lo-accent-soft: #fff4d5;
+  --lo-accent-text: #946000;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="pine"] {
+  --lo-accent: #177b51;
+  --lo-accent-soft: #e8f3ec;
+  --lo-accent-text: #166a47;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="scarlet"] {
+  --lo-accent: #dc393d;
+  --lo-accent-soft: #fdeceb;
+  --lo-accent-text: #bd292d;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="winter"] {
+  --lo-accent: #1684b6;
+  --lo-accent-soft: #e9f5fb;
+  --lo-accent-text: #146786;
+}
+#life-os-workspace[data-rendered-appearance="light"] .overlay {
+  background: #171b204a;
+}
+#life-os-workspace[data-rendered-appearance="light"] .dialog {
+  box-shadow: 0 16px 48px #171b2021;
+}
+#life-os-workspace[data-rendered-appearance="light"] .error {
+  color: #b3262e;
+}
+#life-os-workspace[data-rendered-appearance="light"] .swatch.sun {
+  background: #d99c00;
+}
+#life-os-workspace[data-rendered-appearance="light"] .swatch.pine {
+  background: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"] .swatch.scarlet {
+  background: #dc393d;
+}
+#life-os-workspace[data-rendered-appearance="light"] .swatch.winter {
+  background: #1684b6;
+}
+#life-os-workspace[data-rendered-appearance="light"] .task-menu {
+  box-shadow: 0 8px 22px #171b201e;
+}
+#life-os-workspace[data-rendered-appearance="light"] .task-menu .danger {
+  color: #a83132;
+}
+#life-os-workspace[data-rendered-appearance="light"] .button-danger {
+  color: #a83132;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="pine"] {
+  --lo-on-accent: #fff;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="scarlet"] {
+  --lo-on-accent: #fff;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="winter"] {
+  --lo-on-accent: #fff;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .metric[data-metric="mood"] {
+  --lo-metric: #d99c00;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .metric[data-metric="energy"] {
+  --lo-metric: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .metric[data-metric="stress"] {
+  --lo-metric: #dc6265;
+}
+#life-os-workspace[data-rendered-appearance="light"] .event[data-tone="sun"] {
+  --lo-event-fill: #fff4d5;
+  --lo-event-edge: #d99c00;
+}
+#life-os-workspace[data-rendered-appearance="light"] .event[data-tone="pine"] {
+  --lo-event-fill: #e7f4ed;
+  --lo-event-edge: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .event[data-tone="winter"] {
+  --lo-event-fill: #e6f4fa;
+  --lo-event-edge: #1684b6;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .event[data-tone="scarlet"] {
+  --lo-event-fill: #fdeceb;
+  --lo-event-edge: #dc393d;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .event[data-tone="neutral"] {
+  --lo-event-fill: #eef1f3;
+  --lo-event-edge: #75818c;
+}
+#life-os-workspace[data-rendered-appearance="light"] .score-field {
+  --score-color: #d99c00;
+  --score-soft: #fff4d5;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .score-field[data-score-kind="energy"] {
+  --score-color: #177b51;
+  --score-soft: #e7f4ed;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .score-field[data-score-kind="stress"] {
+  --score-color: #dc6265;
+  --score-soft: #fdeceb;
+}
+#life-os-workspace[data-rendered-appearance="light"] .tone-dot.sun {
+  background: #d99c00;
+}
+#life-os-workspace[data-rendered-appearance="light"] .tone-dot.pine {
+  background: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"] .tone-dot.winter {
+  background: #1684b6;
+}
+#life-os-workspace[data-rendered-appearance="light"] .tone-dot.scarlet {
+  background: #dc393d;
+}
+#life-os-workspace[data-rendered-appearance="light"] .tone-dot.neutral {
+  background: #75818c;
+}
+#life-os-workspace[data-rendered-appearance="light"] .win-bubble {
+  box-shadow: 0 11px 25px #171b2025;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .time-scrubber
+  input::-webkit-slider-thumb {
+  box-shadow: 0 2px 7px #171b2029;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .time-scrubber
+  input::-moz-range-thumb {
+  box-shadow: 0 2px 7px #171b2029;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-dot[data-tone="pine"] {
+  background: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-dot[data-tone="winter"] {
+  background: #1684b6;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-dot[data-tone="scarlet"] {
+  background: #dc393d;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-hero[data-tone="pine"] {
+  --project-accent: #177b51;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-hero[data-tone="scarlet"] {
+  --project-accent: #dc393d;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-hero[data-tone="winter"] {
+  --project-accent: #1684b6;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .project-hero[data-tone="sun"] {
+  --project-accent: #d99c00;
+}
+#life-os-workspace[data-rendered-appearance="light"][data-palette="custom"] {
+  --lo-accent: color-mix(in srgb, var(--lo-custom-color, #8c6ad8) 70%, #222);
+  --lo-accent-soft: color-mix(
+    in srgb,
+    var(--lo-custom-color, #8c6ad8) 16%,
+    #fff
+  );
+  --lo-accent-text: color-mix(
+    in srgb,
+    var(--lo-custom-color, #8c6ad8) 56%,
+    #000
+  );
+}
+#life-os-workspace[data-rendered-appearance="light"] .project-drag-ghost {
+  box-shadow: 0 8px 24px #171b2025;
+}
+#life-os-workspace[data-rendered-appearance="light"] .bottle-water {
+  background: #76bdd7;
+}
+#life-os-workspace[data-rendered-appearance="light"] .bottle-water::before {
+  background: #add7e6;
+}
+#life-os-workspace[data-rendered-appearance="light"] .bottle-shine {
+  background: #ffffff90;
+}
+#life-os-workspace[data-rendered-appearance="light"] {
+  --lo-mood-color: #d99c00;
+  --lo-energy-color: #177b51;
+  --lo-stress-color: #dc6265;
+}
+#life-os-workspace[data-rendered-appearance="light"]
+  .calendar-drop-preview[data-overlap="true"] {
+  background: #ffe9e9;
+  color: #9b2929;
+}
+#life-os-workspace[data-rendered-appearance="light"] .calendar-drag-ghost {
+  box-shadow: 0 6px 22px #171b2020;
+}
+#life-os-workspace[data-rendered-appearance="dark"] {
+  --lo-bg: #101317;
+  --lo-surface: #1c2025;
+  --lo-ink: #f3f5f7;
+  --lo-muted: #acb7c1;
+  --lo-line: #363d44;
+  --lo-hair: #2b3137;
+  --lo-soft: #2a3036;
+  --lo-accent: #ffca4d;
+  --lo-accent-soft: #3b3321;
+  --lo-accent-text: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="pine"] {
+  --lo-accent: #68c596;
+  --lo-accent-soft: #23372c;
+  --lo-accent-text: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="scarlet"] {
+  --lo-accent: #ff7779;
+  --lo-accent-soft: #3c2425;
+  --lo-accent-text: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="winter"] {
+  --lo-accent: #82d5f2;
+  --lo-accent-soft: #223846;
+  --lo-accent-text: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .overlay {
+  background: #0009;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .dialog {
+  box-shadow: 0 16px 48px #0007;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .error {
+  color: #ff9ca1;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .swatch.sun {
+  background: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .swatch.pine {
+  background: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .swatch.scarlet {
+  background: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .swatch.winter {
+  background: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .task-menu {
+  box-shadow: 0 8px 22px #0008;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .task-menu .danger {
+  color: #ff9295;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .button-danger {
+  color: #ff9295;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="pine"] {
+  --lo-on-accent: #102019;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="scarlet"] {
+  --lo-on-accent: #201010;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="winter"] {
+  --lo-on-accent: #10202b;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .metric[data-metric="mood"] {
+  --lo-metric: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .metric[data-metric="energy"] {
+  --lo-metric: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .metric[data-metric="stress"] {
+  --lo-metric: #ff888a;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .event[data-tone="sun"] {
+  --lo-event-fill: #3b3321;
+  --lo-event-edge: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .event[data-tone="pine"] {
+  --lo-event-fill: #24392f;
+  --lo-event-edge: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .event[data-tone="winter"] {
+  --lo-event-fill: #223947;
+  --lo-event-edge: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .event[data-tone="scarlet"] {
+  --lo-event-fill: #3d2829;
+  --lo-event-edge: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .event[data-tone="neutral"] {
+  --lo-event-fill: #30363d;
+  --lo-event-edge: #bac3cc;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .score-field {
+  --score-color: #ffca4d;
+  --score-soft: #3b3321;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .score-field[data-score-kind="energy"] {
+  --score-color: #68c596;
+  --score-soft: #24392f;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .score-field[data-score-kind="stress"] {
+  --score-color: #ff888a;
+  --score-soft: #3d2829;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .tone-dot.sun {
+  background: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .tone-dot.pine {
+  background: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .tone-dot.winter {
+  background: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .tone-dot.scarlet {
+  background: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .tone-dot.neutral {
+  background: #bac3cc;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .win-bubble {
+  box-shadow: 0 11px 25px #0008;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .time-scrubber
+  input::-webkit-slider-thumb {
+  box-shadow: 0 2px 7px #0008;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .time-scrubber
+  input::-moz-range-thumb {
+  box-shadow: 0 2px 7px #0008;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-dot[data-tone="pine"] {
+  background: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-dot[data-tone="winter"] {
+  background: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-dot[data-tone="scarlet"] {
+  background: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-hero[data-tone="pine"] {
+  --project-accent: #68c596;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-hero[data-tone="scarlet"] {
+  --project-accent: #ff7779;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-hero[data-tone="winter"] {
+  --project-accent: #82d5f2;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .project-hero[data-tone="sun"] {
+  --project-accent: #ffca4d;
+}
+#life-os-workspace[data-rendered-appearance="dark"][data-palette="custom"] {
+  --lo-accent: color-mix(in srgb, var(--lo-custom-color, #8c6ad8) 70%, #ddd);
+  --lo-accent-soft: color-mix(
+    in srgb,
+    var(--lo-custom-color, #8c6ad8) 24%,
+    #1c2025
+  );
+  --lo-accent-text: color-mix(
+    in srgb,
+    var(--lo-custom-color, #8c6ad8) 66%,
+    #fff
+  );
+}
+#life-os-workspace[data-rendered-appearance="dark"] .project-drag-ghost {
+  box-shadow: 0 8px 24px #0008;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .bottle-water {
+  background: #397992;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .bottle-water::before {
+  background: #6baec5;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .bottle-shine {
+  background: #ffffff20;
+}
+#life-os-workspace[data-rendered-appearance="dark"] {
+  --lo-mood-color: #ffca4d;
+  --lo-energy-color: #68c596;
+  --lo-stress-color: #ff888a;
+}
+#life-os-workspace[data-rendered-appearance="dark"]
+  .calendar-drop-preview[data-overlap="true"] {
+  background: #45292d;
+  color: #ffafb4;
+}
+#life-os-workspace[data-rendered-appearance="dark"] .calendar-drag-ghost {
+  box-shadow: 0 6px 22px #0008;
+}

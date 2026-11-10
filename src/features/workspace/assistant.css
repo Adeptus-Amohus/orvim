@@ -1,0 +1,719 @@
+/* The conversation owns the available height; context is a separate view. */
+#life-os-workspace #ai-dialog {
+  padding: 24px;
+  align-items: center;
+  overflow: hidden;
+}
+#life-os-workspace #ai-dialog .assistant-shell {
+  width: min(900px, 100%);
+  height: min(820px, calc(var(--dialog-viewport-height, 100dvh) - 48px));
+  max-height: calc(var(--dialog-viewport-height, 100dvh) - 48px) !important;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+#life-os-workspace #ai-dialog [hidden] {
+  display: none !important;
+}
+#life-os-workspace #ai-dialog .ai-selecting-context > .dialog-head,
+#life-os-workspace #ai-dialog .ai-selecting-context > .ai-toolbar {
+  display: none;
+}
+#life-os-workspace #ai-dialog .dialog-head {
+  padding: 16px 20px 8px;
+  margin: 0;
+  gap: 8px;
+  flex-shrink: 0;
+}
+#life-os-workspace #ai-dialog .dialog-head h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+}
+#life-os-workspace #ai-dialog .dialog-head button {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 6px;
+}
+#life-os-workspace #ai-dialog svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+#life-os-workspace #ai-dialog .ai-toolbar {
+  padding: 0 20px 12px;
+  flex-wrap: nowrap;
+  gap: 12px;
+  flex-shrink: 0;
+  color: var(--lo-muted);
+  font-size: 12px;
+}
+#life-os-workspace #ai-current-model {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#life-os-workspace #ai-settings {
+  flex-shrink: 0;
+  font-size: 12px;
+  min-height: 32px;
+}
+#life-os-workspace #ai-dialog .ai-chat-view,
+#life-os-workspace #ai-dialog .ai-context-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+#life-os-workspace #ai-dialog .ai-context-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px 12px;
+  border-bottom: 1px solid var(--lo-line);
+  flex-shrink: 0;
+}
+#life-os-workspace #ai-dialog .ai-context-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+#life-os-workspace #ai-context-summary {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--lo-muted);
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-voice-engine {
+  display: block;
+  font-size: 11px;
+  color: var(--lo-muted);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-dialog .ai-voice-help {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+#life-os-workspace #ai-dialog .ai-chat-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  padding: 24px;
+  overflow: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-gutter: stable;
+  scroll-padding: 20px;
+}
+#life-os-workspace #ai-dialog .ai-messages {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 24px;
+  width: min(100%, 740px);
+  max-height: none;
+  overflow: visible;
+  margin-inline: auto;
+}
+#life-os-workspace #ai-dialog .ai-messages:empty {
+  display: none;
+}
+#life-os-workspace #ai-dialog .ai-empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+  gap: 12px;
+  min-height: 0;
+}
+#life-os-workspace #ai-dialog .ai-empty-symbol {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--lo-line);
+  border-radius: 14px;
+  color: var(--lo-accent-text);
+}
+#life-os-workspace #ai-dialog .ai-empty h3 {
+  font-size: 22px;
+  margin: 0;
+}
+#life-os-workspace #ai-dialog .ai-empty p {
+  margin: 0;
+  color: var(--lo-muted);
+  line-height: 1.6;
+  font-size: 13px;
+}
+#life-os-workspace #ai-dialog .ai-suggestions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+}
+#life-os-workspace #ai-dialog .ai-suggestions button,
+#life-os-workspace #ai-dialog .ai-context-sources button {
+  min-height: 38px;
+  padding: 9px 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+#life-os-workspace #ai-dialog .ai-message {
+  min-width: 0;
+  max-width: 100%;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-dialog .ai-message[data-role="user"] {
+  align-self: flex-end;
+  width: fit-content;
+  max-width: 85%;
+  padding: 10px 14px 12px;
+  background: var(--lo-accent-soft);
+  border-radius: 16px 16px 4px 16px;
+}
+#life-os-workspace #ai-dialog .ai-message-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 32px;
+  margin-bottom: 4px;
+  color: var(--lo-muted);
+  font-size: 11px;
+}
+#life-os-workspace #ai-dialog .ai-message-copy {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 4px;
+  opacity: 0.6;
+}
+#life-os-workspace #ai-dialog .ai-message:hover .ai-message-copy,
+#life-os-workspace #ai-dialog .ai-message-copy:focus-visible {
+  opacity: 1;
+}
+#life-os-workspace #ai-dialog .ai-message-copy svg {
+  width: 15px;
+  height: 15px;
+}
+#life-os-workspace #ai-dialog .ai-markdown {
+  line-height: 1.65;
+}
+#life-os-workspace #ai-dialog [data-role="user"] .ai-markdown {
+  white-space: pre-wrap;
+}
+#life-os-workspace #ai-dialog .ai-markdown p:first-child {
+  margin-top: 0;
+}
+#life-os-workspace #ai-dialog .ai-markdown p:last-child {
+  margin-bottom: 0;
+}
+#life-os-workspace #ai-dialog .ai-markdown :is(h3, h4, h5) {
+  margin: 18px 0 8px;
+  font-size: 16px;
+}
+#life-os-workspace #ai-dialog .ai-markdown pre {
+  white-space: pre;
+}
+#life-os-workspace #ai-dialog .ai-message-error {
+  display: grid;
+  gap: 6px;
+  padding-top: 12px;
+  margin-top: 10px;
+  border-top: 1px solid var(--lo-line);
+  color: var(--lo-muted);
+  font-size: 12px;
+  white-space: normal;
+}
+#life-os-workspace #ai-dialog .ai-message-error button {
+  justify-self: start;
+  color: var(--lo-accent-text);
+  min-height: 36px;
+}
+#life-os-workspace #ai-dialog .ai-waiting {
+  display: grid;
+  gap: 8px;
+  color: var(--lo-muted);
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-waiting-label {
+  animation: ai-thinking 1.4s ease-in-out infinite;
+}
+@keyframes ai-thinking {
+  50% {
+    opacity: 0.45;
+  }
+}
+#life-os-workspace #ai-dialog .ai-compose {
+  margin: 12px 20px 8px;
+  padding: 10px 12px 6px;
+  border: 1px solid var(--lo-line);
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+#life-os-workspace #ai-dialog .ai-compose:focus-within {
+  border-color: var(--lo-accent);
+}
+#life-os-workspace #ai-dialog .ai-compose-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+#life-os-workspace #ai-dialog #ai-prompt {
+  width: 100%;
+  min-height: 48px;
+  max-height: 120px;
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--lo-ink);
+  outline: 0;
+  resize: none;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+#life-os-workspace #ai-dialog .ai-compose-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#life-os-workspace #ai-dialog #ai-voice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog #ai-voice[aria-pressed="true"] {
+  color: var(--lo-accent-text);
+}
+#life-os-workspace #ai-dialog #ai-send {
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 8px;
+  border-radius: 12px;
+}
+#life-os-workspace #ai-dialog #ai-send span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+#life-os-workspace #ai-dialog .ai-compose-hint {
+  text-align: center;
+  font-size: 10px;
+  color: var(--lo-muted);
+  padding-bottom: 12px;
+}
+#life-os-workspace #ai-dialog .ai-voice-options {
+  position: relative;
+  font-size: 11px;
+  color: var(--lo-muted);
+}
+#life-os-workspace #ai-dialog .ai-voice-options summary {
+  cursor: pointer;
+  padding: 12px 0;
+}
+#life-os-workspace #ai-dialog .ai-voice-consent {
+  position: absolute;
+  bottom: 100%;
+  left: -90px;
+  width: min(280px, calc(100vw - 56px));
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid var(--lo-line);
+  background: var(--lo-surface);
+  border-radius: 12px;
+  z-index: 2;
+}
+#life-os-workspace #ai-dialog .ai-voice-consent input {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+#life-os-workspace #ai-dialog #ai-status {
+  margin: 0;
+  padding: 8px 20px;
+  flex-shrink: 0;
+  max-height: 90px;
+  overflow: auto;
+  font-size: 12px;
+  border-top: 1px solid var(--lo-line);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-dialog #ai-changes {
+  width: min(100%, 740px);
+  margin: 20px auto 0;
+  padding: 14px;
+  border: 1px solid var(--lo-line);
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  max-height: none;
+  overflow: visible;
+}
+#life-os-workspace #ai-dialog #ai-changes .button {
+  min-height: 44px;
+  font-size: 14px;
+}
+#life-os-workspace #ai-dialog .ai-history-consent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: static;
+  font-size: 12px;
+  margin-block: 12px;
+}
+#life-os-workspace #ai-dialog .ai-history-consent input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+#life-os-workspace #ai-dialog .ai-context-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  border-block: 1px solid var(--lo-line);
+  flex-shrink: 0;
+}
+#life-os-workspace #ai-dialog .ai-context-heading h3 {
+  margin: 0;
+  font-size: 16px;
+}
+#life-os-workspace #ai-dialog #ai-context-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 36px;
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-context-body {
+  padding: 16px 20px 20px;
+  overflow: auto;
+  overscroll-behavior-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+#life-os-workspace #ai-dialog .ai-context-help {
+  color: var(--lo-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+#life-os-workspace #ai-dialog .ai-context-sources,
+#life-os-workspace #ai-dialog .ai-context-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+#life-os-workspace #ai-dialog .ai-context-selected:empty {
+  display: none;
+}
+#life-os-workspace #ai-dialog .ai-context-sources button[aria-pressed="true"] {
+  border-color: var(--lo-accent);
+  background: var(--lo-accent-soft);
+  color: var(--lo-accent-text);
+}
+#life-os-workspace #ai-dialog .ai-context-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 100%;
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: var(--lo-accent-soft);
+  color: var(--lo-accent-text);
+  overflow-wrap: anywhere;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+#life-os-workspace #ai-dialog .ai-context-other {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+#life-os-workspace
+  #ai-dialog
+  .ai-context-view
+  :is(input:not([type="checkbox"]), select) {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  padding: 11px 12px;
+  background: var(--lo-surface);
+  color: var(--lo-ink);
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#life-os-workspace #ai-dialog #ai-context-items {
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  display: grid;
+  gap: 0;
+  margin-top: 12px;
+}
+#life-os-workspace #ai-dialog .ai-context-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--lo-line);
+  cursor: pointer;
+}
+#life-os-workspace #ai-dialog .ai-context-option input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: var(--lo-accent);
+}
+#life-os-workspace #ai-dialog .ai-context-option-text {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  font-size: 14px;
+}
+#life-os-workspace #ai-dialog .ai-context-option-text strong {
+  font-weight: 550;
+}
+#life-os-workspace #ai-dialog .ai-context-option-text small {
+  color: var(--lo-muted);
+  font-size: 11px;
+}
+#life-os-workspace #ai-dialog .ai-context-all {
+  background: var(--lo-soft);
+  border-radius: 10px;
+  border-bottom: 0;
+  padding-inline: 12px;
+}
+#life-os-workspace #ai-dialog .ai-context-all strong {
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-context-presets,
+#life-os-workspace #ai-dialog .ai-context-preview-panel {
+  display: block;
+  padding: 12px;
+  border: 1px solid var(--lo-line);
+  border-radius: 10px;
+  margin-top: 16px;
+}
+#life-os-workspace #ai-dialog .ai-context-view summary {
+  cursor: pointer;
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-context-presets[open] summary {
+  margin-bottom: 12px;
+}
+#life-os-workspace #ai-dialog .ai-preset-save {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  margin-top: 10px;
+}
+#life-os-workspace #ai-dialog #ai-context-notice {
+  margin-bottom: 0;
+  font-size: 12px;
+  color: var(--lo-muted);
+}
+#life-os-workspace #ai-dialog #ai-context-preview {
+  max-height: none;
+  overflow: visible;
+  white-space: normal;
+  font-size: 12px;
+}
+#life-os-workspace #ai-dialog .ai-preview-record {
+  display: grid;
+  gap: 5px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--lo-line);
+  overflow-wrap: anywhere;
+}
+#life-os-workspace #ai-dialog .ai-preview-record small {
+  color: var(--lo-muted);
+  white-space: pre-wrap;
+}
+#life-os-workspace #ai-dialog .ai-context-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  gap: 12px;
+  border-top: 1px solid var(--lo-line);
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  #life-os-workspace #ai-dialog {
+    padding: 0;
+  }
+  #life-os-workspace #ai-dialog .assistant-shell {
+    height: var(--dialog-viewport-height, 100dvh);
+    max-height: var(--dialog-viewport-height, 100dvh) !important;
+    border-radius: 0;
+    border: 0;
+  }
+  #life-os-workspace #ai-dialog .dialog-head,
+  #life-os-workspace #ai-dialog .ai-toolbar,
+  #life-os-workspace #ai-dialog .ai-context-bar,
+  #life-os-workspace #ai-dialog .ai-context-heading,
+  #life-os-workspace #ai-dialog .ai-context-body {
+    padding-inline: 16px;
+  }
+  #life-os-workspace #ai-dialog .ai-chat-scroll {
+    padding: 20px 16px;
+  }
+  #life-os-workspace #ai-dialog .ai-message[data-role="user"] {
+    max-width: 92%;
+  }
+  #life-os-workspace #ai-dialog .ai-compose {
+    margin-inline: 12px;
+    margin-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  #life-os-workspace #ai-dialog .ai-compose-hint {
+    display: none;
+  }
+  #life-os-workspace #ai-dialog #ai-prompt,
+  #life-os-workspace
+    #ai-dialog
+    .ai-context-view
+    :is(input:not([type="checkbox"]), select) {
+    font-size: 16px;
+  }
+  #life-os-workspace #ai-dialog .ai-context-footer {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+}
+@media (pointer: coarse) {
+  #life-os-workspace #ai-dialog .ai-compose-hint {
+    display: none;
+  }
+}
+@media (max-height: 520px) {
+  #life-os-workspace #ai-dialog .dialog-head {
+    padding-top: 6px;
+  }
+  #life-os-workspace #ai-dialog .ai-toolbar {
+    padding-bottom: 2px;
+  }
+  #life-os-workspace #ai-dialog .ai-context-bar {
+    padding-block: 4px;
+  }
+  #life-os-workspace #ai-dialog .ai-compose {
+    margin-block: 6px;
+    padding-top: 4px;
+  }
+  #life-os-workspace #ai-dialog .ai-empty {
+    gap: 8px;
+    padding: 8px 0;
+  }
+  #life-os-workspace #ai-dialog .ai-empty-symbol,
+  #life-os-workspace #ai-dialog .ai-suggestions {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #life-os-workspace #ai-dialog .ai-waiting-label {
+    animation: none;
+  }
+}
+.ai-period-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+.ai-period-row[hidden] {
+  display: none;
+}
+.ai-period-row input {
+  flex: 1 1 110px;
+  min-width: 0;
+  width: 110px;
+  border-radius: 12px;
+}
+.ai-period-row small {
+  grid-column: 1 / -1;
+}
+.ai-period-row > span:first-child {
+  grid-column: 1 / -1;
+}
+.ai-period-row > .text-button {
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+#life-os-workspace .ai-period-row > .control-trigger {
+  width: 100%;
+  min-width: 0;
+}
+#life-os-workspace #ai-dialog .ai-proposal-status {
+  display: block;
+  font-weight: 600;
+  margin: 8px 0;
+  color: var(--lo-accent-text);
+}
+#life-os-workspace #ai-dialog .ai-food-amount {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  margin: 6px 0;
+}

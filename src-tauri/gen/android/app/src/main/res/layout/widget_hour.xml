@@ -1,0 +1,7 @@
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:orientation="horizontal" android:gravity="top">
+  <android.widget.TextView android:id="@+id/widget_hour_label" android:layout_width="43dp" android:layout_height="wrap_content" android:paddingTop="3dp" android:textSize="11sp" android:textColor="@color/widget_muted"/>
+  <android.widget.LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:minHeight="56dp" android:orientation="vertical">
+    <android.widget.TextView android:id="@+id/widget_hour_line" android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/widget_tint"/>
+    <android.widget.LinearLayout android:id="@+id/widget_hour_content" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="54dp" android:orientation="vertical" android:paddingTop="2dp" android:paddingBottom="2dp"/>
+  </android.widget.LinearLayout>
+</android.widget.LinearLayout>
