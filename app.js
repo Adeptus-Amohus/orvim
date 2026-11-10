@@ -89,11 +89,13 @@ async function loadRelease() {
       link.href = release[platform];
       link.textContent =
         platform === "windows" ? "Скачать для Windows ↓" : "Скачать APK ↓";
-      document.getElementById(`${platform}-detail`).textContent +=
-        ` · ${release.version}`;
+      document.getElementById(`${platform}-detail`).textContent =
+        (platform === "windows"
+          ? "Windows 10/11 · x64"
+          : "ARM64 · Android 7+") + ` · ${release.version}`;
     }
     document.getElementById("release-status").textContent =
-      `Открытая тестовая версия ${release.version}. Выберите своё устройство. Перед обновлением создайте резервную копию.`;
+      `Стабильный выпуск ${release.version}. Скачивание без аккаунта GitHub. Перед обновлением создайте резервную копию.`;
     document.getElementById("releases-link").href = release.notes;
     document.getElementById("release-note").textContent =
       release.notice ||

@@ -309,8 +309,8 @@
           <p class="eyebrow">Следующий шаг</p>
           <h2 id="download-title">Попробовать в своём ритме.</h2>
           <p id="release-status">
-            Публичный выпуск готовится. Пока можно запросить тестовую сборку и
-            рассказать, для чего вы хотите использовать Orvim.
+            Стабильный выпуск 0.4.46. APK и установщик доступны без аккаунта
+            GitHub.
           </p>
         </div>
         <div class="platforms">
@@ -322,14 +322,14 @@
               <h3>Windows</h3>
               <p>Для спокойной работы за компьютером.</p>
               <span id="windows-detail" class="platform-status"
-                >Тестовая сборка · x64</span
+                >Windows 10/11 · x64 · 0.4.46</span
               >
             </div>
             <a
               id="windows-download"
               class="button secondary"
-              href="https://github.com/Adeptus-Amohus/orvim/issues/new?template=try.yml&amp;title=Хочу+попробовать+Orvim+на+Windows"
-              >Запросить сборку <span aria-hidden="true">↗</span></a
+              href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe"
+              >Скачать для Windows ↓</a
             >
           </article>
           <article class="platform">
@@ -349,20 +349,32 @@
               <h3>Android</h3>
               <p>Чтобы нужное оставалось под рукой.</p>
               <span id="android-detail" class="platform-status"
-                >Тестовая сборка · ARM64 · Android 7+</span
+                >ARM64 · Android 7+ · 0.4.46</span
               >
             </div>
             <a
               id="android-download"
               class="button secondary"
-              href="https://github.com/Adeptus-Amohus/orvim/issues/new?template=try.yml&amp;title=Хочу+попробовать+Orvim+на+Android"
-              >Запросить сборку <span aria-hidden="true">↗</span></a
+              href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk"
+              >Скачать APK ↓</a
             >
           </article>
         </div>
         <p id="release-note" class="fine-print">
-          Заявка откроется в GitHub; для отправки нужен аккаунт. Не включайте
-          личные записи, ключи и пароли.
+          Скачивание без аккаунта GitHub. Перед переходом со старого тестового
+          APK: копия с паролем → проверка восстановления → переустановка →
+          восстановление. Windows EXE не подписан Authenticode.
+        </p>
+        <p class="fine-print">
+          <a
+            href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md"
+            >Установка и обновление</a
+          >
+          ·
+          <a
+            href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/SHA256SUMS.txt"
+            >SHA-256</a
+          >
         </p>
         <a
           id="releases-link"
@@ -413,11 +425,12 @@
             </p>
           </details>
           <details>
-            <summary>Что значит тестовая версия?</summary>
+            <summary>Что проверено в выпуске?</summary>
             <p>
-              Приложение ещё развивается: возможны ошибки и изменения
-              интерфейса. Перед обновлением делайте резервную копию. Конкретное
-              описание неудобства помогает улучшить Orvim.
+              Для 0.4.46 проверены релизные сборки, подпись APK, установка,
+              сохранение данных и предусмотренные автоматические проверки. Перед
+              обновлением делайте резервную копию. Полный отчёт и ограничения
+              доступны на странице выпуска.
             </p>
           </details>
         </div>
