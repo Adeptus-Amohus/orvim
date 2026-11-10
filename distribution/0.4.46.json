@@ -1,0 +1,22 @@
+{
+  "application": "Orvim",
+  "version": "0.4.46",
+  "applicationSourceCommit": "d632f6b0d536968b1564fcdd0abfe6c4d6b95d55",
+  "applicationSourceRepositoryVisibility": "private",
+  "distributionRepository": "Adeptus-Amohus/orvim",
+  "distributionTag": "v0.4.46",
+  "publicTagMeaning": "Distribution manifest, public documentation and website; not application source code",
+  "android": {
+    "file": "Orvim-0.4.46-Android-arm64.apk",
+    "sha256": "5074d836addbc37fb54e538d2424f88a563e5276730f1d399697d2d2bb921382",
+    "applicationId": "local.lifeos.client",
+    "versionCode": 4046,
+    "signerCertificateSha256": "69769e705d33225d37d62da35c3d549c219d6235cf658118a16649056591c386"
+  },
+  "windows": {
+    "file": "Orvim-0.4.46-Windows-x64-setup.exe",
+    "sha256": "268c4b34bbacbdfcad0a590661ceba92df371d90f4d10fbae9f111b9d1e81a2b",
+    "authenticode": "NotSigned"
+  },
+  "binariesRebuiltForPublicDistribution": false
+}

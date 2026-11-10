@@ -1,4 +1,4 @@
-# Orvim — публичный сайт
+# Orvim — сайт и публичные выпуски
 
 Сайт: https://adeptus-amohus.github.io/orvim/
 
@@ -11,6 +11,10 @@ GitHub Pages: ветка `main`, папка `/` (корень), режим `Depl
 В основном рабочем репозитории источником служит папка `site/`. При обновлении переносите только её содержимое в репозиторий сайта. Не копируйте `.git`, `.artifacts`, базу пользователя, секреты или весь репозиторий приложения.
 
 ## Сборки приложения
+
+[Стабильный Orvim 0.4.46](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/SHA256SUMS.txt). Скачивание без авторизации.
+
+Commit исходников приложения: `d632f6b0d536968b1564fcdd0abfe6c4d6b95d55`. Публичный тег этого репозитория обозначает материалы распространения и сайт, а не исходники приложения. [Происхождение и проверки](docs/RELEASE_0_4_46.md).
 
 `release.json` содержит только ссылки на проверенные публичные файлы в Releases этого репозитория. Пока значения `null`, сайт честно показывает, что публичный выпуск готовится, и предлагает запросить тестирование через GitHub Issues.
 
