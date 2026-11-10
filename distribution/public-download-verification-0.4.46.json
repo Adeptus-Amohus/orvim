@@ -1,0 +1,246 @@
+{
+  "version": "0.4.46",
+  "checkedAtUtc": "2026-11-10T22:46:55.2224183+05:00",
+  "authentication": {
+    "authorizationHeader": false,
+    "cookieHeader": false,
+    "cookieStorage": false,
+    "defaultCredentials": false,
+    "githubToken": false
+  },
+  "applicationSourceCommit": "d632f6b0d536968b1564fcdd0abfe6c4d6b95d55",
+  "assetsComparedTo": "Original verified 0.4.46 files; unchanged APK and EXE",
+  "siteChecked": true,
+  "results": [
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 152088,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 23548104,
+      "sha256": "5074d836addbc37fb54e538d2424f88a563e5276730f1d399697d2d2bb921382",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 10424662,
+      "sha256": "268c4b34bbacbdfcad0a590661ceba92df371d90f4d10fbae9f111b9d1e81a2b",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Documentation.zip",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 362301,
+      "sha256": "f3a9f217aefb532e7b8ac0bcb091ccac16bd258dee568ba3d19fe84a85ae0730",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/third-party-sources.zip",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 26641493,
+      "sha256": "6b30705d8d36d71d1475d5fe0df9955f92b0b3d0b2bc6e8f65c885b78f7cd71e",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/build-info.json",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 3920,
+      "sha256": "c856be142009e0a809bfdc94ce641918b9a769d045542d3cae1ab9b32ba83180",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Release-notes.md",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 7040,
+      "sha256": "f99c970c69c58ba6686ca2a5c7796a7fca122053cc645517dabd1252487bb980",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Verification.md",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 6770,
+      "sha256": "33e8c60ed4585c460a247d40d1bd11900c16f87878ac0174f1742718176100ca",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/INSTALLATION.md",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 6271,
+      "sha256": "ef8b66c568968b5f40bd15a67aa8e9472e6cbecda56e9272e140eeadd26f693c",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/ANDROID_SIGNING.md",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 2930,
+      "sha256": "b44a9c221565ac47147c1cc7fa81cba9c913de311ce34b1e1fdc871160c0d8a3",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/LICENSES.md",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 2665,
+      "sha256": "1a50e9cb0439abe5dc1faf8da5f8212fdb08dbbef1985d68c7fb05b60d9831b0",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/apk-signature.txt",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 979,
+      "sha256": "07710b89cb5af57381639affcd3e95c26f375bd5f714baf689eab8fbe3bac932",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/SHA256SUMS.txt",
+      "status": 200,
+      "finalHost": "release-assets.githubusercontent.com",
+      "bytes": 972,
+      "sha256": "774a503de46cb3330e9cba30f844a0c7839baab7f843cff95d3b5c3dceddc5f2",
+      "matchesOriginal": true
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/README.md",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 194543,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/README.md",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 4333,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 201277,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/docs/INSTALLATION.md",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 6216,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/docs/ANDROID_SIGNING.md",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 182553,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/docs/ANDROID_SIGNING.md",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 2875,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/docs/LICENSES.md",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 177674,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/docs/LICENSES.md",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 2665,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/docs/RELEASE_0_4_46.md",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 201308,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/docs/RELEASE_0_4_46.md",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 6792,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://github.com/Adeptus-Amohus/orvim/blob/main/distribution/0.4.46.json",
+      "status": 200,
+      "finalHost": "github.com",
+      "bytes": 178869,
+      "sha256": null,
+      "matchesOriginal": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Adeptus-Amohus/orvim/main/distribution/0.4.46.json",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "bytes": 921,
+      "sha256": null,
+      "matchesOriginal": null
+    }
+  ],
+  "liveSite": {
+    "version": "0.4.46",
+    "checkedAtUtc": "2026-11-10T22:46:51.7452026+05:00",
+    "authorizationHeader": false,
+    "cookies": false,
+    "defaultCredentials": false,
+    "checks": [
+      {
+        "url": "https://adeptus-amohus.github.io/orvim/release.json",
+        "status": 200,
+        "bytes": 758
+      },
+      {
+        "url": "https://adeptus-amohus.github.io/orvim/index.html",
+        "status": 200,
+        "bytes": 21650
+      },
+      {
+        "url": "https://adeptus-amohus.github.io/orvim/app.js",
+        "status": 200,
+        "bytes": 4008
+      },
+      {
+        "url": "https://adeptus-amohus.github.io/orvim/privacy.html",
+        "status": 200,
+        "bytes": 3697
+      }
+    ],
+    "downloadLinksMatchVerifiedAssets": true
+  }
+}

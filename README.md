@@ -14,7 +14,7 @@ GitHub Pages: ветка `main`, папка `/` (корень), режим `Depl
 
 [Стабильный Orvim 0.4.46](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/SHA256SUMS.txt). Скачивание без авторизации.
 
-Commit исходников приложения: `d632f6b0d536968b1564fcdd0abfe6c4d6b95d55`. Публичный тег этого репозитория обозначает материалы распространения и сайт, а не исходники приложения. [Происхождение и проверки](docs/RELEASE_0_4_46.md).
+Commit исходников приложения: `d632f6b0d536968b1564fcdd0abfe6c4d6b95d55`. Публичный тег этого репозитория обозначает материалы распространения и сайт, а не исходники приложения. [Происхождение и проверки](docs/RELEASE_0_4_46.md). [Отчёт анонимного скачивания и проверки сайта](distribution/public-download-verification-0.4.46.json).
 
 `release.json` содержит ссылки на проверенные публичные файлы в Releases этого репозитория. Для 0.4.46 прямые ссылки также записаны в HTML: скачивание работает без JavaScript и при недоступности JSON.
 
