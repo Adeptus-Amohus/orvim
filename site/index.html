@@ -12,7 +12,10 @@
     <link rel="canonical" href="https://adeptus-amohus.github.io/orvim/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
-    <meta property="og:title" content="Orvim — порядок моей жизни" />
+    <meta
+      property="og:title"
+      content="Orvim — план дня, проекты и личные записи"
+    />
     <meta
       property="og:description"
       content="Личное пространство для задач, проектов и повседневной жизни. Windows и Android. Основные разделы работают без аккаунта и интернета."
@@ -46,19 +49,20 @@
       <section class="masthead" aria-labelledby="hero-title">
         <div class="hero wrap">
           <div class="hero-copy">
-            <div class="hero-signature">
+            <div class="hero-identity">
               <img
-                src="assets/roman-dodecahedron.webp"
-                width="84"
-                height="70"
+                class="hero-mark"
+                src="assets/orvim.png"
+                width="512"
+                height="512"
                 alt=""
               />
-              <p class="inscription" lang="la">Ordo vitae meae</p>
+              <h1 id="hero-title">Orvim</h1>
             </div>
-            <h1 id="hero-title">Дела и записи<br /><em>в одном месте</em></h1>
+            <p class="hero-summary">План дня, проекты и личные записи</p>
             <p class="hero-description">
-              Составьте план на день, соберите материалы проекта и запишите
-              мысли в Orvim. Приложение для Windows и Android.
+              Для Windows и Android. Основные разделы работают без аккаунта и
+              интернета.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#download"
@@ -67,23 +71,28 @@
                 >Посмотреть внутри <span aria-hidden="true">↘</span></a
               >
             </div>
-            <p class="hero-note">
-              Основные разделы работают без аккаунта и интернета.
-            </p>
           </div>
           <a
-            class="hero-preview"
-            href="#tour"
-            aria-label="Рассмотреть интерфейс Orvim"
+            class="hero-preview enlarge"
+            href="assets/home-desktop.jpg"
+            aria-label="Увеличить снимок интерфейса Orvim"
           >
-            <img
-              src="assets/home-desktop.jpg"
-              width="1280"
-              height="720"
-              alt="Главная Orvim с расписанием и списком задач"
-              fetchpriority="high"
-            />
-            <span>Главная Orvim <span aria-hidden="true">↘</span></span>
+            <picture>
+              <source
+                media="(max-width: 620px)"
+                srcset="assets/home-mobile.jpg"
+                width="390"
+                height="844"
+              />
+              <img
+                src="assets/home-desktop.jpg"
+                width="1280"
+                height="720"
+                alt="Главная Orvim с расписанием и списком задач"
+                fetchpriority="high"
+              />
+            </picture>
+            <span class="hero-preview-zoom" aria-hidden="true">⤢</span>
           </a>
         </div>
       </section>

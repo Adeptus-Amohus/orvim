@@ -36,6 +36,14 @@
   font-display: swap;
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("assets/instrument-serif-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --paper: #f1eade;
   --stone: #e7ddcb;
@@ -210,24 +218,27 @@ h2 {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.65fr);
   align-items: center;
-  gap: clamp(24px, 4.6vw, 72px);
-  padding-block: clamp(32px, 4.2vw, 62px) clamp(36px, 4.5vw, 66px);
+  width: min(1460px, calc(100% - 96px));
+  gap: clamp(26px, 3.2vw, 48px);
+  padding-block: clamp(36px, 5vw, 74px);
 }
 
-.hero-signature {
+.hero-identity {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(8px, 1.35vw, 20px);
+  margin-bottom: 17px;
 }
 
-.hero-signature img {
-  width: 70px;
-  border: 1px solid var(--light-line);
+.hero-mark {
+  width: clamp(78px, 11vw, 158px);
+  flex: 0 1 auto;
+  min-width: 0;
+  filter: drop-shadow(0 10px 16px #0005);
 }
 
-.inscription,
 .eyebrow {
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -235,30 +246,26 @@ h2 {
   font-weight: 700;
 }
 
-.inscription {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--gold);
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: 0.2em;
-}
-
 .hero h1 {
-  font-size: clamp(2.95rem, 5.3vw, 5rem);
-  margin-block: 17px 20px;
-  line-height: 0.99;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(4.65rem, 9.4vw, 9.2rem);
+  letter-spacing: -0.035em;
+  line-height: 0.85;
 }
 
-.hero h1 em {
-  color: #e5c69e;
+.hero-summary {
+  max-width: 26ch;
+  font-size: clamp(1.25rem, 1.9vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 .hero-description {
+  margin-top: 11px;
   color: var(--light-muted);
-  font-size: clamp(1rem, 1.4vw, 1.21rem);
-  max-width: 32ch;
+  font-size: clamp(0.97rem, 1.15vw, 1.08rem);
+  max-width: 39ch;
 }
 
 .hero-actions,
@@ -320,35 +327,38 @@ h2 {
   text-decoration: underline;
 }
 
-.hero-note {
-  color: var(--light-muted);
-  font-size: 0.82rem;
-  margin-top: 16px;
-}
-
 .hero-preview {
+  position: relative;
+  display: block;
   min-width: 0;
-  border: 1px solid var(--light-line);
-  padding: 8px 8px 0;
-  background: var(--night-deep);
-  box-shadow: 0 22px 42px #0005;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px #0006;
+  cursor: zoom-in;
 }
 
 .hero-preview img {
   width: 100%;
 }
 
-.hero-preview > span {
-  display: flex;
-  justify-content: space-between;
-  color: var(--light-muted);
-  font-size: 0.79rem;
-  padding: 12px 10px 13px;
-  border-top: 1px solid var(--light-line);
+.hero-preview-zoom {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--light);
+  font:
+    1.2rem/1 system-ui,
+    sans-serif;
 }
 
-.hero-preview:hover > span {
-  color: var(--gold);
+.hero-preview:hover .hero-preview-zoom {
+  background: var(--bronze);
 }
 
 .principles {
@@ -804,15 +814,7 @@ dialog > img {
   }
 }
 
-@media (max-width: 740px) {
-  .wrap {
-    width: calc(100% - 40px);
-  }
-
-  .legal {
-    width: min(760px, calc(100% - 40px));
-  }
-
+@media (max-width: 880px) {
   .hero {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -820,20 +822,25 @@ dialog > img {
   }
 
   .hero h1 {
-    font-size: clamp(3.05rem, 11vw, 5.35rem);
-    margin-block: 15px 16px;
+    font-size: clamp(5.4rem, 20vw, 7.75rem);
+  }
+
+  .hero-mark {
+    width: clamp(90px, 24vw, 116px);
   }
 
   .hero-actions {
     margin-top: 21px;
   }
+}
 
-  .hero-preview {
-    padding: 5px 5px 0;
+@media (max-width: 740px) {
+  .wrap {
+    width: calc(100% - 40px);
   }
 
-  .hero-preview > span {
-    padding: 9px 6px;
+  .legal {
+    width: min(760px, calc(100% - 40px));
   }
 
   .tour-panel {
@@ -870,6 +877,12 @@ dialog > img {
 }
 
 @media (max-width: 620px) {
+  .hero-preview img {
+    height: clamp(260px, 85vw, 460px);
+    object-fit: cover;
+    object-position: top;
+  }
+
   .platforms {
     grid-template-columns: 1fr;
   }
