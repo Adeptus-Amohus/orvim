@@ -33,9 +33,7 @@ if (dialog && typeof dialog.showModal === "function") {
       event.preventDefault();
       trigger = link;
       const target = document.getElementById("dialog-image");
-      const preview =
-        link.querySelector("img") ||
-        link.closest(".tour-panel").querySelector("img");
+      const preview = link.closest(".tour-panel").querySelector("img");
       target.src = preview.currentSrc || link.href;
       target.alt = preview.alt;
       dialog.showModal();
