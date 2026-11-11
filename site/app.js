@@ -92,17 +92,10 @@ async function loadRelease() {
         platform === "windows"
           ? "Скачать Windows EXE ↓"
           : "Скачать Android APK ↓";
-      document.getElementById(`${platform}-detail`).textContent =
-        (platform === "windows"
-          ? "Windows 10/11 · x64 · EXE"
-          : "Android 7+ · ARM64 · APK") + ` · ${release.version}`;
     }
     document.getElementById("release-status").textContent =
-      `Стабильный выпуск ${release.version}. Скачивание без аккаунта GitHub. Перед обновлением создайте резервную копию.`;
+      `Стабильный выпуск ${release.version}. Скачивание без регистрации.`;
     document.getElementById("releases-link").href = release.notes;
-    document.getElementById("release-note").textContent =
-      release.notice ||
-      "Файлы размещены в официальном репозитории Orvim. Условия и известные ограничения — в описании выпуска.";
   } catch {
     // The verified download links in HTML remain usable if JSON is unavailable.
   }

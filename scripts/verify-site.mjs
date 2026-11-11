@@ -11,7 +11,7 @@ const initialDocument = new JSDOM(source).window.document;
 const fallbackWindows = initialDocument.getElementById("windows-download").href;
 const fallbackAndroid = initialDocument.getElementById("android-download").href;
 const localFiles = new Set();
-for (const filename of ["index.html", "privacy.html"]) {
+for (const filename of ["index.html", "privacy.html", "help.html"]) {
   const html = await fs.readFile(path.join(root, filename), "utf8");
   const { document } = new JSDOM(html).window;
   assert.equal(document.documentElement.lang, "ru");
@@ -20,7 +20,7 @@ for (const filename of ["index.html", "privacy.html"]) {
   assert.equal(new Set(ids).size, ids.length, `${filename}: duplicate ID`);
   for (const element of document.querySelectorAll("[href], [src]")) {
     const value = element.getAttribute("href") ?? element.getAttribute("src");
-    if (!value || /^https?:/.test(value)) continue;
+    if (!value || /^(?:https?|mailto):/.test(value)) continue;
     if (value.startsWith("#")) {
       if (value.length > 1)
         assert.ok(
