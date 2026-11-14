@@ -19,10 +19,10 @@
 </p>
 
 <p align="center">
-  <strong>Orvim 0.4.47</strong><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47">Релиз и SHA-256</a> &nbsp; / &nbsp;
+  <strong>Orvim 0.4.48</strong><br />
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Релиз и SHA-256</a> &nbsp; / &nbsp;
   <a href="https://adeptus-amohus.github.io/orvim/">Сайт Orvim</a> &nbsp; / &nbsp;
   <a href="#интерфейс">Интерфейс</a> &nbsp; / &nbsp;
   <a href="#возможности">Возможности</a> &nbsp; / &nbsp;
@@ -69,22 +69,22 @@
 
 Аккаунт Orvim не требуется. Подключённые сервисы могут требовать свои аккаунты, ключи, разрешения и оплату. Данные, отправленные сервису, обрабатываются по его условиям. [Данные и приватность](docs/PRIVACY.md).
 
-Изменения и проверки текущего выпуска описаны в [заметках Orvim 0.4.47](docs/releases/0.4.47.md).
+Изменения и проверки текущего выпуска описаны в [заметках Orvim 0.4.48](docs/releases/0.4.48.md).
 
 ## Установка и сохранность данных
 
-В версии **0.4.47** исправлены поля и прокрутка раздела «Мысли» на Android и восстановлен значок рассвета. [Заметки выпуска](docs/releases/0.4.47.md) · [Установка и обновление](docs/INSTALLATION.md).
+В версии **0.4.48** исправлена проверка обновлений. Кнопка «Проверить на GitHub» обращается к публичному Orvim. Для совместимых выпусков кнопки загрузки и установки появляются после проверки подписанного манифеста. [Заметки выпуска](docs/releases/0.4.48.md) · [Установка и обновление](docs/INSTALLATION.md).
 
-Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.47](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47):
+Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.48](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48):
 
 | Файл                                                                                                                        | Назначение                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [Скачать Windows EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe) | Установщик Windows 10/11 x64; нужен WebView2. При отсутствии runtime установщик скачивает его через интернет. |
-| [Скачать Android APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk)     | Android 7.0/API 24+, ARM64, актуальный Android WebView. Отдельных x86 и 32-битных ARM APK нет.                |
+| [Скачать Windows EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe) | Установщик Windows 10/11 x64; нужен WebView2. При отсутствии runtime установщик скачивает его через интернет. |
+| [Скачать Android APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk)     | Android 7.0/API 24+, ARM64, актуальный Android WebView. Отдельных x86 и 32-битных ARM APK нет.                |
 
-Основной проект объединяет приложение, сайт и документацию. Исходники APK и EXE зафиксированы в [коммите 6c9667e](https://github.com/Adeptus-Amohus/orvim/commit/6c9667ea46be3e953f0fc891170d350443c12835). Сведения о сборке и SHA-256 входят в выпуск.
+Исходники APK и EXE зафиксированы в [коммите 98a7cd3](https://github.com/Adeptus-Amohus/orvim/commit/98a7cd344a2af75a5c63d574e8e6cd9516fc1c81). Сведения о сборке и SHA-256 входят в выпуск.
 
-Автоматический подписанный канал обновлений отдельно не включён; файлы устанавливаются вручную. APK подписан постоянным Android-ключом, package ID — `local.lifeos.client`, `versionCode` — **4046**. Windows EXE не имеет Authenticode-подписи и может вызывать предупреждения Windows.
+Установленные 0.4.46 и 0.4.47 с ошибкой 404 обновите вручную поверх прежней версии. Начиная с 0.4.48 Orvim использует подписанный список пакетов для встроенной установки. Windows EXE не подписан Authenticode и может вызывать системное предупреждение.
 
 Перед обновлением создайте и проверьте **копию с паролем** вне приватной папки приложения. **Обновление с тестовых APK до 0.4.45 требует переустановки.** До удаления тестовой установки проверьте восстановление копии на отдельном устройстве. [Безопасный переход](docs/INSTALLATION.md#переход-со-старого-тестового-apk). Следующие release APK должны сохранять новый постоянный сертификат. Windows обновляется обычным установщиком поверх прежней версии. [Копии и восстановление](docs/BACKUPS.md).
 
@@ -144,9 +144,9 @@ npm run tauri -- build --bundles nsis
 npm run android:build -- --apk --target aarch64 --ci
 ```
 
-`desktop:build` создаёт EXE без установщика. Android release APK необходимо подписать **существующим** постоянным ключом и проверить; keystore и пароли не входят в Git. При подготовке 0.4.47 повторно прошли production-сборка интерфейса, UI-набор, лицензии, Rust fmt/Clippy и **71 Rust-тест**, ещё **2 внешних smoke-теста** обложек отмечены `ignored`. APK/EXE скачаны без авторизации и сверены по SHA-256; подпись APK проверена. [Проверки и статус CI](docs/REPOSITORY.md), [разработка](docs/DEVELOPMENT.md), [порядок выпуска](docs/RELEASING.md).
+`desktop:build` создаёт EXE без установщика. Android release APK подписывается постоянным ключом. Подробности проверки файлов доступны в [отчёте выпуска](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Verification.md) и [GitHub CI](https://github.com/Adeptus-Amohus/orvim/actions/runs/43649365001). [Разработка](docs/DEVELOPMENT.md), [порядок выпуска](docs/RELEASING.md).
 
-DOM-тесты используют синтетические сервисы. Физический ARM64-телефон, все OEM-лаунчеры, чистая Windows без WebView2 и живые аккаунты внешних подключений этим выпуском не проверены. Нативные проверки ранее выпущенных файлов и их границы описаны в [заметках 0.4.47](docs/releases/0.4.47.md).
+DOM-тесты используют синтетические сервисы. Физический ARM64-телефон, все OEM-лаунчеры, чистая Windows без WebView2 и живые аккаунты внешних подключений этим выпуском не проверены. Нативные проверки ранее выпущенных файлов и их границы описаны в [заметках 0.4.48](docs/releases/0.4.48.md).
 
 </details>
 
