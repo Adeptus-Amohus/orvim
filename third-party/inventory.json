@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "application": { "name": "orvim", "version": "0.4.46" },
+  "application": { "name": "orvim", "version": "0.4.47" },
   "cargoTargets": ["x86_64-pc-windows-msvc", "aarch64-linux-android"],
   "npmScope": "Installed lockfile-matched packages, including development tools and host-specific optional packages.",
   "androidScope": "Direct dependencies checked; cached Maven notices may include extra versions. Audit releaseRuntimeClasspath separately.",

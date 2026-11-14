@@ -46,15 +46,26 @@
   border-radius: 13px;
   background: var(--lo-surface);
 }
-#life-os-workspace .thought-feed-capture textarea {
+#life-os-workspace
+  .thought-feed
+  :is(#thought-feed-capture, .thought-feed-editor) {
+  box-sizing: border-box;
   width: 100%;
   display: block;
-  min-height: 64px;
+  max-width: 100%;
   resize: vertical;
-  background: transparent;
-  border: 0;
-  padding: 0;
+  background: var(--lo-surface);
+  border: 1px solid var(--lo-line);
+  padding: 10px 12px;
   color: var(--lo-ink);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+#life-os-workspace
+  .thought-feed
+  :is(#thought-feed-capture, .thought-feed-editor):focus {
+  border-color: var(--lo-accent);
+  outline-offset: 1px;
 }
 #life-os-workspace .thought-feed-capture-footer {
   display: flex;
@@ -207,6 +218,7 @@
 #life-os-workspace .thought-feed-note-title {
   display: block;
   font-weight: 600;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 #life-os-workspace .thought-feed-note-title svg {
@@ -324,14 +336,7 @@
   margin: 12px 0 7px;
 }
 #life-os-workspace .thought-feed-editor {
-  display: block;
-  width: 100%;
   min-height: 240px;
-  border: 0;
-  resize: vertical;
-  background: transparent;
-  color: var(--lo-ink);
-  padding: 8px 0;
 }
 #life-os-workspace .thought-feed-detail-footer {
   border-top: 1px solid var(--lo-line);
@@ -465,6 +470,11 @@
   }
 }
 @media (pointer: coarse) {
+  #life-os-workspace
+    .thought-feed
+    :is(#thought-feed-capture, .thought-feed-editor) {
+    resize: none;
+  }
   #life-os-workspace .thought-feed-button,
   #life-os-workspace .thought-feed-filter,
   #life-os-workspace .thought-feed-icon,
@@ -523,7 +533,19 @@
   #life-os-workspace .thought-feed-filters {
     margin-bottom: 12px;
   }
-  #life-os-workspace .thought-feed-capture textarea {
-    min-height: 44px;
+}
+/* Leave a scroll path to Capture when the Android keyboard reduces the viewport. */
+@media (max-width: 760px) and (max-height: 540px) {
+  #life-os-workspace .main:has(> #thoughts-screen:not([hidden])) {
+    overflow-y: auto;
+    scroll-padding-block: 12px 100px;
+  }
+  #life-os-workspace #thoughts-screen,
+  #life-os-workspace .thought-feed-workspace {
+    flex: none;
+  }
+  #life-os-workspace .thought-feed-scroll,
+  #life-os-workspace .thought-feed-detail {
+    overflow: visible;
   }
 }

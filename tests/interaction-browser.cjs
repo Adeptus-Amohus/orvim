@@ -130,6 +130,7 @@ const life = async (page, tab) => {
     "First click opens wellbeing after delayed initialization",
   );
   await startup.locator("#state-dialog .close").click();
+  await startup.locator("#home-add").click();
   await startup.locator("#task-add").click();
   check(
     await startup.locator("#capture-dialog").isVisible(),
@@ -157,6 +158,7 @@ const life = async (page, tab) => {
     "Late first-run setup cannot replace wellbeing dialog",
   );
   await delayedSetup.page.locator("#state-dialog .close").click();
+  await delayedSetup.page.locator("#home-add").click();
   await delayedSetup.page.locator("#task-add").click();
   check(
     await delayedSetup.page.locator("#capture-dialog").isVisible(),
@@ -186,6 +188,7 @@ const life = async (page, tab) => {
     await page.locator(".app").evaluate((n) => !n.inert),
     "Failed dialog initialization releases background controls",
   );
+  await page.locator("#home-add").click();
   await page.locator("#task-add").click();
   check(
     await page.locator("#capture-dialog").isVisible(),
@@ -224,7 +227,14 @@ const life = async (page, tab) => {
     "Next Escape returns to the actual previous Projects screen",
   );
   await life(page, "food");
+  await page.locator("#food-entry-disclosure > summary").click();
   await page.locator("#food-name").focus();
+  check(
+    await page
+      .locator("#food-name")
+      .evaluate((input) => input === document.activeElement),
+    "Manual food entry is focused before Escape",
+  );
   await page.keyboard.press("Escape");
   check(
     await page.locator("#life-food-view").isVisible(),
@@ -281,6 +291,8 @@ const life = async (page, tab) => {
       viewport.width < 500 ? "?mobile=1" : "",
     );
     await run.page.locator('[data-page="projects"]:visible').first().click();
+    if (!(await run.page.locator("#project-list").isVisible()))
+      await run.page.locator("#project-list-toggle").click();
     for (const zoom of [1, 0.8, 1.25]) {
       await run.page
         .locator("#life-os-workspace")
@@ -367,10 +379,12 @@ const life = async (page, tab) => {
   );
   const m = mobile.page;
   await life(m, "finances");
+  await m.locator("#finance-options > summary").click();
   check(
     await m.locator("#finance-account-add").isVisible(),
     "Add account is a visible action",
   );
+  await m.locator("#finance-options > summary").click();
   await m.locator("#finance-add").click();
   await m.locator("#finance-account").selectOption("cash");
   check(
