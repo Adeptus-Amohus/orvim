@@ -247,8 +247,8 @@ export const englishLabels = {
   "Проверить на GitHub": "Check GitHub",
   "Проверка выпусков GitHub и загрузка обновлений через интернет. Установка — после подтверждения.":
     "Check GitHub releases and download updates online. Installation requires confirmation.",
-  "Проверьте новую версию, загрузите её прямо здесь и нажмите «Установить». Пакет проверяется по подписи и хешу; перед установкой создаётся копия. На Android последнее подтверждение показывает система.":
-    "Check for a new version, download it here and select Install. The package signature and hash are verified; a backup is created before installation. Android shows the final system confirmation.",
+  "Проверьте наличие новой версии. Если доступен подписанный пакет, здесь появятся кнопки загрузки и установки. Иначе откройте страницу выпуска для ручной установки. Перед встроенной установкой создаётся резервная копия; на Android последнее подтверждение показывает система.":
+    "Check for a new version. Download and install buttons appear when a signed package is available. Otherwise, open the release page for manual installation. An in-app installation creates a backup first; Android shows the final system confirmation.",
   "Найти устройства": "Find devices",
   "Ввести адрес вручную": "Enter address manually",
   "Сканировать QR-код": "Scan QR code",

@@ -162,6 +162,7 @@ async function scenario(label, run) {
       currency: "KZT",
       category: i % 3 ? "Еда" : "Работа",
       note: "Операция " + i,
+      legacyFinance: true,
     }));
     d.financeCategories = Array.from({ length: 45 }, (_, i) => ({
       name: i < 2 ? ["Еда", "Работа"][i] : "Категория " + i,
@@ -224,8 +225,12 @@ async function scenario(label, run) {
       let i = 0;
       i < 3 && (await page.locator(".overlay:visible").count());
       i++
-    )
-      await page.keyboard.press("Escape");
+    ) {
+      const overlay = page.locator(".overlay:visible").last();
+      const button = overlay.locator("[data-close]:visible").first();
+      if (await button.count()) await button.click();
+      else await page.keyboard.press("Escape");
+    }
   }
   async function nav(key) {
     await close();
@@ -239,6 +244,10 @@ async function scenario(label, run) {
     if (await page.locator("#life-overview-back:visible").count())
       await page.locator("#life-overview-back").click();
     await page.locator('[data-life-tab="' + key + '"]:visible').click();
+  }
+  async function openTaskForm() {
+    await page.locator("#home-add").click();
+    await page.locator("#task-add").click();
   }
   async function layout(label, dialog = false) {
     const result = await page.evaluate(
@@ -293,16 +302,20 @@ async function scenario(label, run) {
   );
   await scenario("Workout checks, quick results and persistence", async () => {
     const row = page.locator('#task-list [data-task-id="104"]');
-    await row.locator(".training-exercise-check").first().click();
+    await row.locator(".training-home-results").click();
+    const results = page.locator("#training-results-dialog");
+    await results.locator(".training-exercise-check").first().click();
     check(
-      (await row
+      (await results
         .locator('.training-exercise-check[aria-pressed="true"] > svg')
         .count()) === 1,
       "Exercise has one vector check",
     );
     check(
-      (await row.locator(".training-exercise-check").first().textContent()) ===
-        "",
+      (await results
+        .locator(".training-exercise-check")
+        .first()
+        .textContent()) === "",
       "No text check underneath",
     );
     check(
@@ -311,9 +324,10 @@ async function scenario(label, run) {
       ),
       "Quick completion records planned result",
     );
-    await row.locator(".training-inline-value").first().fill("15");
-    await row.locator(".training-inline-value").first().blur();
-    await row.locator(".training-exercise-check").last().click();
+    await results.locator(".training-inline-value").first().fill("15");
+    await results.locator(".training-inline-value").first().blur();
+    await results.locator(".training-exercise-check").last().click();
+    await results.getByRole("button", { name: "Готово", exact: true }).click();
     check(
       (await row
         .locator(':scope > .task-check[aria-pressed="true"] > svg')
@@ -356,23 +370,24 @@ async function scenario(label, run) {
     await page.screenshot({ path: out + "/completed-home.png" });
     await nav("life");
     await page.locator('[data-life-tab="training"]').click();
+    await page.locator(".training-goals-toggle").click();
     check(
       (await page.locator(".training-goal-card").textContent()).includes("75%"),
       "Goal follows actual result",
     );
     await page.locator(".training-workout-name").first().click();
-    check(
-      (await page
-        .locator('#training-results-dialog .task-check[aria-pressed="true"]')
-        .count()) === 3,
-      "Result dialog preserves completion",
+    const planRow = page.locator(
+      '.training-workout-row[data-workout-id="103"]',
+    );
+    const completed = planRow.locator(
+      ':scope > .task-check[aria-pressed="true"], .training-exercise-check[aria-pressed="true"]',
     );
     check(
-      (await page
-        .locator(
-          '#training-results-dialog .task-check[aria-pressed="true"] > svg',
-        )
-        .count()) === 3,
+      (await completed.count()) === 3,
+      "Training plan preserves completion",
+    );
+    check(
+      (await completed.locator(":scope > svg").count()) === 3,
       "Each completed control has exactly one icon",
     );
     await close();
@@ -462,7 +477,18 @@ async function scenario(label, run) {
       (await page.locator(".finance-flow-ring").count()) === 2,
       "Separate income / spending shares",
     );
+    await page.locator("#finance-options > summary").click();
+    await page.locator("#finance-account-add").click();
+    await page.locator("#account-name").fill("Счёт проверки");
+    await page.locator("#account-currency").fill("KZT");
+    await page
+      .locator('#finance-accounts-dialog button[type="submit"]')
+      .click();
     await page.locator("#finance-add").click();
+    await page.locator("#finance-type").selectOption("income");
+    await page
+      .locator("#finance-account")
+      .selectOption({ label: "Счёт проверки · KZT" });
     await page.locator(".finance-category-trigger").click();
     check(
       (await page.locator(".finance-category-options").boundingBox()).height <=
@@ -528,12 +554,10 @@ async function scenario(label, run) {
       });
     await scenario("Forms and settings " + width, async () => {
       await nav("home");
-      await page.locator("#task-add").click();
+      await openTaskForm();
       await layout("task-form", true);
       await close();
-      await page
-        .getByRole("button", { name: "+ Событие", exact: true })
-        .click();
+      await page.locator("#event-open").click();
       await layout("event-form", true);
       await close();
       await nav("projects");
@@ -633,7 +657,7 @@ async function scenario(label, run) {
       });
     await scenario("Zoom " + zoom + " dialogs", async () => {
       await nav("home");
-      await page.locator("#task-add").click();
+      await openTaskForm();
       await layout("task-form", true);
       await close();
       await page.locator(".ai-open:visible").first().click();
@@ -706,20 +730,30 @@ async function scenario(label, run) {
         space.dataset.testScrollSpace = "";
         document.querySelector(".main").append(space);
       });
-      for (const selector of [
-        "#task-list",
-        "#timeline-window",
-        "#window-range",
-      ])
+      // The six-hour view intentionally wraps to the previous/next date rather
+      // than exposing a scroll edge. The full-day view scrolls with the page.
+      const date = page.locator("#calendar-date");
+      const sameDay = await date.inputValue();
+      await page.locator("#window-range").press("Home");
+      await page.locator("#timeline-window").hover();
+      await page.mouse.wheel(0, -260);
+      await page.waitForFunction(
+        (day) => document.querySelector("#calendar-date").value < day,
+        sameDay,
+      );
+      check(
+        (await date.inputValue()) < sameDay,
+        "Six-hour view wraps to previous date",
+      );
+      await page.locator("#calendar-date").fill(sameDay);
+      await page.locator("#day-toggle").click();
+      for (const selector of ["#task-list", "#timeline-window"])
         for (const edge of ["top", "bottom"]) {
           await page.locator(selector).scrollIntoViewIfNeeded();
           await page.evaluate(
             ({ selector, edge }) => {
               const el = document.querySelector(selector);
-              if (selector === "#window-range") {
-                el.value = edge === "top" ? "0" : "18";
-                el.dispatchEvent(new Event("input", { bubbles: true }));
-              } else el.scrollTop = edge === "top" ? 0 : el.scrollHeight;
+              el.scrollTop = edge === "top" ? 0 : el.scrollHeight;
               const b = el.getBoundingClientRect();
               window.scrollBy(0, b.top - 120);
             },
@@ -794,11 +828,11 @@ async function scenario(label, run) {
         "http://127.0.0.1:5180/tests/browser-harness.html?mobile=1",
       );
       await touch.locator("#all-tasks-open").waitFor();
-      await touch.locator("#backup-folder-setup-dialog").waitFor();
-      await touch
-        .locator("#backup-folder-setup-dialog")
-        .getByRole("button", { name: "Позже", exact: true })
-        .tap();
+      const backupSetup = touch.locator("#backup-folder-setup-dialog:visible");
+      if (await backupSetup.count())
+        await backupSetup
+          .getByRole("button", { name: "Позже", exact: true })
+          .tap();
       check(
         await touch.evaluate(
           () =>
@@ -827,6 +861,7 @@ async function scenario(label, run) {
         );
       }
       await touch.locator('[data-page="home"]:visible').first().tap();
+      await touch.locator("#day-toggle").tap();
       await touch.evaluate(() => {
         const space = document.createElement("div");
         space.style.height = "800px";

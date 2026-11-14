@@ -2,8 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 
-const [folder, repository = "Adeptus-Amohus/orvim-updates"] =
-  process.argv.slice(2);
+const [folder, repository = "Adeptus-Amohus/orvim"] = process.argv.slice(2);
 if (!folder || !/^[\w.-]+\/[\w.-]+$/.test(repository))
   throw Error("Specify a release folder and GitHub owner/repository.");
 const root = path.resolve(folder);
@@ -14,12 +13,12 @@ if (!/^\d+\.\d+\.\d+$/.test(info.version))
   throw Error("Invalid release version.");
 const platforms = {};
 for (const [platform, file] of [
-  ["windows-x86_64", `Orvim-${info.version}-setup.exe`],
-  ["android-aarch64", `Orvim-${info.version}-arm64.apk`],
+  ["windows-x86_64", `Orvim-${info.version}-Windows-x64-setup.exe`],
+  ["android-aarch64", `Orvim-${info.version}-Android-arm64.apk`],
 ]) {
   const bytes = fs.readFileSync(path.join(root, file));
   const sha256 = createHash("sha256").update(bytes).digest("hex");
-  const record = info.files.find((row) => row.file === file);
+  const record = info.files.find((row) => (row.name || row.file) === file);
   if (
     !record ||
     record.sha256.toLowerCase() !== sha256 ||

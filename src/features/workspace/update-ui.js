@@ -84,7 +84,7 @@ export function installUpdateSettings(ctx, panel) {
             const compatible =
               release.schema_min <= 3 &&
               release.schema_max >= 3 &&
-              release.workspace_max >= 31;
+              release.workspace_max >= 32;
             const download = action(
                 "Загрузить",
                 () =>
@@ -166,7 +166,7 @@ export function installUpdateSettings(ctx, panel) {
     make(
       "p",
       "aux-note",
-      "Проверьте новую версию, загрузите её прямо здесь и нажмите «Установить». Пакет проверяется по подписи и хешу; перед установкой создаётся копия. На Android последнее подтверждение показывает система.",
+      "Проверьте наличие новой версии. Если доступен подписанный пакет, здесь появятся кнопки загрузки и установки. Иначе откройте страницу выпуска для ручной установки. Перед встроенной установкой создаётся резервная копия; на Android последнее подтверждение показывает система.",
     ),
     status,
     checkedLabel,

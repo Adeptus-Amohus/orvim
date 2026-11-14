@@ -41,14 +41,18 @@ pub struct Updates {
     busy: Mutex<()>,
 }
 fn repository() -> &'static str {
-    option_env!("ORVIM_UPDATE_REPOSITORY")
+    configured_repository(option_env!("ORVIM_UPDATE_REPOSITORY"))
+}
+fn configured_repository(value: Option<&str>) -> &str {
+    value
         .filter(|value| {
             value.split('/').count() == 2
+                && value.split('/').all(|part| !part.is_empty())
                 && value
                     .bytes()
                     .all(|b| b.is_ascii_alphanumeric() || b"-._/".contains(&b))
         })
-        .unwrap_or("Adeptus-Amohus/life-os")
+        .unwrap_or("Adeptus-Amohus/orvim")
 }
 fn release_url() -> String {
     format!("https://github.com/{}/releases/latest", repository())
@@ -199,8 +203,9 @@ fn check(app: &tauri::AppHandle, service: &Updates) -> Result<Value> {
         .build()
         .map_err(|e| e.to_string())?;
     let mut endpoints = vec![endpoint.to_owned()];
-    if option_env!("ORVIM_UPDATE_REPOSITORY").is_none()
-        && option_env!("ORVIM_UPDATE_MANIFEST_URL").is_none()
+    if option_env!("ORVIM_UPDATE_REPOSITORY").is_none_or(str::is_empty)
+        && option_env!("ORVIM_UPDATE_MANIFEST_URL").is_none_or(str::is_empty)
+        && option_env!("LIFE_OS_UPDATE_MANIFEST_URL").is_none_or(str::is_empty)
     {
         endpoints.push("https://github.com/Adeptus-Amohus/orvim-updates/releases/latest/download/orvim-updates.json".into());
     }
@@ -462,6 +467,38 @@ pub async fn update_action(
 mod tests {
     use super::*;
     use ed25519_dalek::{Signer, SigningKey};
+    #[test]
+    fn release_channel_defaults_to_the_public_repository() {
+        for value in [
+            None,
+            Some(""),
+            Some("/"),
+            Some("owner/"),
+            Some("/repo"),
+            Some("https://github.com/owner/repo"),
+        ] {
+            assert_eq!(configured_repository(value), "Adeptus-Amohus/orvim");
+        }
+        assert_eq!(
+            configured_repository(Some("owner/custom-channel")),
+            "owner/custom-channel"
+        );
+    }
+    #[test]
+    #[ignore = "Contacts the real public GitHub release API without authentication"]
+    fn public_release_channel_is_available_anonymously() {
+        let result = check_public_release().expect("public release lookup failed");
+        assert!(result["latest"].as_str().is_some(), "{result}");
+        assert_eq!(
+            result["manualUrl"],
+            format!("https://github.com/{}/releases/latest", repository())
+        );
+        assert_eq!(result["configured"], false);
+        assert!(
+            result.get("releases").is_none(),
+            "unsigned API metadata must not authorize installation"
+        );
+    }
     #[test]
     fn only_authentic_manifest_and_matching_package_are_accepted() {
         let signer = SigningKey::from_bytes(&[7; 32]);
