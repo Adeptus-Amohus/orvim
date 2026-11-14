@@ -2,7 +2,7 @@
 
 Сайт: https://adeptus-amohus.github.io/orvim/
 
-Статический сайт для знакомства с Orvim, скачивания публичного выпуска и обратной связи. Проверенный адрес сайта и файлов распространения — `Adeptus-Amohus/orvim`. На 11 ноября 2026 года опубликованы Orvim 0.4.46, установщик Windows x64 EXE и Android ARM64 APK. Сайт находится в site/ основного репозитория Orvim рядом с приложением и документацией. Адрес сайта сохраняется.
+Статический сайт для знакомства с Orvim, скачивания публичного выпуска и обратной связи. Проверенный адрес сайта и файлов распространения — `Adeptus-Amohus/orvim`. Текущий выпуск Orvim 0.4.47 включает установщик Windows x64 и APK для Android ARM64. Сайт находится в site/ основного репозитория Orvim рядом с приложением и документацией. Адрес сайта сохраняется.
 
 ## Публикация
 
@@ -12,11 +12,11 @@ Workflow `.github/workflows/pages.yml` проверяет ссылки и пуб
 
 ## Сборки приложения
 
-[Стабильный Orvim 0.4.46](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/SHA256SUMS.txt). Скачивание без авторизации.
+[Стабильный Orvim 0.4.47](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/SHA256SUMS.txt). Скачивание без авторизации.
 
-Commit исходников приложения: `d632f6b0d536968b1564fcdd0abfe6c4d6b95d55`. Публичный тег этого репозитория обозначает материалы распространения и сайт, а не исходники приложения. [Происхождение и проверки](docs/RELEASE_0_4_46.md). [Отчёт анонимного скачивания и проверки сайта](distribution/public-download-verification-0.4.46.json).
+Исходники 0.4.47 зафиксированы в [коммите 6c9667e](https://github.com/Adeptus-Amohus/orvim/commit/6c9667ea46be3e953f0fc891170d350443c12835). [Заметки и проверки выпуска](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47).
 
-`release.json` содержит ссылки на проверенные публичные файлы в Releases этого репозитория. Для 0.4.46 прямые ссылки также записаны в HTML: скачивание работает без JavaScript и при недоступности JSON. Короткие инструкции остаются рядом с кнопками, помощь и перенос данных вынесены в [help.html](help.html).
+`release.json` содержит ссылки на проверенные публичные файлы в Releases этого репозитория. Для 0.4.47 прямые ссылки также записаны в HTML: скачивание работает без JavaScript и при недоступности JSON. Короткие инструкции остаются рядом с кнопками, помощь и перенос данных вынесены в [help.html](help.html).
 
 После публикации APK/EXE укажите `version`, `windows`, `android`, `notes` и при необходимости `notice`. Windows — установщик x64, Android — APK ARM64. Не указывайте ссылки на приватный репозиторий: посетитель не сможет скачать файл. Версия исходников не является подтверждением версии установщика.
 
@@ -30,7 +30,7 @@ Commit исходников приложения: `d632f6b0d536968b1564fcdd0abfe
 
 ## Материалы
 
-Снимки интерфейса: текущие модули Orvim 0.4.46, 11 ноября 2026 года. Реальный интерфейс в браузерном стенде, вымышленные данные. Мобильная компоновка — 390 px, не снимок установленного APK. Готовые `home-desktop.jpg`, `home-mobile.jpg`, `projects-desktop.jpg` скопированы из `materials/design/github-refresh/` после появления `HANDOFF.md`; исходная папка не изменялась. Прозрачный знак `orvim.png` совпадает с переданным ресурсом и сохранён без изменений.
+Снимки интерфейса: Orvim 0.4.46, 11 ноября 2026 года. Реальный интерфейс в браузерном стенде, вымышленные данные. Мобильная компоновка — 390 px, не снимок установленного APK. Готовые `home-desktop.jpg`, `home-mobile.jpg`, `projects-desktop.jpg` скопированы из `materials/design/github-refresh/` после появления `HANDOFF.md`; исходная папка не изменялась. Прозрачный знак `orvim.png` совпадает с переданным ресурсом и сохранён без изменений.
 
 На первом экране показаны керамический знак, название Orvim и его расшифровка. Снимки находятся в разделе «Внутри Orvim». Первая вкладка переключает кадр на ширине 600 px. Увеличение открывает полное изображение выбранного варианта.
 

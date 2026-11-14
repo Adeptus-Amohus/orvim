@@ -19,10 +19,10 @@
 </p>
 
 <p align="center">
-  <strong>Orvim 0.4.46</strong><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46">Релиз и SHA-256</a> &nbsp; / &nbsp;
+  <strong>Orvim 0.4.47</strong><br />
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47">Релиз и SHA-256</a> &nbsp; / &nbsp;
   <a href="https://adeptus-amohus.github.io/orvim/">Сайт Orvim</a> &nbsp; / &nbsp;
   <a href="#интерфейс">Интерфейс</a> &nbsp; / &nbsp;
   <a href="#возможности">Возможности</a> &nbsp; / &nbsp;
@@ -69,24 +69,24 @@
 
 Аккаунт Orvim не требуется. Подключённые сервисы могут требовать свои аккаунты, ключи, разрешения и оплату. Данные, отправленные сервису, обрабатываются по его условиям. [Данные и приватность](docs/PRIVACY.md).
 
-Изменения и проверки текущего выпуска: [Orvim 0.4.46](docs/releases/0.4.46.md).
+Изменения и проверки текущего выпуска описаны в [заметках Orvim 0.4.47](docs/releases/0.4.47.md).
 
 ## Установка и сохранность данных
 
-Публичный выпуск — **0.4.46**. В рабочей версии **0.4.47** исправлены отступы и прокрутка экрана «Мысли» на Android и восстановлен значок рассвета в настройках личного дня. [Изменения 0.4.46 и команды сборки](docs/releases/0.4.46.md), [установка и обновление](docs/INSTALLATION.md). Сведения об исходном commit, файлах, SHA-256 и проверках публичного выпуска находятся в его `build-info.json` и `Verification.md`.
+В версии **0.4.47** исправлены поля и прокрутка раздела «Мысли» на Android и восстановлен значок рассвета. [Заметки выпуска](docs/releases/0.4.47.md) · [Установка и обновление](docs/INSTALLATION.md).
 
-Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.46](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46):
+Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.47](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47):
 
 | Файл                                                                                                                        | Назначение                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [Скачать Windows EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe) | Установщик Windows 10/11 x64; нужен WebView2. При отсутствии runtime установщик скачивает его через интернет. |
-| [Скачать Android APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk)     | Android 7.0/API 24+, ARM64, актуальный Android WebView. Отдельных x86 и 32-битных ARM APK нет.                |
+| [Скачать Windows EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe) | Установщик Windows 10/11 x64; нужен WebView2. При отсутствии runtime установщик скачивает его через интернет. |
+| [Скачать Android APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk)     | Android 7.0/API 24+, ARM64, актуальный Android WebView. Отдельных x86 и 32-битных ARM APK нет.                |
 
-Основной проект — **Adeptus-Amohus/orvim**: приложение в корне, сайт в `site/`, документация и публичные выпуски рядом. Прежний life-os сохраняет приватную историю разработки. Исходный commit приложения для опубликованных APK/EXE — `d632f6b0d536968b1564fcdd0abfe6c4d6b95d55`; файлы сохраняются без пересборки. Старый публичный тег `v0.4.46` фиксирует снимок распространения и сайта, а не исходники приложения. Публичный снимок кода — [source-v0.4.46](https://github.com/Adeptus-Amohus/orvim/tree/source-v0.4.46), commit `f4752d1`. [Происхождение и устройство репозитория](docs/REPOSITORY.md).
+Основной проект объединяет приложение, сайт и документацию. Исходники APK и EXE зафиксированы в [коммите 6c9667e](https://github.com/Adeptus-Amohus/orvim/commit/6c9667ea46be3e953f0fc891170d350443c12835). Сведения о сборке и SHA-256 входят в выпуск.
 
 Автоматический подписанный канал обновлений отдельно не включён; файлы устанавливаются вручную. APK подписан постоянным Android-ключом, package ID — `local.lifeos.client`, `versionCode` — **4046**. Windows EXE не имеет Authenticode-подписи и может вызывать предупреждения Windows.
 
-Перед обновлением создайте и проверьте **копию с паролем** вне приватной папки приложения. **Android 0.4.46 не устанавливается поверх прежних тестовых APK: сертификат изменился.** До удаления тестовой установки проверьте восстановление копии на отдельном устройстве. [Безопасный переход](docs/INSTALLATION.md#переход-со-старого-тестового-apk). Следующие release APK должны сохранять новый постоянный сертификат. Windows обновляется обычным установщиком поверх прежней версии. [Копии и восстановление](docs/BACKUPS.md).
+Перед обновлением создайте и проверьте **копию с паролем** вне приватной папки приложения. **Обновление с тестовых APK до 0.4.45 требует переустановки.** До удаления тестовой установки проверьте восстановление копии на отдельном устройстве. [Безопасный переход](docs/INSTALLATION.md#переход-со-старого-тестового-apk). Следующие release APK должны сохранять новый постоянный сертификат. Windows обновляется обычным установщиком поверх прежней версии. [Копии и восстановление](docs/BACKUPS.md).
 
 Порядок перехода с тестового APK: переносимая копия с паролем → проверка восстановления → переустановка → восстановление данных. Автоматический снимок с ключом устройства и CSV не заменяют полную переносимую копию. [Сохранение существующего ключа подписи](docs/ANDROID_SIGNING.md).
 
@@ -144,9 +144,9 @@ npm run tauri -- build --bundles nsis
 npm run android:build -- --apk --target aarch64 --ci
 ```
 
-`desktop:build` создаёт EXE без установщика. Android release APK необходимо подписать **существующим** постоянным ключом и проверить; keystore и пароли не входят в Git. При подготовке снимка 0.4.46 повторно прошли production-сборка интерфейса, UI-набор, лицензии, Rust fmt/Clippy и **71 Rust-тест**, ещё **2 внешних smoke-теста** обложек отмечены `ignored`. APK/EXE скачаны без авторизации и сверены по SHA-256; подпись APK проверена. [Проверки и статус CI](docs/REPOSITORY.md), [разработка](docs/DEVELOPMENT.md), [порядок выпуска](docs/RELEASING.md).
+`desktop:build` создаёт EXE без установщика. Android release APK необходимо подписать **существующим** постоянным ключом и проверить; keystore и пароли не входят в Git. При подготовке 0.4.47 повторно прошли production-сборка интерфейса, UI-набор, лицензии, Rust fmt/Clippy и **71 Rust-тест**, ещё **2 внешних smoke-теста** обложек отмечены `ignored`. APK/EXE скачаны без авторизации и сверены по SHA-256; подпись APK проверена. [Проверки и статус CI](docs/REPOSITORY.md), [разработка](docs/DEVELOPMENT.md), [порядок выпуска](docs/RELEASING.md).
 
-DOM-тесты используют синтетические сервисы. Физический ARM64-телефон, все OEM-лаунчеры, чистая Windows без WebView2 и живые аккаунты внешних подключений этим выпуском не проверены. Нативные проверки ранее выпущенных файлов и их границы описаны в [отчёте 0.4.46](docs/RELEASE_0_4_46.md).
+DOM-тесты используют синтетические сервисы. Физический ARM64-телефон, все OEM-лаунчеры, чистая Windows без WebView2 и живые аккаунты внешних подключений этим выпуском не проверены. Нативные проверки ранее выпущенных файлов и их границы описаны в [заметках 0.4.47](docs/releases/0.4.47.md).
 
 </details>
 

@@ -1,8 +1,8 @@
 {
-  "version": "0.4.46",
-  "windows": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe",
-  "android": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.46/Orvim-0.4.46-Android-arm64.apk",
-  "notes": "https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.46",
+  "version": "0.4.47",
+  "windows": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe",
+  "android": "https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.47/Orvim-0.4.47-Android-arm64.apk",
+  "notes": "https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.47",
   "notice": "Скачивание без аккаунта GitHub. Перед переходом со старого тестового APK: копия с паролем → проверка восстановления → переустановка → восстановление. Windows EXE не подписан Authenticode.",
   "documentation": "https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md"
 }

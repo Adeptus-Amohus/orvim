@@ -86,14 +86,14 @@ for (const [release, rejects] of [
   assert.ok(
     dom.window.document
       .getElementById("release-status")
-      .textContent.includes("Стабильный выпуск 0.4.46"),
+      .textContent.includes("Стабильный выпуск 0.4.47"),
   );
   dom.window.close();
 }
 assert.ok(
-  fallbackWindows.endsWith("/v0.4.46/Orvim-0.4.46-Windows-x64-setup.exe"),
+  fallbackWindows.endsWith("/v0.4.47/Orvim-0.4.47-Windows-x64-setup.exe"),
 );
-assert.ok(fallbackAndroid.endsWith("/v0.4.46/Orvim-0.4.46-Android-arm64.apk"));
+assert.ok(fallbackAndroid.endsWith("/v0.4.47/Orvim-0.4.47-Android-arm64.apk"));
 const dom = await render(published);
 const { document, KeyboardEvent } = dom.window;
 assert.equal(
