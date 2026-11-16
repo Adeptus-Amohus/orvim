@@ -200,6 +200,38 @@ h2 {
   color: var(--gold);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--light-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--light-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.lang-toggle:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: #cfa87416;
+}
+
 .header-feedback span {
   margin-left: 8px;
 }
@@ -882,6 +914,17 @@ dialog > img {
     font-size: 0.82rem;
   }
 
+  .header-actions {
+    gap: 10px;
+  }
+
+  .lang-toggle {
+    min-width: 36px;
+    min-height: 28px;
+    padding: 3px 8px;
+    font-size: 0.74rem;
+  }
+
   .header-feedback {
     display: inline-flex;
     min-height: 32px;
@@ -945,7 +988,8 @@ dialog > img {
     scroll-behavior: auto;
   }
 
-  .button {
+  .button,
+  .lang-toggle {
     transition: none;
   }
 }

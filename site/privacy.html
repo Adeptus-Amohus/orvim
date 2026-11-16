@@ -14,31 +14,52 @@
       rel="canonical"
       href="https://adeptus-amohus.github.io/orvim/privacy.html"
     />
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header class="site-header">
       <div class="header wrap">
-        <a class="brand" href="./">Orvim</a>
-        <a class="text-link" href="./">На главную ↗</a>
+        <a
+          class="brand"
+          href="./"
+          aria-label="Orvim — начало страницы"
+          data-i18n-aria="brand_aria"
+          >Orvim</a
+        >
+        <div class="header-actions">
+          <button
+            id="lang-toggle"
+            class="lang-toggle"
+            type="button"
+            aria-label="Switch language to English"
+          >
+            EN
+          </button>
+          <a class="text-link" href="./" data-i18n-html="privacy_to_home"
+            >На главную <span aria-hidden="true">↗</span></a
+          >
+        </div>
       </div>
     </header>
     <main class="wrap legal">
-      <p class="eyebrow">Сайт и приложение — разные вещи</p>
-      <h1>Приватность сайта</h1>
-      <h2>Что делает эта страница</h2>
-      <p>
+      <p class="eyebrow" data-i18n="privacy_eyebrow">
+        Сайт и приложение — разные вещи
+      </p>
+      <h1 data-i18n="privacy_h1">Приватность сайта</h1>
+      <h2 data-i18n="privacy_s1_h2">Что делает эта страница</h2>
+      <p data-i18n="privacy_s1_p1">
         Сайт Orvim — статическая страница на GitHub Pages. В коде сайта нет
         аналитических счётчиков, рекламных скриптов, форм сбора персональных
         данных или собственных cookies. Шрифты и изображения загружаются с того
         же сайта.
       </p>
-      <p>
+      <p data-i18n="privacy_s1_p2">
         Сайт не получает доступ к базе установленного приложения. Для
         отображения ссылок на сборки он читает небольшой файл release.json с
         того же адреса.
       </p>
-      <h2>Хостинг и внешние ссылки</h2>
-      <p>
+      <h2 data-i18n="privacy_s2_h2">Хостинг и внешние ссылки</h2>
+      <p data-i18n-html="privacy_s2_p1">
         GitHub обслуживает сайт и может обрабатывать технические данные
         запросов, например IP-адрес, согласно своей
         <a
@@ -46,41 +67,45 @@
           >политике приватности</a
         >. При переходе в GitHub Issues или Releases действуют условия GitHub.
       </p>
-      <h2>Обратная связь</h2>
-      <p>
+      <h2 data-i18n="privacy_s3_h2">Обратная связь</h2>
+      <p data-i18n="privacy_s3_p1">
         Кнопка «Написать об Orvim» открывает черновик письма в вашем почтовом
         приложении. Вы сами решаете, что написать и когда отправить письмо.
         Сообщения об ошибках в GitHub видны публично. Не прикладывайте личную
         базу, медицинские или финансовые записи, пароли, ключи и скриншоты с
         чужими данными. Используйте вымышленные примеры.
       </p>
-      <h2>Данные приложения</h2>
-      <p>
+      <h2 data-i18n="privacy_s4_h2">Данные приложения</h2>
+      <p data-i18n="privacy_s4_p1">
         Основные данные Orvim хранятся на устройстве. В установленном приложении
         база и внутренние автоматические копии зашифрованы ключом устройства.
         Для переноса и восстановления после переустановки нужна отдельная копия
         с паролем; заранее проверьте её восстановление.
       </p>
-      <p>
+      <p data-i18n="privacy_s4_p2">
         Обычный экспорт JSON/CSV, отдельно сохранённые вложения и браузерный
         предпросмотр остаются открытыми. Старые внешние копии автоматически не
         перешифровываются. Защита устройства и места хранения копий остаётся
         важной.
       </p>
-      <p>
+      <p data-i18n="privacy_s4_p3">
         Внешние подключения включаются по выбору пользователя. При отправке
         сообщения ИИ передаются запрос, переписка и выбранный контекст; другие
         подключения передают данные соответствующего действия. У сторонних
         сервисов свои условия обработки данных.
       </p>
-      <p>
+      <p data-i18n-html="privacy_s4_p4">
         <a
           href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md"
           >Установка, копии и безопасный переход со старого APK</a
         >.
       </p>
-      <p>Сверено с Orvim 0.4.46. Обновлено: 11 ноября 2026 года.</p>
-      <a class="text-link" href="./#privacy">Вернуться к Orvim ↗</a>
+      <p data-i18n="privacy_s4_p5">
+        Сверено с Orvim 0.4.46. Обновлено: 11 ноября 2026 года.
+      </p>
+      <a class="text-link" href="./#privacy" data-i18n-html="privacy_back_home"
+        >Вернуться к Orvim <span aria-hidden="true">↗</span></a
+      >
     </main>
   </body>
 </html>

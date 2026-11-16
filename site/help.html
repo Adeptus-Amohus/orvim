@@ -15,26 +15,47 @@
       rel="canonical"
       href="https://adeptus-amohus.github.io/orvim/help.html"
     />
+    <script src="app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">К содержимому</a>
+    <a class="skip-link" href="#main" data-i18n="skip_link">К содержимому</a>
     <header class="site-header">
       <div class="header wrap">
-        <a class="brand" href="./">Orvim</a>
-        <a class="text-link" href="./#download">К скачиванию</a>
+        <a
+          class="brand"
+          href="./"
+          aria-label="Orvim — начало страницы"
+          data-i18n-aria="brand_aria"
+          >Orvim</a
+        >
+        <div class="header-actions">
+          <button
+            id="lang-toggle"
+            class="lang-toggle"
+            type="button"
+            aria-label="Switch language to English"
+          >
+            EN
+          </button>
+          <a class="text-link" href="./#download" data-i18n="help_to_download"
+            >К скачиванию</a
+          >
+        </div>
       </div>
     </header>
     <main id="main" class="wrap legal">
-      <h1>Установка и обновление</h1>
+      <h1 data-i18n="help_h1">Установка и обновление</h1>
       <h2 id="windows">Windows</h2>
-      <p>
+      <p data-i18n="help_win_p">
         Откройте скачанный EXE и следуйте шагам установщика. При первой
         установке может понадобиться интернет, чтобы загрузить компоненты
         Microsoft.
       </p>
       <details>
-        <summary>Windows показывает предупреждение</summary>
-        <p>
+        <summary data-i18n="help_win_warn_summary">
+          Windows показывает предупреждение
+        </summary>
+        <p data-i18n-html="help_win_warn_p">
           Установщик Orvim не имеет цифровой подписи Windows. Поэтому система
           может показать сообщение о неизвестном издателе. Убедитесь, что файл
           скачан по ссылке с
@@ -43,58 +64,65 @@
         </p>
       </details>
       <h2 id="android">Android</h2>
-      <p>
+      <p data-i18n="help_android_p">
         Откройте скачанный APK. Если телефон попросит разрешить установку из
         браузера или файлового менеджера, проверьте, что скачали файл с
         официального сайта Orvim. После установки откройте приложение.
       </p>
-      <h2 id="update">Обновление со старой версии</h2>
-      <p>
+      <h2 id="update" data-i18n="help_update_h2">
+        Обновление со старой версии
+      </h2>
+      <p data-i18n="help_update_p1">
         Перед обновлением откройте в Orvim «Настройки → Данные → Копия с
         паролем». Сохраните копию вне папки приложения и убедитесь, что она
         восстанавливается. Для обычного обновления установите новый выпуск
         поверх текущего.
       </p>
-      <p>
+      <p data-i18n="help_update_p2">
         Если в Orvim 0.4.46 или 0.4.47 проверка обновлений выдаёт 404, скачайте
         новый пакет с сайта и установите поверх имеющегося приложения. Начиная с
         0.4.48 проверка обращается к публичным выпускам.
       </p>
-      <h3>Если на Android стоит старый тестовый APK</h3>
-      <p>
+      <h3 data-i18n="help_old_apk_h3">
+        Если на Android стоит старый тестовый APK
+      </h3>
+      <p data-i18n="help_old_apk_p">
         Тестовые сборки до 0.4.45 включительно подписаны другим ключом. Релизные
         сборки начиная с 0.4.46 нельзя установить поверх этих тестовых APK. При
         удалении старого приложения записи могут быть потеряны.
       </p>
       <ol>
-        <li>
+        <li data-i18n="help_old_apk_li1">
           В старом Orvim создайте копию с паролем и сохраните её вне папки
           приложения. Сделайте второй экземпляр на другом носителе и сохраните
           пароль отдельно.
         </li>
-        <li>
+        <li data-i18n="help_old_apk_li2">
           Проверьте восстановление на другом устройстве или в отдельной
           установке. Убедитесь, что записи и обложки сохранились после
           перезапуска. Если восстановление проверить не удалось, оставьте старую
           установку на месте.
         </li>
-        <li>
+        <li data-i18n="help_old_apk_li3">
           Только после проверки удалите тестовый APK, установите новый и
           восстановите записи из копии. Подключения и виджеты нужно настроить
           заново.
         </li>
       </ol>
-      <p>
+      <p data-i18n="help_backup_note">
         Внутренние автоматические копии привязаны к установке. Для переноса
         используйте отдельную копию с паролем.
       </p>
       <p>
         <a
           href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md"
+          data-i18n="help_full_docs"
           >Подробная инструкция и технические требования</a
         >
       </p>
-      <a class="text-link" href="./#download">Вернуться к скачиванию</a>
+      <a class="text-link" href="./#download" data-i18n="help_back_download"
+        >Вернуться к скачиванию</a
+      >
     </main>
   </body>
 </html>
