@@ -51,10 +51,18 @@ await fs.access(path.join(root, "assets/OFL-Nunito.txt"));
 await fs.access(path.join(root, "LICENSE"));
 await fs.access(path.join(root, "NOTICE"));
 
-async function render(release, rejects = false) {
+async function render(release, rejects = false, locale = "ru-RU") {
   const dom = new JSDOM(source, {
     url: "https://adeptus-amohus.github.io/orvim/",
     runScripts: "outside-only",
+  });
+  Object.defineProperty(dom.window.navigator, "language", {
+    value: locale,
+    configurable: true,
+  });
+  Object.defineProperty(dom.window.navigator, "languages", {
+    value: [locale],
+    configurable: true,
   });
   dom.window.fetch = async (url) => {
     assert.equal(url, "release.json", "Unexpected network request");
@@ -128,8 +136,31 @@ document
   .dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
 assert.equal(document.activeElement.id, "tab-day");
 assert.ok(!document.getElementById("panel-day").hidden);
+
+// Verify manual language toggle (RU -> EN)
+const langToggle = document.getElementById("lang-toggle");
+assert.equal(langToggle.textContent.trim(), "EN");
+langToggle.click();
+assert.equal(document.documentElement.lang, "en");
+assert.equal(langToggle.textContent.trim(), "RU");
+assert.ok(
+  document
+    .getElementById("release-status")
+    .textContent.includes("Stable release"),
+);
 dom.window.close();
+
+// Verify automatic English detection on first visit
+const enDom = await render(published, false, "en-US");
+assert.equal(enDom.window.document.documentElement.lang, "en");
+assert.ok(
+  enDom.window.document
+    .getElementById("release-status")
+    .textContent.includes("Stable release test"),
+);
+enDom.window.close();
+
 JSON.parse(await fs.readFile(path.join(root, "release.json"), "utf8"));
 console.log(
-  `Site verified: ${localFiles.size} local resources, anchors, release success/failure/offline states, click and keyboard navigation.`,
+  `Site verified: ${localFiles.size} local resources, anchors, release success/failure/offline states, click, keyboard, and i18n navigation.`,
 );
