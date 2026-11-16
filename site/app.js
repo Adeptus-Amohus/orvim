@@ -1,305 +1,398 @@
-const LANG_STORAGE_KEY = "orvim_site_lang";
+const STORAGE_KEY = "orvim-lang";
 
-const translations = {
-  en: {
-    // Shared & index.html
-    doc_title: "Orvim — personal space for tasks and life",
-    doc_desc:
-      "Tasks, projects, notes, and personal logs in one local app for Windows and Android. Explore Orvim and help make it better.",
-    skip_link: "Skip to content",
-    brand_aria: "Orvim — back to top",
-    nav_aria: "Main navigation",
-    nav_features: "Features",
-    nav_privacy: "Your data",
-    nav_download: "Download",
-    header_feedback: 'Leave feedback <span aria-hidden="true">↗</span>',
-    hero_meaning: '— “the order of my life”',
-    hero_cta_download: 'Download Orvim <span aria-hidden="true">↓</span>',
-    hero_cta_tour: 'Look inside <span aria-hidden="true">↘</span>',
-    principles_aria: "What you can do in Orvim",
-    principle_tasks_title: "Tasks",
-    principle_tasks_desc: "Check your schedule and tasks for any selected day.",
-    principle_thoughts_title: "Thoughts",
-    principle_thoughts_desc:
-      "Capture an idea right away. Return to project materials whenever you are ready.",
-    principle_logs_title: "Personal logs",
-    principle_logs_desc:
-      "Track sleep, nutrition, and well-being at your own pace.",
-    tour_title: "Inside Orvim",
-    tour_tabs_aria: "App screens",
-    tab_day: "Your day",
-    tab_projects: "Your projects",
-    tab_mobile: "Mobile screen",
-    panel_day_title: "Your day in one window",
-    panel_day_desc:
-      "Schedule and tasks side by side. Pick a day, plan a task, and check off what you have completed.",
-    inspect_interface: 'Inspect interface <span aria-hidden="true">↗</span>',
-    panel_day_alt: "Schedule and tasks on the Orvim home screen",
-    panel_projects_title: "Everything for a project in one place",
-    panel_projects_desc:
-      "Project description, materials, and tasks gathered together. Standalone thoughts can also be jotted down before they become a plan.",
-    panel_projects_alt:
-      "A project in Orvim with description, materials, and tasks",
-    panel_mobile_title: "Interface on a smaller screen",
-    panel_mobile_desc:
-      "On Android, you can add schedule, task, thought, and nutrition widgets right to your home screen.",
-    panel_mobile_alt: "Mobile layout of the Orvim home screen",
-    image_note: "Interface preview",
-    download_title: "Download Orvim",
-    windows_detail: "Windows 10 or 11 · 64-bit system (x64)",
-    windows_step: "Open the EXE and follow the installer steps.",
-    android_detail: "Android 7 or newer · ARM64",
-    android_step: "Open the downloaded APK and install the app.",
-    first_launch:
-      "After installation, open Orvim and add your first task on the home screen.",
-    download_help_aria: "Download help",
-    help_install: "Installation help",
-    help_update: "Updating from an older version",
-    whats_new: "What's new",
-    privacy_strip_title: "Your records stay on your device",
-    privacy_strip_desc:
-      "Core sections require no account and no internet. Connecting external services is entirely up to you.",
-    privacy_strip_link:
-      'How data is stored <span aria-hidden="true">↗</span>',
-    feedback_title: "Feedback",
-    feedback_desc:
-      "Share your thoughts about Orvim or ask a question via email.",
-    feedback_email_btn: 'Email about Orvim <span aria-hidden="true">↗</span>',
-    feedback_github_btn:
-      'Report a bug on GitHub <span aria-hidden="true">↗</span>',
-    feedback_email_note:
-      'Email for feedback and questions: <a href="mailto:a.baimurzinov1@gmail.com">a.baimurzinov1@gmail.com</a>',
-    feedback_github_note:
-      "A GitHub account is required to submit an issue. Do not attach personal notes or data files.",
-    footer_privacy: "Site privacy",
-    dialog_aria: "Enlarged interface screenshot",
-    dialog_close_aria: "Close screenshot",
-    dialog_close: 'Close <span aria-hidden="true">×</span>',
-
-    // help.html
-    help_doc_title: "Installation and updates — Orvim",
-    help_doc_desc:
-      "How to install Orvim on Windows and Android and transfer records when updating.",
-    help_to_download: "To download",
-    help_h1: "Installation and updates",
-    help_win_p:
-      "Open the downloaded EXE and follow the installer steps. An internet connection may be required during the first installation to download Microsoft components.",
-    help_win_warn_summary: "Windows shows a warning",
-    help_win_warn_p:
-      'The Orvim installer does not have a Windows digital signature, so the system may show an unknown publisher warning. Make sure the file was downloaded from the <a href="./#download">official Orvim page</a>. If the source of the file is unknown, download it again from the site.',
-    help_android_p:
-      "Open the downloaded APK. If your phone asks for permission to install from your browser or file manager, verify that you downloaded the file from the official Orvim website. Once installed, open the app.",
-    help_update_h2: "Updating from an older version",
-    help_update_p1:
-      "Before updating, open “Settings → Data → Password-protected backup” in Orvim. Save the backup outside the app folder and verify that it restores properly. For a standard update, install the new release over the current one.",
-    help_update_p2:
-      "If the update check in Orvim 0.4.46 or 0.4.47 returns a 404 error, download the new package from the site and install it over your existing app. Starting with 0.4.48, update checks query public releases.",
-    help_old_apk_h3: "If an older test APK is installed on Android",
-    help_old_apk_p:
-      "Test builds up to 0.4.45 inclusive are signed with a different key. Release builds starting from 0.4.46 cannot be installed over those test APKs. Uninstalling the old app may erase your records.",
-    help_old_apk_li1:
-      "In the old Orvim app, create a password-protected backup and save it outside the app folder. Keep a second copy on another storage medium and store the password separately.",
-    help_old_apk_li2:
-      "Test restoring the backup on another device or in a separate installation. Make sure records and covers persist after restarting. If you cannot verify the restore, keep the old installation intact.",
-    help_old_apk_li3:
-      "Only after verifying the backup, uninstall the test APK, install the new release, and restore your records from the backup. External connections and widgets will need to be configured again.",
-    help_backup_note:
-      "Internal automatic backups are tied to a specific installation. Use a separate password-protected backup to transfer data.",
-    help_full_docs: "Detailed instructions and technical requirements",
-    help_back_download: "Back to download",
-
-    // privacy.html
-    privacy_doc_title: "Site privacy — Orvim",
-    privacy_doc_desc:
-      "What data the Orvim website uses and how it differs from data storage inside the app.",
-    privacy_to_home: 'Home <span aria-hidden="true">↗</span>',
-    privacy_eyebrow: "The website and the app are separate",
-    privacy_h1: "Site privacy",
-    privacy_s1_h2: "What this page does",
-    privacy_s1_p1:
-      "The Orvim website is a static page hosted on GitHub Pages. Its code contains no analytics trackers, advertising scripts, personal data collection forms, or first-party cookies. Fonts and images are loaded from the same domain.",
-    privacy_s1_p2:
-      "The website has no access to the installed app's database. To display download links for releases, it reads a small release.json file from the same address.",
-    privacy_s2_h2: "Hosting and external links",
-    privacy_s2_p1:
-      'GitHub hosts this site and may process technical request data, such as IP addresses, in accordance with its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacy statement</a>. GitHub\'s terms apply when navigating to GitHub Issues or Releases.',
-    privacy_s3_h2: "Feedback",
-    privacy_s3_p1:
-      "The “Email about Orvim” button opens a draft email in your mail client. You decide what to write and when to send it. Bug reports on GitHub are publicly visible. Do not attach your personal database, medical or financial records, passwords, keys, or screenshots containing someone else's data. Use fictional examples instead.",
-    privacy_s4_h2: "App data",
-    privacy_s4_p1:
-      "Core Orvim data is stored locally on your device. In the installed app, the database and internal automatic backups are encrypted with a device key. Transferring or restoring data after reinstalling requires a separate password-protected backup; test restoring it beforehand.",
-    privacy_s4_p2:
-      "Standard JSON/CSV exports, separately saved attachments, and the browser preview remain unencrypted. Older external backups are not re-encrypted automatically. Securing your device and backup storage location remains essential.",
-    privacy_s4_p3:
-      "External connections are enabled strictly by user choice. When sending a message to an AI provider, your prompt, conversation, and selected context are transmitted; other integrations transmit only the data required for their respective actions. Third-party services are governed by their own privacy policies.",
-    privacy_s4_p4:
-      '<a href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md">Installation, backups, and safely upgrading from an old APK</a>.',
-    privacy_s4_p5: "Verified against Orvim 0.4.46. Updated: November 11, 2026.",
-    privacy_back_home: 'Back to Orvim <span aria-hidden="true">↗</span>',
-  },
+const SCREENSHOT_EN_MAP = {
+  "assets/home-desktop.jpg": "assets/home-desktop-en.jpg",
+  "assets/projects-desktop.jpg": "assets/projects-desktop-en.jpg",
+  "assets/home-mobile.jpg": "assets/home-mobile-en.jpg",
 };
 
-// Cache original Russian content before switching
-const ruCache = {
-  title: document.title,
-  desc: document.querySelector('meta[name="description"]')?.content || "",
-  text: new Map(),
-  html: new Map(),
-  aria: new Map(),
-  alt: new Map(),
+const EN_BY_KEY = {
+  "skip.content": "Skip to content",
+  "nav.features": "Features",
+  "nav.data": "Your Data",
+  "nav.download": "Download",
+  "nav.feedback": "Send Feedback ↗",
+  "hero.expansion": "Ordo vitae meae — “the order of my life”",
+  "hero.download": "Download Orvim ↓",
+  "hero.inside": "See Inside ↘",
+  "principles.tasks.title": "Tasks",
+  "principles.tasks.body": "View your schedule and tasks for any selected day.",
+  "principles.thoughts.title": "Thoughts",
+  "principles.thoughts.body":
+    "Capture an idea the moment it strikes, and return to your project notes later.",
+  "principles.logs.title": "Personal Logs",
+  "principles.logs.body":
+    "Track sleep, nutrition, and well-being at your own pace.",
+  "tour.title": "Inside Orvim",
+  "tour.tab.day": "Your Day",
+  "tour.tab.projects": "Your Projects",
+  "tour.tab.mobile": "Mobile View",
+  "tour.day.title": "Your Day in One View",
+  "tour.day.body":
+    "Schedule and tasks side by side. Pick a day, plan what matters, and check off what you’ve done.",
+  "tour.projects.title": "Everything for a Project in One Place",
+  "tour.projects.body":
+    "Project notes, reference materials, and tasks live together. You can also jot down standalone thoughts before they become a plan.",
+  "tour.mobile.title": "Designed for Smaller Screens",
+  "tour.mobile.body":
+    "On Android, add home-screen widgets for your schedule, tasks, thoughts, and nutrition.",
+  "tour.enlarge": "Inspect interface ↗",
+  "tour.note": "Interface preview",
+  "download.title": "Download Orvim",
+  "download.windows.detail": "Windows 10 or 11 · 64-bit (x64)",
+  "download.windows.step": "Run the EXE file and follow the installer steps.",
+  "download.windows.cta": "Download Windows EXE ↓",
+  "download.android.detail": "Android 7 or later · ARM64",
+  "download.android.step": "Open the downloaded APK and install the app.",
+  "download.android.cta": "Download Android APK ↓",
+  "download.firstLaunch":
+    "Once installed, open Orvim and add your first task on the home screen.",
+  "download.help": "Installation help",
+  "download.update": "Updating from an older version",
+  "download.whatsNew": "Release notes",
+  "privacy.title": "Your Records Stay on Your Device",
+  "privacy.body":
+    "Core sections work without an account or internet connection. Connecting external services is always your choice.",
+  "privacy.link": "How data is stored ↗",
+  "feedback.title": "Feedback",
+  "feedback.body": "Share your thoughts on Orvim or ask a question by email.",
+  "feedback.emailCta": "Email about Orvim ↗",
+  "feedback.githubCta": "Report a bug on GitHub ↗",
+  "footer.privacy": "Site Privacy",
+  "dialog.close": "Close ×",
 };
 
-for (const el of document.querySelectorAll("[data-i18n]")) {
-  ruCache.text.set(el.dataset.i18n, el.textContent);
-}
-for (const el of document.querySelectorAll("[data-i18n-html]")) {
-  ruCache.html.set(el.dataset.i18nHtml, el.innerHTML);
-}
-for (const el of document.querySelectorAll("[data-i18n-aria]")) {
-  ruCache.aria.set(el.dataset.i18nAria, el.getAttribute("aria-label") || "");
-}
-for (const el of document.querySelectorAll("[data-i18n-alt]")) {
-  ruCache.alt.set(el.dataset.i18nAlt, el.getAttribute("alt") || "");
-}
+const EN_BY_RU_TEXT = new Map([
+  ["К содержимому", "Skip to content"],
+  ["Возможности", "Features"],
+  ["Ваши данные", "Your Data"],
+  ["Скачать", "Download"],
+  ["Оставить отзыв ↗", "Send Feedback ↗"],
+  ["Скачать Orvim ↓", "Download Orvim ↓"],
+  ["Посмотреть внутри ↘", "See Inside ↘"],
+  ["Дела", "Tasks"],
+  [
+    "Посмотрите расписание и задачи на выбранный день.",
+    "View your schedule and tasks for any selected day.",
+  ],
+  ["Мысли", "Thoughts"],
+  [
+    "Запишите идею сразу. К материалам проекта можно вернуться позже.",
+    "Capture an idea the moment it strikes, and return to your project notes later.",
+  ],
+  ["Личные записи", "Personal Logs"],
+  [
+    "Записывайте сон, питание и самочувствие в удобном для вас темпе.",
+    "Track sleep, nutrition, and well-being at your own pace.",
+  ],
+  ["Внутри Orvim", "Inside Orvim"],
+  ["Ваш день", "Your Day"],
+  ["Ваши проекты", "Your Projects"],
+  ["Мобильный экран", "Mobile View"],
+  ["Ваш день в одном окне", "Your Day in One View"],
+  [
+    "Расписание и задачи рядом. Выберите день, запланируйте дело и отметьте то, что уже получилось.",
+    "Schedule and tasks side by side. Pick a day, plan what matters, and check off what you’ve done.",
+  ],
+  ["Всё по проекту рядом", "Everything for a Project in One Place"],
+  [
+    "Описание, материалы и задачи проекта собраны вместе. Мысли можно записывать и отдельно, когда они ещё не стали планом.",
+    "Project notes, reference materials, and tasks live together. You can also jot down standalone thoughts before they become a plan.",
+  ],
+  ["Интерфейс на небольшом экране", "Designed for Smaller Screens"],
+  [
+    "На Android можно добавить на главный экран телефона виджеты расписания, задач, мыслей и питания.",
+    "On Android, add home-screen widgets for your schedule, tasks, thoughts, and nutrition.",
+  ],
+  ["Рассмотреть интерфейс ↗", "Inspect interface ↗"],
+  ["Пример интерфейса", "Interface preview"],
+  ["Скачать Orvim", "Download Orvim"],
+  [
+    "Windows 10 или 11 · 64-разрядная система (x64)",
+    "Windows 10 or 11 · 64-bit (x64)",
+  ],
+  [
+    "Откройте EXE и следуйте шагам установщика.",
+    "Run the EXE file and follow the installer steps.",
+  ],
+  ["Скачать Windows EXE ↓", "Download Windows EXE ↓"],
+  ["Android 7 или новее · ARM64", "Android 7 or later · ARM64"],
+  [
+    "Откройте скачанный APK и установите приложение.",
+    "Open the downloaded APK and install the app.",
+  ],
+  ["Скачать Android APK ↓", "Download Android APK ↓"],
+  [
+    "После установки откройте Orvim и добавьте первую задачу на главной.",
+    "Once installed, open Orvim and add your first task on the home screen.",
+  ],
+  ["Помощь при установке", "Installation help"],
+  ["Обновление со старой версии", "Updating from an older version"],
+  ["Что нового", "Release notes"],
+  ["Ваши записи на вашем устройстве", "Your Records Stay on Your Device"],
+  [
+    "Для основных разделов не нужны аккаунт и интернет. Подключение внешних сервисов остаётся за вами.",
+    "Core sections work without an account or internet connection. Connecting external services is always your choice.",
+  ],
+  ["Как хранятся данные ↗", "How data is stored ↗"],
+  ["Обратная связь", "Feedback"],
+  [
+    "Поделитесь впечатлениями об Orvim или задайте вопрос по почте.",
+    "Share your thoughts on Orvim or ask a question by email.",
+  ],
+  ["Написать об Orvim ↗", "Email about Orvim ↗"],
+  ["Сообщить об ошибке на GitHub ↗", "Report a bug on GitHub ↗"],
+  [
+    "Для публикации ошибки нужен аккаунт GitHub. Не прикладывайте личные записи и файлы с данными.",
+    "A GitHub account is required to submit an issue. Do not attach personal logs or data files.",
+  ],
+  ["Приватность сайта", "Site Privacy"],
+  ["Закрыть ×", "Close ×"],
+  ["К скачиванию", "Back to download"],
+  ["На главную ↗", "Home ↗"],
+  ["Установка и обновление", "Installation and Updating"],
+  ["Вернуться к скачиванию", "Back to download"],
+  ["Вернуться к Orvim ↗", "Back to Orvim ↗"],
+]);
 
-let currentReleaseVersion = "0.4.48";
+const EN_ALT_BY_RU = new Map([
+  [
+    "Расписание и задачи на главной Orvim",
+    "Schedule and tasks on the Orvim home screen",
+  ],
+  [
+    "Проект в Orvim с описанием, материалами и задачами",
+    "Project view in Orvim with description, materials, and tasks",
+  ],
+  [
+    "Мобильная компоновка главной Orvim",
+    "Mobile home screen layout in Orvim",
+  ],
+]);
+
 let currentLang = "ru";
+let latestReleaseVersion = "0.4.48";
 
-function detectInitialLanguage() {
-  try {
-    const saved = localStorage.getItem(LANG_STORAGE_KEY);
-    if (saved === "ru" || saved === "en") return saved;
-  } catch {
-    // Ignore storage errors if blocked by browser privacy settings
-  }
-  const browserLangs = navigator.languages?.length
-    ? navigator.languages
-    : [navigator.language || ""];
-  const prefersRussian = browserLangs.some((code) =>
-    String(code).toLowerCase().startsWith("ru"),
-  );
-  return prefersRussian ? "ru" : "en";
+function normalizeSpace(text) {
+  return (text || "").replace(/\s+/g, " ").trim();
 }
 
-function updateReleaseTexts(lang) {
+function snapshotOriginals() {
+  document.title && (document.documentElement.dataset.ruTitle = document.title);
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && !metaDesc.dataset.ruContent) {
+    metaDesc.dataset.ruContent = metaDesc.getAttribute("content") || "";
+  }
+
+  for (const el of document.querySelectorAll(
+    "a, button, h1, h2, h3, p, span, summary, li, [data-i18n], [data-i18n-html]"
+  )) {
+    if (!el.dataset.ruHtml) {
+      el.dataset.ruHtml = el.innerHTML;
+    }
+  }
+
+  for (const img of document.querySelectorAll("img")) {
+    if (!img.dataset.ruSrc && img.getAttribute("src")) {
+      img.dataset.ruSrc = img.getAttribute("src");
+    }
+    if (!img.dataset.ruAlt && img.hasAttribute("alt")) {
+      img.dataset.ruAlt = img.getAttribute("alt") || "";
+    }
+  }
+
+  for (const source of document.querySelectorAll("picture source")) {
+    if (!source.dataset.ruSrcset && source.getAttribute("srcset")) {
+      source.dataset.ruSrcset = source.getAttribute("srcset");
+    }
+  }
+
+  for (const link of document.querySelectorAll("a.enlarge")) {
+    if (!link.dataset.ruHref && link.getAttribute("href")) {
+      link.dataset.ruHref = link.getAttribute("href");
+    }
+  }
+}
+
+function updateScreenshots(lang) {
+  const isEn = lang === "en";
+
+  for (const img of document.querySelectorAll("img[data-ru-src]")) {
+    const ruSrc = img.dataset.ruSrc;
+    const enSrc = SCREENSHOT_EN_MAP[ruSrc];
+    if (enSrc) {
+      if (isEn) {
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = ruSrc;
+        };
+        img.src = enSrc;
+      } else {
+        img.onerror = null;
+        img.src = ruSrc;
+      }
+    }
+
+    const ruAlt = img.dataset.ruAlt || "";
+    if (isEn && EN_ALT_BY_RU.has(ruAlt)) {
+      img.alt = EN_ALT_BY_RU.get(ruAlt);
+    } else if (!isEn) {
+      img.alt = ruAlt;
+    }
+  }
+
+  for (const source of document.querySelectorAll("picture source[data-ru-srcset]")) {
+    const ruSrcset = source.dataset.ruSrcset;
+    const enSrcset = SCREENSHOT_EN_MAP[ruSrcset];
+    if (enSrcset) {
+      source.srcset = isEn ? enSrcset : ruSrcset;
+    }
+  }
+
+  for (const link of document.querySelectorAll("a.enlarge[data-ru-href]")) {
+    const ruHref = link.dataset.ruHref;
+    const enHref = SCREENSHOT_EN_MAP[ruHref];
+    if (enHref) {
+      link.href = isEn ? enHref : ruHref;
+    }
+  }
+}
+
+function updateReleaseStatusText() {
   const statusEl = document.getElementById("release-status");
-  const winLink = document.getElementById("windows-download");
-  const androidLink = document.getElementById("android-download");
-
-  if (statusEl) {
-    statusEl.textContent =
-      lang === "en"
-        ? `Stable release ${currentReleaseVersion}. Download without registration.`
-        : `Стабильный выпуск ${currentReleaseVersion}. Скачивание без регистрации.`;
-  }
-  if (winLink) {
-    winLink.textContent =
-      lang === "en" ? "Download Windows EXE ↓" : "Скачать Windows EXE ↓";
-  }
-  if (androidLink) {
-    androidLink.textContent =
-      lang === "en" ? "Download Android APK ↓" : "Скачать Android APK ↓";
-  }
-}
-
-function getPageDocKeys() {
-  const path = window.location.pathname;
-  if (path.endsWith("help.html")) {
-    return { title: "help_doc_title", desc: "help_doc_desc" };
-  }
-  if (path.endsWith("privacy.html")) {
-    return { title: "privacy_doc_title", desc: "privacy_doc_desc" };
-  }
-  return { title: "doc_title", desc: "doc_desc" };
+  if (!statusEl) return;
+  statusEl.textContent =
+    currentLang === "en"
+      ? `Stable release ${latestReleaseVersion}. Direct download, no sign-up required.`
+      : `Стабильный выпуск ${latestReleaseVersion}. Скачивание без регистрации.`;
 }
 
 function applyLanguage(lang) {
   currentLang = lang === "en" ? "en" : "ru";
   document.documentElement.lang = currentLang;
+  try {
+    localStorage.setItem(STORAGE_KEY, currentLang);
+  } catch {
+    // Ignore storage restrictions in private browsing modes.
+  }
 
-  const docKeys = getPageDocKeys();
-  const descMeta = document.querySelector('meta[name="description"]');
-  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  const metaDesc = document.querySelector('meta[name="description"]');
 
-  if (currentLang === "en") {
-    if (translations.en[docKeys.title]) {
-      document.title = translations.en[docKeys.title];
+  if (currentLang === "ru") {
+    if (document.documentElement.dataset.ruTitle) {
+      document.title = document.documentElement.dataset.ruTitle;
     }
-    if (descMeta && translations.en[docKeys.desc]) {
-      descMeta.content = translations.en[docKeys.desc];
+    if (metaDesc && metaDesc.dataset.ruContent) {
+      metaDesc.setAttribute("content", metaDesc.dataset.ruContent);
     }
-    if (ogLocale) ogLocale.content = "en_US";
+    for (const el of document.querySelectorAll("[data-ru-html]")) {
+      if (el.id === "release-status") continue;
+      el.innerHTML = el.dataset.ruHtml;
+    }
   } else {
-    document.title = ruCache.title;
-    if (descMeta) descMeta.content = ruCache.desc;
-    if (ogLocale) ogLocale.content = "ru_RU";
-  }
+    if (document.title.includes("Orvim")) {
+      if (location.pathname.endsWith("help.html")) {
+        document.title = "Installation and Updating — Orvim";
+      } else if (location.pathname.endsWith("privacy.html")) {
+        document.title = "Site Privacy — Orvim";
+      } else {
+        document.title = "Orvim — A Personal Space for Tasks and Daily Life";
+      }
+    }
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        "content",
+        "Tasks, projects, thoughts, and personal logs in one local-first app for Windows and Android. Explore Orvim and help shape what comes next."
+      );
+    }
 
-  for (const el of document.querySelectorAll("[data-i18n]")) {
-    const key = el.dataset.i18n;
-    if (currentLang === "en" && translations.en[key] !== undefined) {
-      el.textContent = translations.en[key];
-    } else if (ruCache.text.has(key)) {
-      el.textContent = ruCache.text.get(key);
+    const expansion = document.querySelector(".hero-expansion");
+    if (expansion) {
+      expansion.innerHTML =
+        '<span lang="la">Ordo vitae meae</span> <span>— “the order of my life”</span>';
+    }
+
+    const finePrints = document.querySelectorAll(".feedback .fine-print");
+    if (finePrints[0]) {
+      finePrints[0].innerHTML =
+        'Email for feedback and questions: <a href="mailto:a.baimurzinov1@gmail.com">a.baimurzinov1@gmail.com</a>';
+    }
+
+    for (const el of document.querySelectorAll("[data-ru-html]")) {
+      if (
+        el.id === "release-status" ||
+        el.classList.contains("hero-expansion") ||
+        el === finePrints[0]
+      ) {
+        continue;
+      }
+
+      const key = el.getAttribute("data-i18n") || el.getAttribute("data-i18n-html");
+      if (key && EN_BY_KEY[key]) {
+        el.textContent = EN_BY_KEY[key];
+        continue;
+      }
+
+      const cleanRu = normalizeSpace(el.textContent);
+      if (EN_BY_RU_TEXT.has(cleanRu)) {
+        el.textContent = EN_BY_RU_TEXT.get(cleanRu);
+      }
     }
   }
 
-  for (const el of document.querySelectorAll("[data-i18n-html]")) {
-    const key = el.dataset.i18nHtml;
-    if (currentLang === "en" && translations.en[key] !== undefined) {
-      el.innerHTML = translations.en[key];
-    } else if (ruCache.html.has(key)) {
-      el.innerHTML = ruCache.html.get(key);
+  updateScreenshots(currentLang);
+  updateReleaseStatusText();
+
+  for (const btn of document.querySelectorAll(
+    "[data-lang], [data-set-lang], #lang-ru, #lang-en, .lang-switch button, .lang-switcher button"
+  )) {
+    const btnLang = (
+      btn.dataset.lang ||
+      btn.dataset.setLang ||
+      btn.id.replace("lang-", "") ||
+      btn.textContent
+    )
+      .trim()
+      .toLowerCase();
+    if (btnLang === "ru" || btnLang === "en") {
+      const active = btnLang === currentLang;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-pressed", String(active));
     }
-  }
-
-  for (const el of document.querySelectorAll("[data-i18n-aria]")) {
-    const key = el.dataset.i18nAria;
-    if (currentLang === "en" && translations.en[key] !== undefined) {
-      el.setAttribute("aria-label", translations.en[key]);
-    } else if (ruCache.aria.has(key)) {
-      el.setAttribute("aria-label", ruCache.aria.get(key));
-    }
-  }
-
-  for (const el of document.querySelectorAll("[data-i18n-alt]")) {
-    const key = el.dataset.i18nAlt;
-    if (currentLang === "en" && translations.en[key] !== undefined) {
-      el.setAttribute("alt", translations.en[key]);
-    } else if (ruCache.alt.has(key)) {
-      el.setAttribute("alt", ruCache.alt.get(key));
-    }
-  }
-
-  updateReleaseTexts(currentLang);
-
-  const langBtn = document.getElementById("lang-toggle");
-  if (langBtn) {
-    langBtn.textContent = currentLang === "ru" ? "EN" : "RU";
-    langBtn.setAttribute(
-      "aria-label",
-      currentLang === "ru"
-        ? "Switch language to English"
-        : "Переключить язык на русский",
-    );
   }
 }
 
-const langToggleBtn = document.getElementById("lang-toggle");
-if (langToggleBtn) {
-  langToggleBtn.addEventListener("click", () => {
-    const nextLang = currentLang === "ru" ? "en" : "ru";
-    try {
-      localStorage.setItem(LANG_STORAGE_KEY, nextLang);
-    } catch {
-      // Ignore storage errors if blocked
-    }
-    applyLanguage(nextLang);
-  });
-}
+function initLanguageSwitcher() {
+  snapshotOriginals();
 
-applyLanguage(detectInitialLanguage());
+  for (const btn of document.querySelectorAll(
+    "[data-lang], [data-set-lang], #lang-ru, #lang-en, .lang-switch button, .lang-switcher button"
+  )) {
+    const btnLang = (
+      btn.dataset.lang ||
+      btn.dataset.setLang ||
+      btn.id.replace("lang-", "") ||
+      btn.textContent
+    )
+      .trim()
+      .toLowerCase();
+    if (btnLang === "ru" || btnLang === "en") {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        applyLanguage(btnLang);
+      });
+    }
+  }
+
+  let saved = "ru";
+  try {
+    saved = localStorage.getItem(STORAGE_KEY) || "ru";
+  } catch {
+    saved = "ru";
+  }
+  applyLanguage(saved === "en" ? "en" : "ru");
+}
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 function selectTab(tab) {
@@ -337,7 +430,7 @@ if (dialog && typeof dialog.showModal === "function") {
       trigger = link;
       const target = document.getElementById("dialog-image");
       const preview = link.closest(".tour-panel").querySelector("img");
-      target.src = preview.currentSrc || link.href;
+      target.src = preview.currentSrc || preview.src || link.href;
       target.alt = preview.alt;
       dialog.showModal();
       dialog.querySelector("button").focus();
@@ -388,15 +481,27 @@ async function loadRelease() {
       !isReleaseUrl(release.android)
     )
       return;
+    latestReleaseVersion = release.version;
     for (const platform of ["windows", "android"]) {
       const link = document.getElementById(`${platform}-download`);
       link.href = release[platform];
+      const ruLabel =
+        platform === "windows"
+          ? "Скачать Windows EXE ↓"
+          : "Скачать Android APK ↓";
+      const enLabel =
+        platform === "windows"
+          ? "Download Windows EXE ↓"
+          : "Download Android APK ↓";
+      link.dataset.ruHtml = ruLabel;
+      link.textContent = currentLang === "en" ? enLabel : ruLabel;
     }
-    currentReleaseVersion = release.version;
-    updateReleaseTexts(currentLang);
+    updateReleaseStatusText();
     document.getElementById("releases-link").href = release.notes;
   } catch {
     // The verified download links in HTML remain usable if JSON is unavailable.
   }
 }
+
+initLanguageSwitcher();
 loadRelease();
