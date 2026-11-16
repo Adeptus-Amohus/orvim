@@ -268,6 +268,17 @@ function updateReleaseStatusText() {
       : `Стабильный выпуск ${latestReleaseVersion}. Скачивание без регистрации.`;
 }
 
+function updateLangToggle() {
+  const toggleBtn = document.getElementById("lang-toggle");
+  if (!toggleBtn) return;
+  // The button shows the language that a click will switch to.
+  toggleBtn.textContent = currentLang === "en" ? "RU" : "EN";
+  toggleBtn.setAttribute(
+    "aria-label",
+    currentLang === "en" ? "Переключить на русский" : "Switch to English"
+  );
+}
+
 function applyLanguage(lang) {
   currentLang = lang === "en" ? "en" : "ru";
   document.documentElement.lang = currentLang;
@@ -343,6 +354,7 @@ function applyLanguage(lang) {
 
   updateScreenshots(currentLang);
   updateReleaseStatusText();
+  updateLangToggle();
 
   for (const btn of document.querySelectorAll(
     "[data-lang], [data-set-lang], #lang-ru, #lang-en, .lang-switch button, .lang-switcher button"
@@ -363,12 +375,29 @@ function applyLanguage(lang) {
   }
 }
 
+// Saved choice wins; otherwise use the browser language (English -> "en", anything else -> "ru").
+function detectLanguage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "en" || saved === "ru") return saved;
+  } catch {
+    // Ignore storage restrictions in private browsing modes.
+  }
+  const preferred =
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    "ru";
+  return String(preferred).toLowerCase().startsWith("en") ? "en" : "ru";
+}
+
 function initLanguageSwitcher() {
   snapshotOriginals();
 
   for (const btn of document.querySelectorAll(
     "[data-lang], [data-set-lang], #lang-ru, #lang-en, .lang-switch button, .lang-switcher button"
   )) {
+    // The single RU/EN toggle button is handled separately below.
+    if (btn.id === "lang-toggle") continue;
     const btnLang = (
       btn.dataset.lang ||
       btn.dataset.setLang ||
@@ -385,13 +414,15 @@ function initLanguageSwitcher() {
     }
   }
 
-  let saved = "ru";
-  try {
-    saved = localStorage.getItem(STORAGE_KEY) || "ru";
-  } catch {
-    saved = "ru";
+  const toggle = document.getElementById("lang-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      applyLanguage(currentLang === "en" ? "ru" : "en");
+    });
   }
-  applyLanguage(saved === "en" ? "en" : "ru");
+
+  applyLanguage(detectLanguage());
 }
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
