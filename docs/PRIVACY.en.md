@@ -43,4 +43,4 @@ On Android, Orvim reads Health Connect data after you grant permission. Imported
 
 Deleting a record can propagate to paired devices. Independent older backups retain their contents. Confirming a full data wipe in Orvim clears local records, settings, keys, pairings, and internal backups. Separately exported files and data on other devices or servers remain under your control. Uninstalling on Android erases private app data while leaving independently saved copies.
 
-Revoke provider keys you no longer use, disconnect unwanted sync pairings, and review exports before sharing them. Your own records retain their own terms. [Licenses (Russian)](LICENSES.md) · [Security policy](../SECURITY.en.md)
+Revoke provider keys you no longer use, disconnect unwanted sync pairings, and review exports before sharing them. Your own records retain their own terms. [Licenses (Russian)](LICENSES.md) · [Security policy](../SECURITY.md)

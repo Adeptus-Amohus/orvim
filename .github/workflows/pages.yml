@@ -3,7 +3,9 @@ on:
   push:
     branches: [main, "codex/**"]
     paths:
-      - "README.md"
+      - "README*.md"
+      - "CONTRIBUTING*.md"
+      - "SECURITY*.md"
       - "docs/**"
       - "site/**"
       - "distribution/**"

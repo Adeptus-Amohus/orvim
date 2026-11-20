@@ -45,7 +45,7 @@ To uninstall, use **Settings → Apps → Orvim → Uninstall**. Leave the optio
 2. Use **Thoughts** to jot down an idea, or open **Projects** to keep tasks and reference materials together.
 3. To change the language, open **Settings → Appearance → Interface language**. Core features work offline and without an Orvim account.
 
-[Backups and recovery](BACKUPS.en.md) · [Ask a question or report a bug](../CONTRIBUTING.en.md#feedback-and-bug-reports)
+[Backups and recovery](BACKUPS.en.md) · [Ask a question or report a bug](../CONTRIBUTING.md#feedback-and-bug-reports)
 
 ## Updates and verification
 

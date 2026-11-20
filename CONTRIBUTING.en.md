@@ -1,6 +1,6 @@
 # Contributing to Orvim
 
-English | [Русский](CONTRIBUTING.md)
+English | [Русский](CONTRIBUTING.ru.md)
 
 Start with the [Orvim overview](README.md), then see the [development guide (Russian)](docs/DEVELOPMENT.md) and [architecture (Russian)](docs/ARCHITECTURE.md) if you want to work on the code. The project has no guaranteed support response times.
 
@@ -8,7 +8,7 @@ Start with the [Orvim overview](README.md), then see the [development guide (Rus
 
 - [Email the maintainer](mailto:a.baimurzinov1@gmail.com) if you have a question, an idea, or feedback about how Orvim works for you. A GitHub account is unnecessary for email.
 - If you can reproduce a bug, [open a GitHub issue](https://github.com/Adeptus-Amohus/orvim/issues/new?template=bug.yml). Sign in to GitHub, then include your Orvim version, device and OS version, the steps to reproduce the problem, what you expected, and what happened. The template is in Russian and you can write your report in English.
-- Use sample records in public reports and screenshots. Keep personal data, database backups, and credentials private. For security issues, follow the [private reporting instructions](SECURITY.en.md#reporting-a-vulnerability).
+- Use sample records in public reports and screenshots. Keep personal data, database backups, and credentials private. For security issues, follow the [private reporting instructions](SECURITY.md#reporting-a-vulnerability).
 
 ## Changes
 

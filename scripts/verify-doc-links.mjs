@@ -3,7 +3,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const documents = ["README.md", "CONTRIBUTING.md", "SECURITY.md"];
+const documents = (await fs.readdir(root)).filter((name) =>
+  /^(?:README|CONTRIBUTING|SECURITY)(?:\.(?:en|ru))?\.md$/.test(name),
+);
 async function collect(folder) {
   for (const entry of await fs.readdir(path.join(root, folder), {
     withFileTypes: true,

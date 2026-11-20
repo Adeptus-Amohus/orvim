@@ -1,10 +1,10 @@
 # Orvim security
 
-English | [Русский](SECURITY.md)
+English | [Русский](SECURITY.ru.md)
 
 ## Reporting a vulnerability
 
-Contact the repository owner privately. If GitHub offers **Security → Report a vulnerability** for the repository, you can use it. The project has no announced security email, bug bounty, or guaranteed response time.
+Report vulnerabilities privately by [emailing the maintainer](mailto:a.baimurzinov1@gmail.com?subject=Orvim%20security%20report). This is the general maintainer address, not a dedicated security mailbox; you do not need a GitHub account. Private vulnerability reporting on GitHub is currently disabled for this repository. Do not open a public issue or publish exploit details before contacting the maintainer. There is no bug bounty or guaranteed response time.
 
 Include the Orvim version, OS, installation method, minimal steps to reproduce the issue, and its expected impact. Use sample records and remove credentials, personal server addresses, and backup contents from your report. Keep live credentials and personal records out of public issues.
 
