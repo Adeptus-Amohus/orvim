@@ -2,15 +2,15 @@
 
 <p align="center">
   <picture>
-    <source media="(max-width: 600px)" srcset="docs/assets/readme/hero-mobile.png" />
-    <img src="docs/assets/readme/hero.png" alt="Orvim — A foundation for your success." width="1200" />
+    <source media="(max-width: 600px)" srcset="docs/assets/readme/hero-mobile-ru.png" />
+    <img src="docs/assets/readme/hero-ru.png" alt="Orvim — Фундамент твоего успеха." width="1200" />
   </picture>
 </p>
 
 <p align="center">
   Задачи, проекты, мысли и личные записи — в одном локальном пространстве.<br />
   Основные разделы работают без аккаунта и интернета.<br />
-  <em>A foundation for your success.</em>
+  <em>Фундамент твоего успеха.</em>
 </p>
 
 <p align="center">

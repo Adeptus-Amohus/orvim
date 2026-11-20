@@ -12,11 +12,25 @@ const [emblem, desktop, mobile] = await Promise.all([
   embed("docs/assets/readme/home-mobile.jpg", "image/jpeg"),
 ]);
 
-await fs.writeFile(
-  new URL("hero.svg", output),
-  `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" role="img" aria-labelledby="title desc">
-  <title id="title">Orvim — A foundation for your success.</title>
-  <desc id="desc">The Orvim wordmark and original ivory ceramic app icon on a soft sage background.</desc>
+const heroCopy = [
+  {
+    suffix: "",
+    slogan: "A foundation for your success.",
+    description: "The Orvim wordmark and original ivory ceramic app icon on a soft sage background.",
+  },
+  {
+    suffix: "-ru",
+    slogan: "Фундамент твоего успеха.",
+    description: "Название Orvim и оригинальный керамический знак на светло-зелёном фоне.",
+  },
+];
+
+for (const { suffix, slogan, description } of heroCopy) {
+  await fs.writeFile(
+    new URL(`hero${suffix}.svg`, output),
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" role="img" aria-labelledby="title desc">
+  <title id="title">Orvim — ${slogan}</title>
+  <desc id="desc">${description}</desc>
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="1200" y2="250" gradientUnits="userSpaceOnUse"><stop stop-color="#f8f6ef"/><stop offset="1" stop-color="#e9efe9"/></linearGradient>
     <radialGradient id="light"><stop stop-color="#fffdf7"/><stop offset="1" stop-color="#fffdf7" stop-opacity="0"/></radialGradient>
@@ -27,14 +41,26 @@ await fs.writeFile(
     <circle cx="1020" cy="110" r="250" fill="url(#light)"/>
     <circle cx="1010" cy="125" r="142" fill="none" stroke="#d4dfd3"/>
     <circle cx="1010" cy="125" r="184" fill="none" stroke="#dce5d9"/>
-    <rect x="58" y="43" width="34" height="4" rx="2" fill="#54785d"/>
     <text x="52" y="144" font-family="'Segoe UI',Arial,sans-serif" font-size="112" font-weight="650" letter-spacing="-5" fill="#263d32">Orvim</text>
-    <text x="59" y="194" font-family="'Segoe UI',Arial,sans-serif" font-size="28" fill="#536859">A foundation for your success.</text>
+    <text x="59" y="194" font-family="'Segoe UI',Arial,sans-serif" font-size="28" fill="#536859">${slogan}</text>
     <image x="860" y="-25" width="300" height="300" href="${emblem}"/>
   </g>
 </svg>
 `,
-);
+  );
+
+  await fs.writeFile(
+    new URL(`hero-mobile${suffix}.svg`, output),
+    `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="320" viewBox="0 0 600 320" role="img" aria-labelledby="title desc">
+<title id="title">Orvim — ${slogan}</title><desc id="desc">${description}</desc>
+<defs><linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f8f6ef"/><stop offset="1" stop-color="#e9efe9"/></linearGradient><clipPath id="bounds"><rect width="600" height="320" rx="24"/></clipPath></defs>
+<g clip-path="url(#bounds)"><rect width="600" height="320" fill="url(#paper)"/><circle cx="485" cy="112" r="92" fill="none" stroke="#d4dfd3"/><circle cx="485" cy="112" r="120" fill="none" stroke="#dce5d9"/>
+<text x="30" y="176" font-family="'Segoe UI',Arial,sans-serif" font-size="112" font-weight="650" letter-spacing="-5" fill="#263d32">Orvim</text>
+<image x="382" y="8" width="210" height="210" href="${emblem}"/>
+<text x="36" y="246" font-family="'Segoe UI',Arial,sans-serif" font-size="32" fill="#536859">${slogan}</text></g></svg>
+`,
+  );
+}
 
 await fs.writeFile(
   new URL("interface.svg", output),
@@ -61,4 +87,4 @@ await fs.writeFile(
 `,
 );
 
-console.log("Generated docs/assets/readme/hero.svg and interface.svg");
+console.log("Generated desktop and mobile banners in both languages and interface.svg");
