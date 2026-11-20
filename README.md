@@ -17,9 +17,9 @@
 </p>
 
 <p align="center">
-  <a href="#разработка"><img src="docs/assets/readme/windows.svg" alt="Windows" height="30" /></a>
-  <a href="docs/ANDROID.md"><img src="docs/assets/readme/android.svg" alt="Android" height="30" /></a>
-  <a href="docs/ARCHITECTURE.md"><img src="docs/assets/readme/sqlite.svg" alt="Локальная SQLite" height="30" /></a>
+  <a href="docs/INSTALLATION.md#windows"><img src="docs/assets/readme/windows.svg" alt="Windows" height="30" /></a>
+  <a href="docs/INSTALLATION.md#android"><img src="docs/assets/readme/android.svg" alt="Android" height="30" /></a>
+  <a href="docs/PRIVACY.md"><img src="docs/assets/readme/sqlite.svg" alt="Локальная SQLite" height="30" /></a>
   <a href="LICENSE"><img src="docs/assets/readme/license.svg" alt="Лицензия Apache 2.0" height="30" /></a>
 </p>
 
@@ -27,9 +27,10 @@
   <strong>Orvim 0.4.48</strong><br />
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Релиз и SHA-256</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Релиз</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt">SHA-256</a> &nbsp; / &nbsp;
   <a href="docs/INSTALLATION.md">Установка и первый запуск</a> &nbsp; / &nbsp;
-  <a href="https://adeptus-amohus.github.io/orvim/">Сайт Orvim</a> &nbsp; / &nbsp;
+  <a href="https://adeptus-amohus.github.io/orvim/?lang=ru">Сайт Orvim</a> &nbsp; / &nbsp;
   <a href="#интерфейс">Интерфейс</a> &nbsp; / &nbsp;
   <a href="#возможности">Возможности</a> &nbsp; / &nbsp;
   <a href="#разработка">Запуск</a> &nbsp; / &nbsp;
@@ -81,7 +82,7 @@
 
 В версии **0.4.48** исправлена проверка обновлений. Кнопка «Проверить на GitHub» обращается к публичному Orvim. Для совместимых выпусков кнопки загрузки и установки появляются после проверки подписанного манифеста. [Заметки выпуска](docs/releases/0.4.48.md) · [Установка и обновление](docs/INSTALLATION.md).
 
-Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.48](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48):
+Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [выпуске v0.4.48](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48):
 
 | Файл                                                                                                                        | Назначение                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -184,13 +185,13 @@ third-party/                 сторонние лицензии и уведом
 
 ## Документация и участие
 
-| Для пользователя                          | Для разработчика                        |
-| ----------------------------------------- | --------------------------------------- |
-| [Данные и приватность](docs/PRIVACY.md)   | [Архитектура](docs/ARCHITECTURE.md)     |
-| [Копии и восстановление](docs/BACKUPS.md) | [Настройка Android](docs/ANDROID.md)    |
-| [Синхронизация](docs/SYNC_0_4.md)         | [Участие в проекте](CONTRIBUTING.ru.md) |
-| [Health Connect](docs/HEALTH_CONNECT.md)  | [Безопасность](SECURITY.ru.md)          |
-| [Обновления](docs/UPDATES.md)             | [История изменений](CHANGELOG.md)       |
+| Для пользователя                              | Для разработчика                        |
+| --------------------------------------------- | --------------------------------------- |
+| [Данные и приватность](docs/PRIVACY.md)       | [Архитектура](docs/ARCHITECTURE.md)     |
+| [Копии и восстановление](docs/BACKUPS.md)     | [Настройка Android](docs/ANDROID.md)    |
+| [Синхронизация](docs/SYNC_0_4.md)             | [Участие в проекте](CONTRIBUTING.ru.md) |
+| [Health Connect](docs/HEALTH_CONNECT.md)      | [Безопасность](SECURITY.ru.md)          |
+| [Обновления](docs/INSTALLATION.md#обновление) | [История изменений](CHANGELOG.md)       |
 
 [Открыть всю документацию →](docs/README.md)
 
@@ -230,9 +231,10 @@ third-party/                 сторонние лицензии и уведом
   <strong>Orvim 0.4.48</strong><br />
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe"><strong>Download for Windows (EXE)</strong></a> &nbsp; · &nbsp;
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk"><strong>Download for Android (APK)</strong></a><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Release and checksums</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Release</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt">SHA-256 checksums</a> &nbsp; / &nbsp;
   <a href="docs/INSTALLATION.en.md">Installation guide</a> &nbsp; / &nbsp;
-  <a href="https://adeptus-amohus.github.io/orvim/">Website</a> &nbsp; / &nbsp;
+  <a href="https://adeptus-amohus.github.io/orvim/?lang=en">Website</a> &nbsp; / &nbsp;
   <a href="#interface">Interface</a> &nbsp; / &nbsp;
   <a href="#features">Features</a> &nbsp; / &nbsp;
   <a href="#feedback">Feedback</a>
@@ -290,7 +292,7 @@ Open the downloaded file and follow the installation prompts. Windows may show a
 
 **Updating?** Before installing a new version, create an encrypted backup outside the app folder and test that you can restore it. If **Check GitHub** returns a 404 in 0.4.46 or 0.4.47, install 0.4.48 manually over the current release. In 0.4.48, the app checks the public repository and offers in-app installation for compatible packages from a verified, signed manifest. [Release notes](docs/releases/0.4.48.en.md) · [Backups and recovery](docs/BACKUPS.en.md).
 
-**Coming from a test APK up to 0.4.45?** Android requires a reinstall because the release APK uses a different signing certificate. Before uninstalling, save a portable password-protected backup and confirm that it restores successfully on another device or installation. Automatic device-key backups and CSV exports cannot replace it. [Upgrade from an older test APK](docs/INSTALLATION.en.md#migrating-from-an-older-test-apk) · [Android signing details (Russian)](docs/ANDROID_SIGNING.md).
+**Coming from a test APK up to 0.4.45?** Android requires a reinstall because the release APK uses a different signing certificate. Before uninstalling, save a portable password-protected backup and confirm that it restores successfully on another device or installation. Automatic device-key backups and CSV exports cannot replace it. [Upgrade from an older test APK](docs/INSTALLATION.en.md#migrating-from-an-older-test-apk) · [Backups and recovery](docs/BACKUPS.en.md).
 
 The APK and EXE were built from [source commit 98a7cd3](https://github.com/Adeptus-Amohus/orvim/tree/98a7cd344a2af75a5c63d574e8e6cd9516fc1c81). The [release](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48) includes build provenance and SHA-256 checksums.
 
@@ -380,19 +382,19 @@ The repository retains earlier MVP modules. The current UI starts in `src/app/Fu
 
 ## Documentation and contributing
 
-| Using Orvim                                                                               | Working on Orvim                                 |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [Installation and first launch](docs/INSTALLATION.en.md)                                  | [Architecture (Russian)](docs/ARCHITECTURE.md)   |
-| [Data and privacy](docs/PRIVACY.en.md)                                                    | [Android development (Russian)](docs/ANDROID.md) |
-| [Backups and recovery](docs/BACKUPS.en.md)                                                | [Contributing](CONTRIBUTING.md)                  |
-| [Sync (Russian)](docs/SYNC_0_4.md) and [Health Connect (Russian)](docs/HEALTH_CONNECT.md) | [Security policy](SECURITY.md)                   |
-| [Updates and release notes](docs/releases/0.4.48.en.md)                                   | [Changelog (Russian)](CHANGELOG.md)              |
+| Using Orvim                                                                                                 | Working on Orvim                                         |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Installation and first launch](docs/INSTALLATION.en.md)                                                    | [Architecture (Russian)](docs/ARCHITECTURE.md)           |
+| [Data and privacy](docs/PRIVACY.en.md)                                                                      | [Android development (Russian)](docs/ANDROID.md)         |
+| [Backups and recovery](docs/BACKUPS.en.md)                                                                  | [Contributing](CONTRIBUTING.md#contributing-to-orvim)    |
+| [Sync and transfers](docs/SYNC_0_4.en.md) and [Health Connect](docs/HEALTH_CONNECT.en.md)                   | [Security policy](SECURITY.md#reporting-a-vulnerability) |
+| [Updates](docs/INSTALLATION.en.md#updates-and-verification) and [release notes](docs/releases/0.4.48.en.md) | [Changelog (Russian)](CHANGELOG.md)                      |
 
 [Browse the documentation](docs/README.en.md).
 
 ### Feedback
 
-[Email the maintainer](mailto:a.baimurzinov1@gmail.com) to ask a question or share feedback. You can also [report a bug on GitHub](https://github.com/Adeptus-Amohus/orvim/issues/new?template=bug.yml) with a GitHub account. Include your Orvim version, Windows or Android version, and the steps to reproduce it. Leave personal records, backups, and keys out of public reports. [How to send feedback](CONTRIBUTING.md#feedback-and-bug-reports).
+[Email the maintainer](mailto:a.baimurzinov1@gmail.com) to ask a question or share feedback. You can also [report a bug on GitHub](https://github.com/Adeptus-Amohus/orvim/issues/new?template=bug-en.yml) with a GitHub account. Include your Orvim version, Windows or Android version, and the steps to reproduce it. Leave personal records, backups, and keys out of public reports. [How to send feedback](CONTRIBUTING.md#feedback-and-bug-reports).
 
 ## License
 

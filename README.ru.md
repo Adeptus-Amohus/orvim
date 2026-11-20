@@ -14,9 +14,9 @@
 </p>
 
 <p align="center">
-  <a href="#разработка"><img src="docs/assets/readme/windows.svg" alt="Windows" height="30" /></a>
-  <a href="docs/ANDROID.md"><img src="docs/assets/readme/android.svg" alt="Android" height="30" /></a>
-  <a href="docs/ARCHITECTURE.md"><img src="docs/assets/readme/sqlite.svg" alt="Локальная SQLite" height="30" /></a>
+  <a href="docs/INSTALLATION.md#windows"><img src="docs/assets/readme/windows.svg" alt="Windows" height="30" /></a>
+  <a href="docs/INSTALLATION.md#android"><img src="docs/assets/readme/android.svg" alt="Android" height="30" /></a>
+  <a href="docs/PRIVACY.md"><img src="docs/assets/readme/sqlite.svg" alt="Локальная SQLite" height="30" /></a>
   <a href="LICENSE"><img src="docs/assets/readme/license.svg" alt="Лицензия Apache 2.0" height="30" /></a>
 </p>
 
@@ -24,9 +24,10 @@
   <strong>Orvim 0.4.48</strong><br />
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe"><strong>Скачать Windows EXE</strong></a> &nbsp; · &nbsp;
   <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk"><strong>Скачать Android APK</strong></a><br />
-  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Релиз и SHA-256</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48">Релиз</a> &nbsp; / &nbsp;
+  <a href="https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt">SHA-256</a> &nbsp; / &nbsp;
   <a href="docs/INSTALLATION.md">Установка и первый запуск</a> &nbsp; / &nbsp;
-  <a href="https://adeptus-amohus.github.io/orvim/">Сайт Orvim</a> &nbsp; / &nbsp;
+  <a href="https://adeptus-amohus.github.io/orvim/?lang=ru">Сайт Orvim</a> &nbsp; / &nbsp;
   <a href="#интерфейс">Интерфейс</a> &nbsp; / &nbsp;
   <a href="#возможности">Возможности</a> &nbsp; / &nbsp;
   <a href="#разработка">Запуск</a> &nbsp; / &nbsp;
@@ -78,7 +79,7 @@
 
 В версии **0.4.48** исправлена проверка обновлений. Кнопка «Проверить на GitHub» обращается к публичному Orvim. Для совместимых выпусков кнопки загрузки и установки появляются после проверки подписанного манифеста. [Заметки выпуска](docs/releases/0.4.48.md) · [Установка и обновление](docs/INSTALLATION.md).
 
-Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [GitHub Release v0.4.48](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48):
+Скачивание и инструкции доступны без аккаунта GitHub. Среда разработки для установки не нужна. Файлы находятся в [выпуске v0.4.48](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48):
 
 | Файл                                                                                                                        | Назначение                                                                                                    |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -181,13 +182,13 @@ third-party/                 сторонние лицензии и уведом
 
 ## Документация и участие
 
-| Для пользователя                          | Для разработчика                        |
-| ----------------------------------------- | --------------------------------------- |
-| [Данные и приватность](docs/PRIVACY.md)   | [Архитектура](docs/ARCHITECTURE.md)     |
-| [Копии и восстановление](docs/BACKUPS.md) | [Настройка Android](docs/ANDROID.md)    |
-| [Синхронизация](docs/SYNC_0_4.md)         | [Участие в проекте](CONTRIBUTING.ru.md) |
-| [Health Connect](docs/HEALTH_CONNECT.md)  | [Безопасность](SECURITY.ru.md)          |
-| [Обновления](docs/UPDATES.md)             | [История изменений](CHANGELOG.md)       |
+| Для пользователя                              | Для разработчика                        |
+| --------------------------------------------- | --------------------------------------- |
+| [Данные и приватность](docs/PRIVACY.md)       | [Архитектура](docs/ARCHITECTURE.md)     |
+| [Копии и восстановление](docs/BACKUPS.md)     | [Настройка Android](docs/ANDROID.md)    |
+| [Синхронизация](docs/SYNC_0_4.md)             | [Участие в проекте](CONTRIBUTING.ru.md) |
+| [Health Connect](docs/HEALTH_CONNECT.md)      | [Безопасность](SECURITY.ru.md)          |
+| [Обновления](docs/INSTALLATION.md#обновление) | [История изменений](CHANGELOG.md)       |
 
 [Открыть всю документацию →](docs/README.md)
 

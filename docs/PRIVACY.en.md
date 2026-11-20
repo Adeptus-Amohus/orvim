@@ -37,7 +37,7 @@ Orvim requests notification, calendar, QR camera, and Health Connect permissions
 
 Core features work offline, independently of these connections. Orvim does not configure a first-party analytics service. The operating system, WebView, input service, and external providers may handle their own telemetry and data.
 
-On Android, Orvim reads Health Connect data after you grant permission. Imported entries become local records. They can leave the device if you later include them in an export, sync, or assistant request. [Health Connect guide (Russian)](HEALTH_CONNECT.md)
+On Android, Orvim reads Health Connect data after you grant permission. Imported entries become local records. They can leave the device if you later include them in an export, sync, or assistant request. [Health Connect guide](HEALTH_CONNECT.en.md)
 
 ## Deleting and transferring records
 

@@ -51,9 +51,9 @@ await fs.access(path.join(root, "assets/OFL-Nunito.txt"));
 await fs.access(path.join(root, "LICENSE"));
 await fs.access(path.join(root, "NOTICE"));
 
-async function render(release, rejects = false, locale = "ru-RU") {
+async function render(release, rejects = false, locale = "ru-RU", query = "") {
   const dom = new JSDOM(source, {
-    url: "https://adeptus-amohus.github.io/orvim/",
+    url: `https://adeptus-amohus.github.io/orvim/${query}`,
     runScripts: "outside-only",
   });
   Object.defineProperty(dom.window.navigator, "language", {
@@ -159,6 +159,25 @@ assert.ok(
     .textContent.includes("Stable release test"),
 );
 enDom.window.close();
+
+const linkedDom = await render(published, false, "ru-RU", "?lang=en");
+const linkedPage = linkedDom.window.document;
+assert.equal(linkedPage.documentElement.lang, "en");
+const issueLink = linkedPage.querySelector(
+  '[data-i18n-html="feedback_github_btn"]',
+);
+assert.equal(
+  new URL(issueLink.href).searchParams.get("template"),
+  "bug-en.yml",
+);
+linkedPage.getElementById("lang-toggle").click();
+assert.equal(linkedPage.documentElement.lang, "ru");
+assert.equal(
+  new URL(linkedDom.window.location.href).searchParams.get("lang"),
+  "ru",
+);
+assert.equal(new URL(issueLink.href).searchParams.get("template"), "bug.yml");
+linkedDom.window.close();
 
 JSON.parse(await fs.readFile(path.join(root, "release.json"), "utf8"));
 console.log(

@@ -13,10 +13,10 @@ Start with the [Orvim overview](../README.md) or the [installation guide](INSTAL
 | [Data and privacy](PRIVACY.en.md)                                       | Local storage, credentials, permissions, and data sent to optional services.                      |
 | [Feedback and bug reports](../CONTRIBUTING.md#feedback-and-bug-reports) | Asking a question by email or reporting a reproducible issue.                                     |
 | [Release notes](releases/0.4.48.en.md)                                  | Public update checks and manual installation for older versions.                                  |
-| [Sync (Russian)](SYNC_0_4.md)                                           | LAN, file transfers, pairing, and conflicts.                                                      |
-| [Health Connect (Russian)](HEALTH_CONNECT.md)                           | Steps, sleep, workouts, and permissions.                                                          |
-| [OpenAI setup (Russian)](OPENAI_CONNECTION.md)                          | API key, model selection, and connection errors.                                                  |
-| [Materials (Russian)](DATABASE_MATERIALS.md)                            | Collections, project materials, and sound history.                                                |
+| [Sync and transfers](SYNC_0_4.en.md)                                    | LAN, file transfers, pairing, and conflicts.                                                      |
+| [Health Connect](HEALTH_CONNECT.en.md)                                  | Steps, sleep, workouts, and permissions.                                                          |
+| [OpenAI setup](OPENAI_CONNECTION.en.md)                                 | API key, model selection, and connection errors.                                                  |
+| [Materials and collections](DATABASE_MATERIALS.en.md)                   | Collections, project materials, and sound history.                                                |
 | [License details (Russian)](LICENSES.md)                                | Code, dependencies, fonts, and media.                                                             |
 
 ## Developing and contributing

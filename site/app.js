@@ -65,11 +65,9 @@ const translations = {
     privacy_strip_title: "Your Records Stay on Your Device",
     privacy_strip_desc:
       "Core sections work without an account or internet connection. Connecting external services is always your choice.",
-    privacy_strip_link:
-      'How data is stored <span aria-hidden="true">↗</span>',
+    privacy_strip_link: 'How data is stored <span aria-hidden="true">↗</span>',
     feedback_title: "Feedback",
-    feedback_desc:
-      "Share your thoughts on Orvim or ask a question by email.",
+    feedback_desc: "Share your thoughts on Orvim or ask a question by email.",
     feedback_email_btn: 'Email about Orvim <span aria-hidden="true">↗</span>',
     feedback_github_btn:
       'Report a bug on GitHub <span aria-hidden="true">↗</span>',
@@ -140,7 +138,7 @@ const translations = {
     privacy_s4_p3:
       "External connections are enabled strictly by user choice. When sending a message to an AI provider, your prompt, conversation, and selected context are transmitted; other integrations transmit only the data required for their respective actions. Third-party services are governed by their own privacy policies.",
     privacy_s4_p4:
-      '<a href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md">Installation, backups, and safely upgrading from an old APK</a>.',
+      '<a href="https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.en.md">Installation, backups, and safely upgrading from an old APK</a>.',
     privacy_s4_p5: "Verified against Orvim 0.4.46. Updated: November 11, 2026.",
     privacy_back_home: 'Back to Orvim <span aria-hidden="true">↗</span>',
   },
@@ -189,6 +187,9 @@ let currentReleaseVersion = "0.4.48";
 let currentLang = "ru";
 
 function detectInitialLanguage() {
+  const requested = new URLSearchParams(window.location.search).get("lang");
+  if (requested === "ru" || requested === "en") return requested;
+
   try {
     const saved = localStorage.getItem(LANG_STORAGE_KEY);
     if (saved === "ru" || saved === "en") return saved;
@@ -207,7 +208,9 @@ function detectInitialLanguage() {
 function updateScreenshots(lang) {
   const isEn = lang === "en";
 
-  for (const source of document.querySelectorAll("picture source[data-ru-srcset]")) {
+  for (const source of document.querySelectorAll(
+    "picture source[data-ru-srcset]",
+  )) {
     const ruSrcset = source.dataset.ruSrcset;
     const enSrcset = SCREENSHOT_EN_MAP[ruSrcset];
     if (enSrcset) {
@@ -226,7 +229,9 @@ function updateScreenshots(lang) {
         img.src = ruSrc;
         const picture = img.closest("picture");
         if (picture) {
-          for (const source of picture.querySelectorAll("source[data-ru-srcset]")) {
+          for (const source of picture.querySelectorAll(
+            "source[data-ru-srcset]",
+          )) {
             source.srcset = source.dataset.ruSrcset;
           }
         }
@@ -340,6 +345,22 @@ function applyLanguage(lang) {
   updateScreenshots(currentLang);
   updateReleaseTexts(currentLang);
 
+  for (const link of document.querySelectorAll("a[data-en-href]")) {
+    link.dataset.ruHref ??= link.getAttribute("href");
+    link.href =
+      currentLang === "en" ? link.dataset.enHref : link.dataset.ruHref;
+  }
+
+  // Preserve an explicit language choice through links between site pages.
+  for (const link of document.querySelectorAll(
+    'a[href^="./"], a[href^="help.html"], a[href^="privacy.html"]',
+  )) {
+    const path = link.getAttribute("href").split(/[?#]/)[0];
+    const target = new URL(link.href);
+    target.searchParams.set("lang", currentLang);
+    link.setAttribute("href", path + target.search + target.hash);
+  }
+
   const langBtn = document.getElementById("lang-toggle");
   if (langBtn) {
     langBtn.textContent = currentLang === "ru" ? "EN" : "RU";
@@ -356,6 +377,9 @@ const langToggleBtn = document.getElementById("lang-toggle");
 if (langToggleBtn) {
   langToggleBtn.addEventListener("click", () => {
     const nextLang = currentLang === "ru" ? "en" : "ru";
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", nextLang);
+    window.history.replaceState(null, "", url);
     try {
       localStorage.setItem(LANG_STORAGE_KEY, nextLang);
     } catch {

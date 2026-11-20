@@ -30,7 +30,7 @@
 
 Требования: Windows 10/11 x64 и Microsoft Edge WebView2 Evergreen Runtime. Если runtime отсутствует, установщик загружает его с серверов Microsoft; для этого первого шага нужен интернет. Node.js, Rust, Java и Android SDK для работы не требуются.
 
-1. Скачайте [Orvim-0.4.48-Windows-x64-setup.exe](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe) и сравните SHA-256.
+1. Скачайте [Orvim-0.4.48-Windows-x64-setup.exe](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe) и сверьте SHA-256 с [SHA256SUMS.txt](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt).
 2. Перед обновлением создайте переносимую копию с паролем. Завершите Orvim через **Выйти** в меню трея.
 3. Запустите установщик. Для обновления используйте прежнюю папку; заранее удалять приложение или базу не требуется. Старые пути Life OS сохраняются для совместимости.
 4. Откройте Orvim и проверьте записи после повторного запуска.
@@ -50,5 +50,7 @@ EXE **не подписан Authenticode**. Возможны предупреж�
 ## Проверки и ограничения
 
 Установка, запуск, обновление/замена пакетов и сохранность данных проверены в доступных средах. Физический ARM64-телефон, все OEM-лаунчеры, API 24 на устройстве, чистая Windows без WebView2 и живые ИИ/Google/Notion/Health Connect не проверены этим выпуском. [Отчёт и происхождение сборки](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Verification.md).
+
+## Обновление
 
 Для перехода с 0.4.46 и 0.4.47 при ошибке 404 скачайте пакет вручную и установите поверх прежнего. Начиная с 0.4.48 приложение проверяет подписанный список обновлений. Установка запускается после вашего подтверждения.

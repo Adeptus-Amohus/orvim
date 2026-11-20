@@ -1,0 +1,21 @@
+name: Report a bug
+description: Help reproduce a problem in Orvim.
+title: "Bug: "
+body:
+  - type: markdown
+    attributes:
+      value: "This report is public. Leave out personal databases, credentials, and screenshots with personal data. Follow the security policy to report vulnerabilities privately."
+  - type: input
+    id: version
+    attributes:
+      label: Orvim version and device
+      placeholder: For example, 0.4.48 on Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Describe what you did, what you expected, and what happened.
+    validations:
+      required: true
