@@ -3,6 +3,7 @@ import {
   lifeSettings,
   personalDay,
   lifeRecordDay,
+  foodRecordDateTime,
 } from "./life-tracking-model.js";
 import {
   requestLifePeriod,
@@ -265,6 +266,11 @@ export function assistantContext(
           ),
       )
       .map(({ key, name, currency, from }) => ({ key, name, currency, from }));
+  if (result.foodLogs)
+    result.foodLogs = result.foodLogs.map((row) => {
+      const moment = foodRecordDateTime(row);
+      return { ...row, calendarDate: moment.date, time: moment.time };
+    });
   return structuredClone(result);
 }
 
@@ -1370,12 +1376,15 @@ export function installAssistant(ctx, ui) {
         const previous = before.data.foodLogs.find(
           (item) => item.id === change.id,
         );
-        const food = { ...previous, ...values };
+        const food = preview.data.foodLogs.find(
+          (item) => item.id === change.id,
+        ) || { ...previous, ...values };
+        const moment = foodRecordDateTime(food);
         row.append(
           make(
             "div",
             "ai-food-amount",
-            `${food.date || "Дата не указана"} · ${food.calories ?? "—"} ккал · Б ${food.protein ?? "—"} / Ж ${food.fat ?? "—"} / У ${food.carbs ?? "—"} г`,
+            `${food.date || "Дата не указана"}${moment.time ? ` · ${moment.date} ${moment.time}` : ""} · ${food.calories ?? "—"} ккал · Б ${food.protein ?? "—"} / Ж ${food.fat ?? "—"} / У ${food.carbs ?? "—"} г`,
           ),
         );
         const macroCalories =
@@ -1541,6 +1550,7 @@ export function installAssistant(ctx, ui) {
               "protein",
               "fat",
               "carbs",
+              "occurredAt",
             ];
             const verified =
               savedRows &&

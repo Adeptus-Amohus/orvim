@@ -269,6 +269,7 @@ const w = dom.window,
     );
     click("#training-edit-dialog .close");
     click('[data-page="archive"]');
+    click("#archive-categories .archive-category");
     click("#archive-item-add");
     set("#archive-item-name", "Мой фильм");
     $("#archive-item-rating")

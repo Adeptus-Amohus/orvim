@@ -1,6 +1,10 @@
 import assistantFields from "./actions-schema.json" with { type: "json" };
 import { goalState } from "./training-model.js";
-import { stampLifeRecord } from "./life-tracking-model.js";
+import {
+  stampLifeRecord,
+  foodRecordDateTime,
+  setFoodRecordDateTime,
+} from "./life-tracking-model.js";
 export const editableCollections = [
   "tasks",
   "events",
@@ -159,8 +163,17 @@ export function proposedSnapshot(
       ["calories", "protein", "fat", "carbs"].some((key) =>
         Object.hasOwn(record, key),
       );
+    const foodTimeChanged =
+      change.collection === "foodLogs" && Object.hasOwn(record, "time");
+    const foodCalendarDate = foodTimeChanged
+      ? record.date ||
+        (old && foodRecordDateTime(old).date) ||
+        data.selectedDate
+      : null;
     record = { ...old, ...record };
-    if (["foodLogs", "waterLogs"].includes(change.collection)) {
+    if (foodTimeChanged) {
+      setFoodRecordDateTime(record, foodCalendarDate, record.time, data);
+    } else if (["foodLogs", "waterLogs"].includes(change.collection)) {
       if (old && record.date !== old.date) delete record.occurredAt;
       stampLifeRecord(record, data, change.collection);
     }

@@ -49,6 +49,7 @@ for (const file of [
   "import-review.test.mjs",
   "audit-fixes.test.mjs",
   "updates.test.mjs",
+  "food-time.test.mjs",
 ]) {
   const result = spawnSync(process.execPath, [`tests/${file}`], {
     stdio: "inherit",

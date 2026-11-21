@@ -565,6 +565,7 @@ async function scenario(label, run) {
       await layout("project-form", true);
       await close();
       await nav("archive");
+      await page.locator("#archive-categories .archive-category").first().click();
       await page.locator("#archive-item-add").click();
       await layout("database-form", true);
       await close();

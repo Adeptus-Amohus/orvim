@@ -170,6 +170,13 @@ const w = dom.window,
     }
     w.__qa.showPage("archive");
     await wait();
+    check($("#archive-items").closest(".panel").hidden, "Database opens on the collection list");
+    const firstCollection = $("#archive-categories .db-collection-row").dataset.collection;
+    $("#archive-categories .db-collection-handle").dispatchEvent(
+      new w.KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
+    );
+    check(w.__qa.snapshotData().archiveCategories[1] === firstCollection, "Collection reorder updates the saved order");
+    click("#archive-categories .archive-category");
     check(
       $(".collection-menu").contains($('[aria-label="Удалить коллекцию"]')),
       "Collection delete is inside overflow menu",
