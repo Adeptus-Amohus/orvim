@@ -138,6 +138,7 @@ const translations = {
     footer_privacy: "Site Privacy",
     dialog_aria: "Enlarged interface screenshot",
     dialog_close_aria: "Close screenshot",
+    dialog_zoom: "Zoom 2×",
     dialog_close: 'Close <span aria-hidden="true">×</span>',
 
     // help.html
@@ -406,16 +407,24 @@ if (tour) {
     const [name, heading, body, alt] = slide[currentLang];
     const mobile = device === "mobile";
     const suffix = currentLang === "en" ? "-en" : "";
-    const src = `assets/tour/${slide.id}-${device}${suffix}.webp`;
+    const asset = `assets/tour/${slide.id}-${device}${suffix}`;
+    const src = `${asset}.webp`;
+    const full = `${asset}-full.webp`;
     title.textContent = heading;
     description.textContent = body;
     status.textContent = `${name} · ${index + 1} / ${TOUR_SLIDES.length}`;
     image.alt = alt;
     image.width = mobile ? 390 : 1280;
-    image.height = mobile ? 844 : 840;
+    image.height = mobile ? 795 : 840;
     stage.dataset.device = device;
-    if (image.getAttribute("src") !== src) image.src = src;
-    enlarge.href = src;
+    if (image.getAttribute("src") !== src || !image.srcset) {
+      image.sizes = mobile
+        ? "auto, min(390px, calc(100vw - 52px))"
+        : "auto, (max-width: 740px) calc(100vw - 74px), min(1146px, calc(100vw - 150px))";
+      image.srcset = `${src} ${image.width}w, ${full} ${mobile ? 1080 : 2560}w`;
+      image.src = src;
+    }
+    enlarge.href = full;
     devices.querySelector(`input[value="${device}"]`).checked = true;
   };
 
@@ -492,6 +501,13 @@ applyLanguage(detectInitialLanguage());
 const dialog = document.getElementById("image-dialog");
 if (dialog && typeof dialog.showModal === "function") {
   let trigger;
+  const zoom = document.getElementById("dialog-zoom");
+  const frame = dialog.querySelector(".dialog-image-frame");
+  zoom.addEventListener("click", () => {
+    const on = dialog.toggleAttribute("data-zoomed");
+    zoom.setAttribute("aria-pressed", String(on));
+    if (!on) frame.scrollTo(0, 0);
+  });
   for (const link of document.querySelectorAll(".enlarge")) {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -518,7 +534,12 @@ if (dialog && typeof dialog.showModal === "function") {
     )
       dialog.close();
   });
-  dialog.addEventListener("close", () => trigger?.focus());
+  dialog.addEventListener("close", () => {
+    dialog.removeAttribute("data-zoomed");
+    zoom.setAttribute("aria-pressed", "false");
+    frame.scrollTo(0, 0);
+    trigger?.focus();
+  });
 }
 
 // Only explicit, verified public release links are enabled. No requests to a third-party API.

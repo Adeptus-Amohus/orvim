@@ -811,12 +811,26 @@ dialog::backdrop {
   background: #17130fe8;
 }
 
-dialog > img {
+.dialog-image-frame {
+  overflow: auto;
+  max-height: calc(94vh - 68px);
+  touch-action: pinch-zoom pan-x pan-y;
+}
+
+.dialog-image-frame > img {
+  max-width: 100%;
   margin-inline: auto;
   border-radius: var(--radius-image);
 }
 
-.dialog-close {
+#image-dialog[data-zoomed] .dialog-image-frame > img {
+  width: 200%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.dialog-close,
+#dialog-zoom {
   position: absolute;
   right: 14px;
   top: 9px;
@@ -824,6 +838,16 @@ dialog > img {
   background: #fffaf0;
   border: 1px solid var(--line);
   border-radius: 999px;
+}
+
+#dialog-zoom {
+  right: auto;
+  left: 14px;
+}
+
+#dialog-zoom[aria-pressed="true"] {
+  border-color: var(--bronze);
+  color: var(--bronze);
 }
 
 .dialog-close span {
@@ -874,6 +898,16 @@ dialog > img {
 }
 
 @media (max-width: 740px) {
+  .tour-stage[data-device="mobile"] {
+    width: min(390px, calc(100% + 22px));
+    margin-inline: max(-11px, calc((100% - 390px) / 2));
+  }
+
+  #image-dialog {
+    width: calc(100% - 8px);
+    padding-inline: 3px;
+  }
+
   .wrap {
     width: calc(100% - 40px);
   }

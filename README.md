@@ -42,35 +42,35 @@
 Ваш день в одном окне. Расписание и задачи рядом.
 
 <picture>
-  <source media="(max-width: 740px)" srcset="site/assets/tour/home-mobile.webp" />
-  <img src="site/assets/tour/home-desktop.webp" alt="Расписание и задачи на главной Orvim" width="1280" />
+  <source media="(max-width: 740px)" srcset="site/assets/tour/home-mobile-full.webp" />
+  <img src="site/assets/tour/home-desktop-full.webp" alt="Расписание и задачи на главной Orvim" width="1280" />
 </picture>
 
 <details>
 <summary><strong>Мобильная версия</strong></summary>
 
-- [Главная](site/assets/tour/home-mobile.webp) — Расписание и задачи рядом. Выберите день и отмечайте выполненные дела.
-- [Жизнь](site/assets/tour/life-mobile.webp) — Отмечайте самочувствие, сон, питание и тренировки. Смотрите, как меняются ваши записи со временем.
-- [Мысли](site/assets/tour/thoughts-mobile.webp) — Запишите мысль отдельно от списка дел. Возвращайтесь к заметкам, когда захотите развить идею.
-- [Проекты](site/assets/tour/projects-mobile.webp) — Описание, материалы и задачи собраны в одном месте. На доске видно, что запланировано, в работе или готово.
-- [База данных](site/assets/tour/database-mobile.webp) — Собирайте книги, фильмы и другие записи в коллекции. Добавляйте статусы, оценки и заметки.
+- [Главная](site/assets/tour/home-mobile-full.webp) — Расписание и задачи рядом. Выберите день и отмечайте выполненные дела.
+- [Жизнь](site/assets/tour/life-mobile-full.webp) — Отмечайте самочувствие, сон, питание и тренировки. Смотрите, как меняются ваши записи со временем.
+- [Мысли](site/assets/tour/thoughts-mobile-full.webp) — Запишите мысль отдельно от списка дел. Возвращайтесь к заметкам, когда захотите развить идею.
+- [Проекты](site/assets/tour/projects-mobile-full.webp) — Описание, материалы и задачи собраны в одном месте. На доске видно, что запланировано, в работе или готово.
+- [База данных](site/assets/tour/database-mobile-full.webp) — Собирайте книги, фильмы и другие записи в коллекции. Добавляйте статусы, оценки и заметки.
 
 </details>
 
 <details>
 <summary><strong>ПК-версия</strong></summary>
 
-- [Главная](site/assets/tour/home-desktop.webp) — Расписание и задачи рядом. Выберите день и отмечайте выполненные дела.
-- [Жизнь](site/assets/tour/life-desktop.webp) — Отмечайте самочувствие, сон, питание и тренировки. Смотрите, как меняются ваши записи со временем.
-- [Мысли](site/assets/tour/thoughts-desktop.webp) — Запишите мысль отдельно от списка дел. Возвращайтесь к заметкам, когда захотите развить идею.
-- [Проекты](site/assets/tour/projects-desktop.webp) — Описание, материалы и задачи собраны в одном месте. На доске видно, что запланировано, в работе или готово.
-- [База данных](site/assets/tour/database-desktop.webp) — Собирайте книги, фильмы и другие записи в коллекции. Добавляйте статусы, оценки и заметки.
+- [Главная](site/assets/tour/home-desktop-full.webp) — Расписание и задачи рядом. Выберите день и отмечайте выполненные дела.
+- [Жизнь](site/assets/tour/life-desktop-full.webp) — Отмечайте самочувствие, сон, питание и тренировки. Смотрите, как меняются ваши записи со временем.
+- [Мысли](site/assets/tour/thoughts-desktop-full.webp) — Запишите мысль отдельно от списка дел. Возвращайтесь к заметкам, когда захотите развить идею.
+- [Проекты](site/assets/tour/projects-desktop-full.webp) — Описание, материалы и задачи собраны в одном месте. На доске видно, что запланировано, в работе или готово.
+- [База данных](site/assets/tour/database-desktop-full.webp) — Собирайте книги, фильмы и другие записи в коллекции. Добавляйте статусы, оценки и заметки.
 
 </details>
 
 [Листать экраны на сайте Orvim](https://adeptus-amohus.github.io/orvim/?lang=ru#tour)
 
-<sub>Orvim 0.4.48 в браузерном предпросмотре с демонстрационными записями.</sub>
+<sub>Снимки Orvim 0.4.49 на Windows и в Android-эмуляторе с демонстрационными записями.</sub>
 
 ## Возможности
 
@@ -255,35 +255,35 @@ third-party/                 сторонние лицензии и уведом
 Your day at a glance. See your schedule and tasks together.
 
 <picture>
-  <source media="(max-width: 740px)" srcset="site/assets/tour/home-mobile-en.webp" />
-  <img src="site/assets/tour/home-desktop-en.webp" alt="Schedule and tasks on Orvim Home" width="1280" />
+  <source media="(max-width: 740px)" srcset="site/assets/tour/home-mobile-en-full.webp" />
+  <img src="site/assets/tour/home-desktop-en-full.webp" alt="Schedule and tasks on Orvim Home" width="1280" />
 </picture>
 
 <details>
 <summary><strong>Mobile version</strong></summary>
 
-- [Home](site/assets/tour/home-mobile-en.webp) — See your schedule and tasks together. Pick a date and check off tasks as you go.
-- [Life](site/assets/tour/life-mobile-en.webp) — Log how you feel, your sleep, meals, and workouts. Look back at your records over time.
-- [Thoughts](site/assets/tour/thoughts-mobile-en.webp) — Capture a thought outside your task list. Come back to your notes when you want to develop an idea.
-- [Projects](site/assets/tour/projects-mobile-en.webp) — Keep the brief, reference materials, and tasks together. The board shows what’s planned, in progress, and done.
-- [Database](site/assets/tour/database-mobile-en.webp) — Organize books, films, and other records into collections. Add statuses, ratings, and notes.
+- [Home](site/assets/tour/home-mobile-en-full.webp) — See your schedule and tasks together. Pick a date and check off tasks as you go.
+- [Life](site/assets/tour/life-mobile-en-full.webp) — Log how you feel, your sleep, meals, and workouts. Look back at your records over time.
+- [Thoughts](site/assets/tour/thoughts-mobile-en-full.webp) — Capture a thought outside your task list. Come back to your notes when you want to develop an idea.
+- [Projects](site/assets/tour/projects-mobile-en-full.webp) — Keep the brief, reference materials, and tasks together. The board shows what’s planned, in progress, and done.
+- [Database](site/assets/tour/database-mobile-en-full.webp) — Organize books, films, and other records into collections. Add statuses, ratings, and notes.
 
 </details>
 
 <details>
 <summary><strong>Desktop version</strong></summary>
 
-- [Home](site/assets/tour/home-desktop-en.webp) — See your schedule and tasks together. Pick a date and check off tasks as you go.
-- [Life](site/assets/tour/life-desktop-en.webp) — Log how you feel, your sleep, meals, and workouts. Look back at your records over time.
-- [Thoughts](site/assets/tour/thoughts-desktop-en.webp) — Capture a thought outside your task list. Come back to your notes when you want to develop an idea.
-- [Projects](site/assets/tour/projects-desktop-en.webp) — Keep the brief, reference materials, and tasks together. The board shows what’s planned, in progress, and done.
-- [Database](site/assets/tour/database-desktop-en.webp) — Organize books, films, and other records into collections. Add statuses, ratings, and notes.
+- [Home](site/assets/tour/home-desktop-en-full.webp) — See your schedule and tasks together. Pick a date and check off tasks as you go.
+- [Life](site/assets/tour/life-desktop-en-full.webp) — Log how you feel, your sleep, meals, and workouts. Look back at your records over time.
+- [Thoughts](site/assets/tour/thoughts-desktop-en-full.webp) — Capture a thought outside your task list. Come back to your notes when you want to develop an idea.
+- [Projects](site/assets/tour/projects-desktop-en-full.webp) — Keep the brief, reference materials, and tasks together. The board shows what’s planned, in progress, and done.
+- [Database](site/assets/tour/database-desktop-en-full.webp) — Organize books, films, and other records into collections. Add statuses, ratings, and notes.
 
 </details>
 
 [Open the interactive gallery on the Orvim website](https://adeptus-amohus.github.io/orvim/?lang=en#tour)
 
-<sub>Orvim 0.4.48 browser preview with sample records.</sub>
+<sub>Orvim 0.4.49 on Windows and an Android emulator with sample records.</sub>
 
 ## Features
 

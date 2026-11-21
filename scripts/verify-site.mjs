@@ -144,7 +144,11 @@ assert.equal(
 );
 document.querySelector('input[value="mobile"]').click();
 assert.match(image.src, /database-mobile\.webp$/);
-assert.equal(document.getElementById("tour-enlarge").href, image.src);
+assert.match(
+  document.getElementById("tour-enlarge").href,
+  /database-mobile-full\.webp$/,
+);
+assert.match(image.srcset, /database-mobile-full\.webp 1080w$/);
 
 // Verify manual language toggle (RU -> EN)
 const langToggle = document.getElementById("lang-toggle");
@@ -183,9 +187,14 @@ for (const screen of screens) {
   enDocument.getElementById("tour-next").click();
   for (const device of ["desktop", "mobile"]) {
     for (const suffix of ["", "-en"]) {
-      await fs.access(
-        path.join(root, `assets/tour/${screen}-${device}${suffix}.webp`),
-      );
+      for (const size of ["", "-full"]) {
+        await fs.access(
+          path.join(
+            root,
+            `assets/tour/${screen}-${device}${suffix}${size}.webp`,
+          ),
+        );
+      }
     }
   }
 }

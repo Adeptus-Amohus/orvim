@@ -27,8 +27,8 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="assets/orvim.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=tour" />
-    <script src="app.js?v=tour" defer></script>
+    <link rel="stylesheet" href="styles.css?v=native-tour" />
+    <script src="app.js?v=native-tour" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip_link">К содержимому</a>
@@ -149,7 +149,7 @@
               <a
                 class="text-link enlarge"
                 id="tour-enlarge"
-                href="assets/tour/home-desktop.webp"
+                href="assets/tour/home-desktop-full.webp"
                 data-i18n-html="inspect_interface"
                 >Рассмотреть интерфейс <span aria-hidden="true">↗</span></a
               >
@@ -180,6 +180,11 @@
             <img
               id="tour-image"
               src="assets/tour/home-desktop.webp"
+              srcset="
+                assets/tour/home-desktop.webp      1280w,
+                assets/tour/home-desktop-full.webp 2560w
+              "
+              sizes="auto, (max-width: 740px) calc(100vw - 74px), min(1146px, calc(100vw - 150px))"
               width="1280"
               height="840"
               alt="Расписание и задачи на главной Orvim"
@@ -359,8 +364,20 @@
         data-i18n-aria="dialog_close_aria"
         data-i18n-html="dialog_close"
       >
-        Закрыть <span aria-hidden="true">×</span></button
-      ><img id="dialog-image" alt="" />
+        Закрыть <span aria-hidden="true">×</span>
+      </button>
+      <button
+        id="dialog-zoom"
+        type="button"
+        aria-pressed="false"
+        aria-controls="dialog-image"
+        data-i18n="dialog_zoom"
+      >
+        Увеличить ×2
+      </button>
+      <div class="dialog-image-frame">
+        <img id="dialog-image" alt="" />
+      </div>
     </dialog>
   </body>
 </html>
