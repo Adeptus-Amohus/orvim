@@ -2,7 +2,7 @@
   "name": "orvim",
   "private": true,
   "license": "Apache-2.0",
-  "version": "0.4.48",
+  "version": "0.4.49",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"

@@ -6,6 +6,7 @@ import {
   validateCollectionSettings,
 } from "./collection-settings.js";
 import { createRatingPicker } from "./rating.js";
+export const PROJECT_MATERIAL_CATEGORY = "@project-materials";
 // Optional fields extend existing database records; IDs and covers stay intact.
 export function installDatabase(ctx) {
   const {
@@ -128,11 +129,14 @@ export function installDatabase(ctx) {
     pickerIds = new Set(),
     pickerQuery = "",
     pickerLimit = 40;
-  if (!state.uiPreferences.databaseInitialized) {
-    if (!categories.some((name) => /материал|material/i.test(name)))
-      categories.push("Материалы");
-    state.uiPreferences.databaseInitialized = true;
-  }
+  const collectionNames = () =>
+    categories.filter((name) => name !== PROJECT_MATERIAL_CATEGORY);
+  const categoryLabel = (name) =>
+    name === PROJECT_MATERIAL_CATEGORY
+      ? t("Материалы проектов", "Project materials")
+      : name;
+  let collectionOpen = false;
+  const expandedMaterials = new Set();
   const form = $("#archive-item-form");
   const fields = {};
   function field(label, key, type = "text", tag) {
@@ -490,40 +494,71 @@ export function installDatabase(ctx) {
       );
   }
   function render() {
-    if (!categories.includes(ctx.selectedCollection()))
-      ctx.selectCollection(categories[0] || "");
+    const names = collectionNames();
+    if (
+      !names.includes(ctx.selectedCollection()) &&
+      !(
+        collectionOpen && ctx.selectedCollection() === PROJECT_MATERIAL_CATEGORY
+      )
+    ) {
+      collectionOpen = false;
+      ctx.selectCollection(names[0] || "");
+    }
     const host = $("#archive-categories");
+    host.closest(".panel").hidden = collectionOpen;
+    $("#archive-items").closest(".panel").hidden = !collectionOpen;
     host.replaceChildren();
-    for (const name of categories) {
+    const counts = new Map();
+    for (const item of items)
+      counts.set(item.category, (counts.get(item.category) || 0) + 1);
+    for (const name of names) {
+      const row = make("div", "db-collection-row");
+      row.dataset.collection = name;
       const node = button(
         "",
         () => {
           ctx.selectCollection(name);
+          collectionOpen = true;
           limit = 40;
           selected.clear();
+          selecting = false;
+          query = search.value = "";
           filter = "";
           genreFilter = "";
           render();
-          changed();
+          $("#db-collections-back").focus();
+          document.scrollingElement?.scrollTo?.(0, 0);
         },
         "archive-category",
       );
       node.append(
         text("span", "", name),
-        make(
-          "small",
-          "",
-          String(items.filter((item) => item.category === name).length),
-        ),
+        make("small", "", String(counts.get(name) || 0)),
+        icon("chevron-right"),
       );
-      node.setAttribute(
-        "aria-current",
-        String(name === ctx.selectedCollection()),
+      const handle = iconButton(
+        "grip-vertical",
+        t("Переместить коллекцию", "Move collection") + ": " + name,
+        () => {},
       );
-      host.append(node);
+      handle.classList.add("db-collection-handle");
+      handle.disabled = names.length < 2;
+      bindCollectionDrag(handle, row, name);
+      row.append(node, handle);
+      host.append(row);
     }
-    $("#archive-category-title").textContent =
-      ctx.selectedCollection() || t("Коллекции", "Collections");
+    if (!collectionOpen) {
+      $("#archive-items").replaceChildren();
+      ctx.services.refreshIcons(host);
+      return;
+    }
+    $("#archive-category-title").textContent = categoryLabel(
+      ctx.selectedCollection(),
+    );
+    $("#archive-item-add").hidden =
+      ctx.selectedCollection() === PROJECT_MATERIAL_CATEGORY;
+    $(".collection-menu").hidden =
+      ctx.selectedCollection() === PROJECT_MATERIAL_CATEGORY;
     $("#archive-item-add").disabled = !ctx.selectedCollection();
     const config = collections.config(ctx.selectedCollection());
     if (!config.statuses.some((status) => status.id === filter)) filter = "";
@@ -574,13 +609,126 @@ export function installDatabase(ctx) {
       ? t("Готово", "Done")
       : t("Выбрать", "Select");
     moveSelect.replaceChildren();
-    for (const name of categories) {
+    for (const name of names) {
       const option = text("option", "", name);
       option.value = name;
       moveSelect.append(option);
     }
     renderItems();
     ctx.services.refreshIcons($("#archive-screen"));
+  }
+  function showCollections() {
+    collectionOpen = false;
+    render();
+    $("#archive-categories .archive-category")?.focus();
+  }
+  const collectionBack = iconButton(
+    "arrow-left",
+    t("К списку коллекций", "Back to collections"),
+    showCollections,
+  );
+  collectionBack.id = "db-collections-back";
+  $("#archive-category-title").before(collectionBack);
+  ctx.registerBackLayer(
+    () =>
+      collectionOpen &&
+      !$("#archive-screen").hidden &&
+      !document.querySelector(".overlay:not([hidden])"),
+    showCollections,
+  );
+  const projectArchive = button(
+    t("Материалы проектов", "Project materials"),
+    () => {
+      ctx.selectCollection(PROJECT_MATERIAL_CATEGORY);
+      collectionOpen = true;
+      selecting = false;
+      selected.clear();
+      query = search.value = filter = genreFilter = "";
+      limit = 40;
+      ctx.showPage("archive", true);
+    },
+    "text-button",
+  );
+  $("#completed-screen .section-toolbar").append(projectArchive);
+
+  function moveCollection(name, target) {
+    const from = categories.indexOf(name),
+      to = categories.indexOf(target);
+    if (from < 0 || to < 0 || from === to) return;
+    categories.splice(from, 1);
+    categories.splice(to, 0, name);
+    render();
+    changed();
+    [...$("#archive-categories").children]
+      .find((line) => line.dataset.collection === name)
+      ?.querySelector(".db-collection-handle")
+      ?.focus({ preventScroll: true });
+  }
+  function bindCollectionDrag(handle, row, name) {
+    let pointer = null,
+      target = null,
+      frame = 0,
+      y = 0,
+      startY = 0,
+      dragging = false;
+    const host = $("#archive-categories");
+    function paint() {
+      frame = 0;
+      if (!dragging || !row.isConnected) return;
+      const delta = y < 70 ? -10 : y > window.innerHeight - 75 ? 10 : 0;
+      if (delta) window.scrollBy(0, delta);
+      const next = [...host.children].find((line) => {
+        const bounds = line.getBoundingClientRect();
+        return y >= bounds.top && y <= bounds.bottom;
+      });
+      if (next !== target) {
+        target?.classList.remove("db-collection-drop");
+        target = next;
+        if (target !== row) target?.classList.add("db-collection-drop");
+      }
+      if (delta) frame = requestAnimationFrame(paint);
+    }
+    listen(handle, "pointerdown", (event) => {
+      if (event.button !== 0 || pointer !== null) return;
+      pointer = event.pointerId;
+      startY = event.clientY;
+      handle.setPointerCapture(pointer);
+    });
+    listen(handle, "pointermove", (event) => {
+      if (pointer !== event.pointerId) return;
+      y = event.clientY;
+      if (!dragging && Math.abs(y - startY) < 5) return;
+      dragging = true;
+      row.classList.add("db-collection-dragging");
+      if (!frame) frame = requestAnimationFrame(paint);
+    });
+    const finish = (event) => {
+      if (pointer !== event.pointerId) return;
+      if (frame) cancelAnimationFrame(frame);
+      const destination =
+        dragging && event.type === "pointerup"
+          ? target?.dataset.collection
+          : null;
+      pointer = target = null;
+      dragging = false;
+      frame = 0;
+      row.classList.remove("db-collection-dragging");
+      host
+        .querySelector(".db-collection-drop")
+        ?.classList.remove("db-collection-drop");
+      if (destination) moveCollection(name, destination);
+    };
+    for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
+      listen(handle, type, finish);
+    listen(handle, "keydown", (event) => {
+      if (!["ArrowUp", "ArrowDown"].includes(event.key)) return;
+      event.preventDefault();
+      const names = collectionNames();
+      moveCollection(
+        name,
+        names[names.indexOf(name) + (event.key === "ArrowUp" ? -1 : 1)],
+      );
+    });
   }
   function renderItems() {
     const host = $("#archive-items"),
@@ -805,7 +953,10 @@ export function installDatabase(ctx) {
     ctx.refreshMaterialOwners();
     ctx.notify(t("Записи удалены", "Entries deleted"), () => {
       for (const { item, index, cover } of saved) {
-        if (!categories.includes(item.category))
+        if (
+          item.category !== PROJECT_MATERIAL_CATEGORY &&
+          !categories.includes(item.category)
+        )
           item.category = ctx.selectedCollection() || categories[0];
         if (!item.category) {
           categories.push("Материалы");
@@ -1038,8 +1189,20 @@ export function installDatabase(ctx) {
       ctx.restoreDatabaseDraftCover(value.cover || null);
       ctx.renderDatabaseRating();
     }
-    if (editorProject && !item)
-      $("#archive-item-collection").value = materialCollection();
+    const collectionInput = $("#archive-item-collection");
+    const projectOnly =
+      (editorProject && !item) || item?.category === PROJECT_MATERIAL_CATEGORY;
+    if (projectOnly) {
+      const option = make(
+        "option",
+        "",
+        categoryLabel(PROJECT_MATERIAL_CATEGORY),
+      );
+      option.value = PROJECT_MATERIAL_CATEGORY;
+      collectionInput.append(option);
+      collectionInput.value = PROJECT_MATERIAL_CATEGORY;
+    }
+    collectionInput.closest("label").hidden = Boolean(projectOnly);
     editorRatingMax = collections.config(
       $("#archive-item-collection").value,
     ).ratingMax;
@@ -1389,11 +1552,29 @@ export function installDatabase(ctx) {
   }
   function renderLinks(host, owner, kind) {
     if (!owner) return;
-    const block = make("section", "db-material-links");
+    const block = make(
+      kind === "project" ? "details" : "section",
+      "db-material-links",
+    );
     block.dataset.ownerKind = kind;
     block.dataset.ownerId = String(owner.id);
     const heading = make("div", "db-material-heading");
-    heading.append(make("h3", "", t("Материалы", "Materials")));
+    const title = t("Материалы", "Materials");
+    if (kind === "project") {
+      const summary = make("summary", "db-material-summary");
+      summary.append(
+        icon("chevron-right"),
+        make("strong", "", title),
+        make("small", "subtle", String(owner.materialIds?.length || 0)),
+      );
+      block.append(summary);
+      block.open = expandedMaterials.has(owner.id);
+      listen(block, "toggle", () => {
+        if (!block.isConnected) return;
+        if (block.open) expandedMaterials.add(owner.id);
+        else expandedMaterials.delete(owner.id);
+      });
+    } else heading.append(make("h3", "", title));
     if (kind === "project")
       heading.append(
         button(
@@ -1456,7 +1637,7 @@ export function installDatabase(ctx) {
             "subtle",
             kind === "project" && safeUrl(item.url)
               ? new URL(item.url).hostname
-              : item.category,
+              : categoryLabel(item.category),
           ),
         );
       if (item && kind === "project") {
@@ -1506,17 +1687,10 @@ export function installDatabase(ctx) {
       ctx.notify(error.message || String(error));
     }
   }
-  function materialCollection() {
-    const name =
-      categories.find((name) => /материал|material/i.test(name)) || "Материалы";
-    if (!categories.includes(name)) categories.push(name);
-    return name;
-  }
   function openProjectMaterial(owner, item, opener) {
     if (!ctx.projects.includes(owner)) return;
     ctx.closeDialog();
     requestedProject = owner;
-    ctx.selectCollection(item?.category || materialCollection());
     ctx.openDatabaseItem(item, opener);
   }
   function openPicker(owner, kind, opener) {
@@ -1558,7 +1732,7 @@ export function installDatabase(ctx) {
       const caption = make("span");
       caption.append(
         text("strong", "", item.name),
-        text("small", "subtle", item.category),
+        text("small", "subtle", categoryLabel(item.category)),
       );
       label.append(checkbox, caption);
       pickerList.append(label);
@@ -1608,6 +1782,9 @@ export function installDatabase(ctx) {
   listen(window, "life-os:pause", saveDraft);
   return {
     render,
+    resetCollectionView() {
+      collectionOpen = false;
+    },
     opened,
     viewed,
     beforeSave,

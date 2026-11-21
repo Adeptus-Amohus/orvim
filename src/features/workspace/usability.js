@@ -6,7 +6,11 @@ import {
 } from "./experience-model.js";
 import { highlightText } from "./search-highlight.js";
 import { revealInDialog, isTextEntry } from "./interactions.js";
-import { lifeSettings, stampLifeRecord } from "./life-tracking-model.js";
+import {
+  lifeSettings,
+  foodRecordDateTime,
+  setFoodRecordDateTime,
+} from "./life-tracking-model.js";
 export function installUsability(ctx) {
   const { root, $, all, make, listen, action, extraState: state } = ctx;
   if (!Array.isArray(state.uiPreferences.lifeOrder))
@@ -645,13 +649,14 @@ export function installUsability(ctx) {
   for (const [key, label, type] of [
     ["name", "Название", "text"],
     ["date", "Дата", "date"],
+    ["time", "Время", "time"],
     ["calories", "Калории", "number"],
     ["protein", "Белки, г", "number"],
     ["fat", "Жиры, г", "number"],
     ["carbs", "Углеводы, г", "number"],
   ]) {
     const field = ctx.fieldControl(label, "food-edit-" + key, type);
-    field.input.required = true;
+    field.input.required = key !== "time";
     if (type === "number") {
       field.input.min = "0";
       field.input.max = key === "calories" ? "10000" : "1000";
@@ -733,6 +738,9 @@ export function installUsability(ctx) {
           ? (item.nutritionBase?.[key] ?? item[key] ?? 0)
           : (item[key] ?? ""),
       );
+    Object.entries(foodRecordDateTime(item)).forEach(([key, value]) => {
+      foodFields[key].value = value;
+    });
     foodBasisField.input.value = item.nutritionBasis || "portion";
     foodGramsField.input.value = item.grams ?? "";
     const tracking = lifeSettings(ctx.extraState).nutrition;
@@ -767,15 +775,22 @@ export function installUsability(ctx) {
       );
       return;
     }
-    if (editingFood.date !== foodFields.date.value)
-      delete editingFood.occurredAt;
+    const beforeMoment = foodRecordDateTime(editingFood);
     Object.assign(editingFood, portion, {
       name: foodFields.name.value.trim(),
-      date: foodFields.date.value,
       nutritionBase: base,
       nutritionBasis: foodBasisField.input.value,
     });
-    stampLifeRecord(editingFood, ctx.extraState, "foodLogs");
+    if (
+      beforeMoment.date !== foodFields.date.value ||
+      beforeMoment.time !== foodFields.time.value
+    )
+      setFoodRecordDateTime(
+        editingFood,
+        foodFields.date.value,
+        foodFields.time.value,
+        ctx.extraState,
+      );
     if (foodGramsField.input.value)
       editingFood.grams = Number(foodGramsField.input.value);
     else delete editingFood.grams;

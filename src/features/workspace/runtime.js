@@ -2,7 +2,11 @@ import { englishLabels, translateAdditionalLabel } from "./english-labels.js";
 import { rememberInterfaceLanguage } from "./ui-language.js";
 import { installUpgrades } from "./upgrades.js";
 import { installUsability } from "./usability.js";
-import { installDatabase, validateDatabaseExtras } from "./database.js";
+import {
+  installDatabase,
+  validateDatabaseExtras,
+  PROJECT_MATERIAL_CATEGORY,
+} from "./database.js";
 import { collectionSettings } from "./collection-settings.js";
 import { ceramicColors, ceramicMarkup } from "./ceramic-brand.js";
 import { dateFormat, numberFormat } from "./formatters.js";
@@ -1131,7 +1135,7 @@ export function mountWorkspace(root, initialDocument, services) {
     const parts = value.split(":").map(Number);
     return parts[0] * 60 + parts[1];
   };
-  function showPage(page) {
+  function showPage(page, preserveCollection = false) {
     upgrades?.flushThoughts();
     activePage = [
       "home",
@@ -1179,7 +1183,10 @@ export function mountWorkspace(root, initialDocument, services) {
     if (activePage === "projects") renderProjects();
     if (activePage === "life") renderLife();
     if (activePage === "wins") renderWins();
-    if (activePage === "archive") renderArchive();
+    if (activePage === "archive") {
+      if (!preserveCollection) database?.resetCollectionView();
+      renderArchive();
+    }
     if (activePage === "completed") upgrades?.renderCompleted();
     if (activePage === "thoughts") upgrades?.renderThoughts();
     upgrades?.renderHomeThoughts();
@@ -4864,7 +4871,9 @@ export function mountWorkspace(root, initialDocument, services) {
     const collection = $("#archive-item-collection");
     if (collection) {
       collection.replaceChildren();
-      for (const name of archiveCategories) {
+      for (const name of archiveCategories.filter(
+        (name) => name !== PROJECT_MATERIAL_CATEGORY,
+      )) {
         const option = make("option", "", name);
         option.value = name;
         option.dataset.userContent = "";
@@ -4997,7 +5006,8 @@ export function mountWorkspace(root, initialDocument, services) {
     else archiveCovers.delete(item.id);
     if (database) Object.assign(item, database.readFields());
     database?.saved(item);
-    selectedArchiveCategory = category;
+    if (category !== PROJECT_MATERIAL_CATEGORY)
+      selectedArchiveCategory = category;
     renderArchive();
     closeDialog();
   });

@@ -106,6 +106,42 @@ export function stampLifeRecord(row, data = {}, kind = "", now = Date.now()) {
   row.personalDate = true;
   return row;
 }
+export function foodRecordDateTime(row) {
+  const timestamp = Number.isFinite(row.occurredAt)
+    ? row.occurredAt
+    : !row.personalDate &&
+        Number.isFinite(row.loggedAt) &&
+        statsDay(new Date(row.loggedAt)) === row.date
+      ? row.loggedAt
+      : null;
+  if (timestamp !== null) {
+    const date = new Date(timestamp);
+    return {
+      date: statsDay(date),
+      time:
+        String(date.getHours()).padStart(2, "0") +
+        ":" +
+        String(date.getMinutes()).padStart(2, "0"),
+    };
+  }
+  return { date: row.date, time: row.time || "" };
+}
+// The editor accepts the calendar date and local clock time of the meal.
+// The stored date remains the personal day used by nutrition statistics.
+export function setFoodRecordDateTime(row, date, time, data = {}) {
+  delete row.occurredAt;
+  delete row.time;
+  row.personalDate = true;
+  row.date = date;
+  if (time) {
+    const timestamp = new Date(date + "T" + time + ":00").getTime();
+    if (!Number.isFinite(timestamp))
+      throw Error("Некорректные дата и время приёма пищи.");
+    row.occurredAt = timestamp;
+    row.date = personalDay(timestamp, data);
+  }
+  return row;
+}
 export function illnessOnDay(logs, day, today = statsDay(new Date())) {
   return (logs || []).some(
     (row) => row.date <= day && day <= (row.until || today),

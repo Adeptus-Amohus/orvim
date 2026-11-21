@@ -287,14 +287,41 @@ const submit = (s) =>
       protein: 20,
       fat: 10,
       carbs: 100,
+      occurredAt: new Date("2026-11-20T05:15:00").getTime(),
     };
+    food.date = "2026-11-20";
+    click("#personal-day-settings");
+    $("#personal-day-enabled").checked = true;
+    set("#personal-day-start", "05:00");
+    submit("#personal-day-dialog form");
     w.__qa.snapshotData().foodLogs.push(food);
-    set("#food-day", date);
+    set("#food-day", food.date);
     w.__qa.renderFood();
     click(all(".food-log-copy").find((n) => n.textContent.includes(food.name)));
     check(
       $("#food-edit-delete") && !$("#food-edit-dialog").hidden,
       "Nutrition editor has an explicit delete action",
+    );
+    check(
+      $("#food-edit-time").value === "05:15",
+      "Editor shows the original meal time",
+    );
+    set("#food-edit-time", "03:00");
+    submit("#food-edit-form");
+    check(
+      food.date === "2026-11-19",
+      "Editing meal time moves it to the previous personal day",
+    );
+    check(
+      $("#food-day").value === "2026-11-19",
+      "Nutrition shows the corrected personal day",
+    );
+    check(food.calories === 600, "Time edit preserves calories");
+    click(all(".food-log-copy").find((n) => n.textContent.includes(food.name)));
+    check(
+      $("#food-edit-date").value === "2026-11-20" &&
+        $("#food-edit-time").value === "03:00",
+      "Reopening preserves calendar date and clock time",
     );
     click("#food-edit-delete");
     check(

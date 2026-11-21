@@ -385,20 +385,33 @@ impl Hub {
                 root.insert(entity.uid.clone(), v);
             }
         }
-        let mut categories = Vec::new();
+        let mut ordered_categories = Vec::new();
         let mut configs = Vec::new();
         for entity in self
             .entities
             .values()
             .filter(|e| live(e) && e.collection == "@categories")
         {
-            categories.push(json!(entity.uid));
+            if entity.uid == "@project-materials" {
+                continue;
+            }
+            ordered_categories.push((
+                value(entity, "_position")
+                    .and_then(|v| v.as_u64())
+                    .unwrap_or(u64::MAX),
+                &entity.uid,
+            ));
             if let Some(config) = value(entity, "config").filter(|v| !v.is_null()) {
                 configs.push(config);
             }
         }
+        ordered_categories.sort();
+        let mut categories: Vec<Value> = ordered_categories
+            .into_iter()
+            .map(|(_, name)| json!(name))
+            .collect();
         for item in root["archiveItems"].as_array().unwrap() {
-            if !categories.contains(&item["category"]) {
+            if item["category"] != "@project-materials" && !categories.contains(&item["category"]) {
                 categories.push(item["category"].clone());
             }
         }
@@ -672,12 +685,16 @@ impl Client {
                 }
             }
         }
-        for name in document.data["archiveCategories"]
+        for (position, name) in document.data["archiveCategories"]
             .as_array()
             .unwrap()
             .iter()
             .filter_map(Value::as_str)
+            .enumerate()
         {
+            if name == "@project-materials" {
+                continue;
+            }
             let config = document.data["uiPreferences"]["databaseCollections"]
                 .as_array()
                 .and_then(|list| list.iter().find(|v| v["name"] == name))
@@ -689,6 +706,7 @@ impl Client {
                     name.into(),
                     BTreeMap::from([
                         ("config".into(), config),
+                        ("_position".into(), Some(json!(position))),
                         ("_deleted".into(), Some(json!(false))),
                     ]),
                 ),

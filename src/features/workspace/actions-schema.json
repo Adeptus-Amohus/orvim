@@ -35,7 +35,7 @@
     "coverQuery"
   ],
   "sleepLogs": ["date", "hours", "quality", "note"],
-  "foodLogs": ["date", "name", "calories", "protein", "fat", "carbs"],
+  "foodLogs": ["date", "time", "name", "calories", "protein", "fat", "carbs"],
   "waterLogs": ["date", "ml"],
   "workouts": ["date", "name", "time", "duration", "done", "description"],
   "trainingGoals": ["name", "unit", "focus", "baseline", "current", "target"],

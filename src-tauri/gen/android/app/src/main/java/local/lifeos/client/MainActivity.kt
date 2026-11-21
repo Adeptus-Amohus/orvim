@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.os.Build
 import android.webkit.WebView
 import android.view.View
+import android.view.ActionMode
+import android.view.MotionEvent
+import android.view.ViewConfiguration
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
@@ -14,6 +17,46 @@ import androidx.webkit.WebViewFeature
 
 class MainActivity : TauriActivity() {
   private var lifeWebView: WebView? = null
+  private var floatingSelection: ActionMode? = null
+  private var tappedSelection: ActionMode? = null
+  private var tapX = 0f
+  private var tapY = 0f
+
+  override fun onActionModeStarted(mode: ActionMode) {
+    super.onActionModeStarted(mode)
+    if (mode.type == ActionMode.TYPE_FLOATING && lifeWebView != null) floatingSelection = mode
+  }
+
+  override fun onActionModeFinished(mode: ActionMode) {
+    if (floatingSelection === mode) floatingSelection = null
+    if (tappedSelection === mode) tappedSelection = null
+    super.onActionModeFinished(mode)
+  }
+
+  override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+    when (event.actionMasked) {
+      MotionEvent.ACTION_DOWN -> {
+        tappedSelection = floatingSelection
+        tapX = event.x
+        tapY = event.y
+      }
+      MotionEvent.ACTION_MOVE -> {
+        val slop = ViewConfiguration.get(this).scaledTouchSlop
+        if (kotlin.math.abs(event.x - tapX) > slop || kotlin.math.abs(event.y - tapY) > slop) {
+          tappedSelection = null
+        }
+      }
+      MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_POINTER_DOWN -> tappedSelection = null
+    }
+    val handled = super.dispatchTouchEvent(event)
+    if (event.actionMasked == MotionEvent.ACTION_UP) {
+      val selection = tappedSelection
+      tappedSelection = null
+      if (selection != null && selection === floatingSelection &&
+        event.eventTime - event.downTime < ViewConfiguration.getLongPressTimeout()) selection.finish()
+    }
+    return handled
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     enableEdgeToEdge()
@@ -41,6 +84,7 @@ class MainActivity : TauriActivity() {
     }
     onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
       override fun handleOnBackPressed() {
+        floatingSelection?.let { it.finish(); return }
         // Dismiss the IME before navigating; the form and its scroll remain intact.
         val content = findViewById<View>(android.R.id.content)
         if (ViewCompat.getRootWindowInsets(content)?.isVisible(WindowInsetsCompat.Type.ime()) == true) {
@@ -81,6 +125,7 @@ class MainActivity : TauriActivity() {
   }
 
   override fun onPause() {
+    floatingSelection?.finish()
     LifeAlarms.leaveForeground()
     OrvimDictation.stopAll()
     lifeWebView?.evaluateJavascript(
