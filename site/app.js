@@ -1,10 +1,82 @@
 const LANG_STORAGE_KEY = "orvim_site_lang";
 
-const SCREENSHOT_EN_MAP = {
-  "assets/home-desktop.jpg": "assets/home-desktop-en.jpg",
-  "assets/projects-desktop.jpg": "assets/projects-desktop-en.jpg",
-  "assets/home-mobile.jpg": "assets/home-mobile-en.jpg",
-};
+const TOUR_SLIDES = [
+  {
+    id: "home",
+    ru: [
+      "Главная",
+      "Ваш день в одном окне",
+      "Расписание и задачи рядом. Выберите день и отмечайте выполненные дела.",
+      "Расписание и задачи на главной Orvim",
+    ],
+    en: [
+      "Home",
+      "Your day at a glance",
+      "See your schedule and tasks together. Pick a date and check off tasks as you go.",
+      "Schedule and tasks on Orvim Home",
+    ],
+  },
+  {
+    id: "life",
+    ru: [
+      "Жизнь",
+      "Записи о повседневной жизни",
+      "Отмечайте самочувствие, сон, питание и тренировки. Смотрите, как меняются ваши записи со временем.",
+      "Раздел «Жизнь» с дневными записями и показателями",
+    ],
+    en: [
+      "Life",
+      "Keep track of daily life",
+      "Log how you feel, your sleep, meals, and workouts. Look back at your records over time.",
+      "Life screen with daily records and measurements",
+    ],
+  },
+  {
+    id: "thoughts",
+    ru: [
+      "Мысли",
+      "Место для идей и заметок",
+      "Запишите мысль отдельно от списка дел. Возвращайтесь к заметкам, когда захотите развить идею.",
+      "Раздел «Мысли» со списком заметок",
+    ],
+    en: [
+      "Thoughts",
+      "A place for ideas and notes",
+      "Capture a thought outside your task list. Come back to your notes when you want to develop an idea.",
+      "Thoughts screen with a list of notes",
+    ],
+  },
+  {
+    id: "projects",
+    ru: [
+      "Проекты",
+      "Всё по проекту рядом",
+      "Описание, материалы и задачи собраны в одном месте. На доске видно, что запланировано, в работе или готово.",
+      "Проект с описанием, материалами и доской задач",
+    ],
+    en: [
+      "Projects",
+      "Everything for a project in one place",
+      "Keep the brief, reference materials, and tasks together. The board shows what’s planned, in progress, and done.",
+      "Project with a description, materials, and a task board",
+    ],
+  },
+  {
+    id: "database",
+    ru: [
+      "База данных",
+      "Собственные коллекции",
+      "Собирайте книги, фильмы и другие записи в коллекции. Добавляйте статусы, оценки и заметки.",
+      "База данных Orvim с коллекцией книг",
+    ],
+    en: [
+      "Database",
+      "Build your own collections",
+      "Organize books, films, and other records into collections. Add statuses, ratings, and notes.",
+      "Database screen with a book collection",
+    ],
+  },
+];
 
 const translations = {
   en: {
@@ -32,24 +104,12 @@ const translations = {
     principle_logs_desc:
       "Track sleep, nutrition, and well-being at your own pace.",
     tour_title: "Inside Orvim",
-    tour_tabs_aria: "App screens",
-    tab_day: "Your Day",
-    tab_projects: "Your Projects",
-    tab_mobile: "Mobile View",
-    panel_day_title: "Your Day in One View",
-    panel_day_desc:
-      "Schedule and tasks side by side. Pick a day, plan what matters, and check off what you’ve done.",
-    inspect_interface: 'Inspect interface <span aria-hidden="true">↗</span>',
-    panel_day_alt: "Schedule and tasks on the Orvim home screen",
-    panel_projects_title: "Everything for a Project in One Place",
-    panel_projects_desc:
-      "Project notes, reference materials, and tasks live together. You can also jot down standalone thoughts before they become a plan.",
-    panel_projects_alt:
-      "Project view in Orvim with description, materials, and tasks",
-    panel_mobile_title: "Designed for Smaller Screens",
-    panel_mobile_desc:
-      "On Android, add home-screen widgets for your schedule, tasks, thoughts, and nutrition.",
-    panel_mobile_alt: "Mobile home screen layout in Orvim",
+    tour_device_label: "Interface version",
+    tour_mobile: "Mobile version",
+    tour_desktop: "Desktop version",
+    tour_prev: "Previous screen",
+    tour_next: "Next screen",
+    inspect_interface: 'Enlarge screenshot <span aria-hidden="true">↗</span>',
     image_note: "Interface preview",
     download_title: "Download Orvim",
     windows_detail: "Windows 10 or 11 · 64-bit (x64)",
@@ -167,22 +227,6 @@ for (const el of document.querySelectorAll("[data-i18n-alt]")) {
   ruCache.alt.set(el.dataset.i18nAlt, el.getAttribute("alt") || "");
 }
 
-for (const img of document.querySelectorAll("img")) {
-  if (!img.dataset.ruSrc && img.getAttribute("src")) {
-    img.dataset.ruSrc = img.getAttribute("src");
-  }
-}
-for (const source of document.querySelectorAll("picture source")) {
-  if (!source.dataset.ruSrcset && source.getAttribute("srcset")) {
-    source.dataset.ruSrcset = source.getAttribute("srcset");
-  }
-}
-for (const link of document.querySelectorAll("a.enlarge")) {
-  if (!link.dataset.ruHref && link.getAttribute("href")) {
-    link.dataset.ruHref = link.getAttribute("href");
-  }
-}
-
 let currentReleaseVersion = "0.4.48";
 let currentLang = "ru";
 
@@ -196,60 +240,8 @@ function detectInitialLanguage() {
   } catch {
     // Ignore storage errors if blocked by browser privacy settings
   }
-  const browserLangs = navigator.languages?.length
-    ? navigator.languages
-    : [navigator.language || ""];
-  const prefersRussian = browserLangs.some((code) =>
-    String(code).toLowerCase().startsWith("ru"),
-  );
-  return prefersRussian ? "ru" : "en";
-}
-
-function updateScreenshots(lang) {
-  const isEn = lang === "en";
-
-  for (const source of document.querySelectorAll(
-    "picture source[data-ru-srcset]",
-  )) {
-    const ruSrcset = source.dataset.ruSrcset;
-    const enSrcset = SCREENSHOT_EN_MAP[ruSrcset];
-    if (enSrcset) {
-      source.srcset = isEn ? enSrcset : ruSrcset;
-    }
-  }
-
-  for (const img of document.querySelectorAll("img[data-ru-src]")) {
-    const ruSrc = img.dataset.ruSrc;
-    const enSrc = SCREENSHOT_EN_MAP[ruSrc];
-    if (!enSrc) continue;
-
-    if (isEn) {
-      img.onerror = () => {
-        img.onerror = null;
-        img.src = ruSrc;
-        const picture = img.closest("picture");
-        if (picture) {
-          for (const source of picture.querySelectorAll(
-            "source[data-ru-srcset]",
-          )) {
-            source.srcset = source.dataset.ruSrcset;
-          }
-        }
-      };
-      img.src = enSrc;
-    } else {
-      img.onerror = null;
-      img.src = ruSrc;
-    }
-  }
-
-  for (const link of document.querySelectorAll("a.enlarge[data-ru-href]")) {
-    const ruHref = link.dataset.ruHref;
-    const enHref = SCREENSHOT_EN_MAP[ruHref];
-    if (enHref) {
-      link.href = isEn ? enHref : ruHref;
-    }
-  }
+  const language = navigator.languages?.[0] || navigator.language;
+  return /^ru(?:-|$)/i.test(language) ? "ru" : "en";
 }
 
 function updateReleaseTexts(lang) {
@@ -342,7 +334,7 @@ function applyLanguage(lang) {
     }
   }
 
-  updateScreenshots(currentLang);
+  renderTour();
   updateReleaseTexts(currentLang);
 
   for (const link of document.querySelectorAll("a[data-en-href]")) {
@@ -389,34 +381,113 @@ if (langToggleBtn) {
   });
 }
 
-applyLanguage(detectInitialLanguage());
+const tour = document.getElementById("tour-carousel");
+let renderTour = () => {};
 
-const tabs = [...document.querySelectorAll('[role="tab"]')];
-function selectTab(tab) {
-  for (const item of tabs) {
-    const selected = item === tab;
-    item.setAttribute("aria-selected", String(selected));
-    item.tabIndex = selected ? 0 : -1;
-    item.classList.toggle("active", selected);
-    document.getElementById(item.getAttribute("aria-controls")).hidden =
-      !selected;
+if (tour) {
+  const devices = document.getElementById("tour-devices");
+  const controls = document.getElementById("tour-controls");
+  const title = document.getElementById("tour-slide-title");
+  const description = document.getElementById("tour-slide-description");
+  const status = document.getElementById("tour-status");
+  const image = document.getElementById("tour-image");
+  const stage = document.getElementById("tour-stage");
+  const enlarge = document.getElementById("tour-enlarge");
+  const narrow = window.matchMedia("(max-width: 740px)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let device = narrow.matches ? "mobile" : "desktop";
+  let manualDevice = false;
+  let index = 0;
+  let animation;
+  let touch;
+
+  renderTour = () => {
+    const slide = TOUR_SLIDES[index];
+    const [name, heading, body, alt] = slide[currentLang];
+    const mobile = device === "mobile";
+    const suffix = currentLang === "en" ? "-en" : "";
+    const src = `assets/tour/${slide.id}-${device}${suffix}.webp`;
+    title.textContent = heading;
+    description.textContent = body;
+    status.textContent = `${name} · ${index + 1} / ${TOUR_SLIDES.length}`;
+    image.alt = alt;
+    image.width = mobile ? 390 : 1280;
+    image.height = mobile ? 844 : 840;
+    stage.dataset.device = device;
+    if (image.getAttribute("src") !== src) image.src = src;
+    enlarge.href = src;
+    devices.querySelector(`input[value="${device}"]`).checked = true;
+  };
+
+  function moveSlide(direction) {
+    index = (index + direction + TOUR_SLIDES.length) % TOUR_SLIDES.length;
+    animation?.cancel();
+    renderTour();
+    if (!reducedMotion.matches && stage.animate) {
+      animation = stage.animate(
+        [
+          { transform: `translateX(${direction * 24}px)`, opacity: 0.55 },
+          { transform: "none", opacity: 1 },
+        ],
+        { duration: 180, easing: "ease-out" },
+      );
+    }
   }
-}
-for (const [index, tab] of tabs.entries()) {
-  tab.addEventListener("click", () => selectTab(tab));
-  tab.addEventListener("keydown", (event) => {
-    let next;
-    if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
-    if (event.key === "ArrowLeft")
-      next = tabs[(index + tabs.length - 1) % tabs.length];
-    if (event.key === "Home") next = tabs[0];
-    if (event.key === "End") next = tabs[tabs.length - 1];
-    if (!next) return;
-    event.preventDefault();
-    selectTab(next);
-    next.focus();
+
+  devices.hidden = false;
+  controls.hidden = false;
+  devices.addEventListener("change", (event) => {
+    manualDevice = true;
+    device = event.target.value;
+    renderTour();
   });
+  narrow.addEventListener("change", (event) => {
+    if (manualDevice) return;
+    device = event.matches ? "mobile" : "desktop";
+    renderTour();
+  });
+  document
+    .getElementById("tour-prev")
+    .addEventListener("click", () => moveSlide(-1));
+  document
+    .getElementById("tour-next")
+    .addEventListener("click", () => moveSlide(1));
+  tour.addEventListener("keydown", (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    moveSlide(event.key === "ArrowLeft" ? -1 : 1);
+  });
+  stage.addEventListener(
+    "touchstart",
+    (event) => {
+      touch = event.touches.length === 1 ? event.touches[0] : null;
+    },
+    { passive: true },
+  );
+  stage.addEventListener("touchcancel", () => {
+    touch = null;
+  });
+  stage.addEventListener(
+    "touchend",
+    (event) => {
+      if (!touch) return;
+      const end = event.changedTouches[0];
+      const distance = end.clientX - touch.clientX;
+      const vertical = end.clientY - touch.clientY;
+      touch = null;
+      if (
+        Math.abs(distance) < 45 ||
+        Math.abs(distance) < Math.abs(vertical) * 1.4
+      )
+        return;
+      moveSlide(distance < 0 ? 1 : -1);
+    },
+    { passive: true },
+  );
 }
+
+applyLanguage(detectInitialLanguage());
 
 const dialog = document.getElementById("image-dialog");
 if (dialog && typeof dialog.showModal === "function") {
@@ -427,7 +498,7 @@ if (dialog && typeof dialog.showModal === "function") {
       trigger = link;
       const target = document.getElementById("dialog-image");
       const preview = link.closest(".tour-panel").querySelector("img");
-      target.src = preview.currentSrc || preview.src || link.href;
+      target.src = link.href;
       target.alt = preview.alt;
       dialog.showModal();
       dialog.querySelector("button").focus();

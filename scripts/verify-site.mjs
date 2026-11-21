@@ -51,7 +51,13 @@ await fs.access(path.join(root, "assets/OFL-Nunito.txt"));
 await fs.access(path.join(root, "LICENSE"));
 await fs.access(path.join(root, "NOTICE"));
 
-async function render(release, rejects = false, locale = "ru-RU", query = "") {
+async function render(
+  release,
+  rejects = false,
+  locale = "ru-RU",
+  query = "",
+  mobile = false,
+) {
   const dom = new JSDOM(source, {
     url: `https://adeptus-amohus.github.io/orvim/${query}`,
     runScripts: "outside-only",
@@ -63,6 +69,10 @@ async function render(release, rejects = false, locale = "ru-RU", query = "") {
   Object.defineProperty(dom.window.navigator, "languages", {
     value: [locale],
     configurable: true,
+  });
+  dom.window.matchMedia = (query) => ({
+    matches: mobile && query.includes("max-width"),
+    addEventListener() {},
   });
   dom.window.fetch = async (url) => {
     assert.equal(url, "release.json", "Unexpected network request");
@@ -117,25 +127,24 @@ assert.ok(
     .getElementById("release-status")
     .textContent.includes("Стабильный выпуск"),
 );
-document.getElementById("tab-projects").click();
-assert.ok(document.getElementById("panel-day").hidden);
-assert.ok(!document.getElementById("panel-projects").hidden);
-document
-  .getElementById("tab-projects")
-  .dispatchEvent(
-    new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
-  );
-assert.equal(document.activeElement.id, "tab-mobile");
-assert.ok(!document.getElementById("panel-mobile").hidden);
-assert.equal(
-  document.querySelectorAll('[role="tab"][aria-selected="true"]').length,
-  1,
+const image = document.getElementById("tour-image");
+assert.match(image.src, /home-desktop\.webp$/);
+const next = document.getElementById("tour-next");
+next.click();
+assert.match(image.src, /life-desktop\.webp$/);
+next.dispatchEvent(
+  new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
 );
-document
-  .getElementById("tab-mobile")
-  .dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
-assert.equal(document.activeElement.id, "tab-day");
-assert.ok(!document.getElementById("panel-day").hidden);
+assert.match(image.src, /home-desktop\.webp$/);
+document.getElementById("tour-prev").click();
+assert.match(image.src, /database-desktop\.webp$/);
+assert.equal(
+  document.getElementById("tour-status").textContent,
+  "База данных · 5 / 5",
+);
+document.querySelector('input[value="mobile"]').click();
+assert.match(image.src, /database-mobile\.webp$/);
+assert.equal(document.getElementById("tour-enlarge").href, image.src);
 
 // Verify manual language toggle (RU -> EN)
 const langToggle = document.getElementById("lang-toggle");
@@ -143,6 +152,11 @@ assert.equal(langToggle.textContent.trim(), "EN");
 langToggle.click();
 assert.equal(document.documentElement.lang, "en");
 assert.equal(langToggle.textContent.trim(), "RU");
+assert.match(image.src, /database-mobile-en\.webp$/);
+assert.equal(
+  document.getElementById("tour-status").textContent,
+  "Database · 5 / 5",
+);
 assert.ok(
   document
     .getElementById("release-status")
@@ -151,12 +165,32 @@ assert.ok(
 dom.window.close();
 
 // Verify automatic English detection on first visit
-const enDom = await render(published, false, "en-US");
+const enDom = await render(published, false, "en-US", "", true);
 assert.equal(enDom.window.document.documentElement.lang, "en");
 assert.ok(
   enDom.window.document
     .getElementById("release-status")
     .textContent.includes("Stable release test"),
+);
+const enDocument = enDom.window.document;
+const screens = ["home", "life", "thoughts", "projects", "database"];
+for (const screen of screens) {
+  assert.ok(
+    enDocument
+      .getElementById("tour-image")
+      .src.endsWith(`/${screen}-mobile-en.webp`),
+  );
+  enDocument.getElementById("tour-next").click();
+  for (const device of ["desktop", "mobile"]) {
+    for (const suffix of ["", "-en"]) {
+      await fs.access(
+        path.join(root, `assets/tour/${screen}-${device}${suffix}.webp`),
+      );
+    }
+  }
+}
+assert.ok(
+  enDocument.getElementById("tour-image").src.endsWith("/home-mobile-en.webp"),
 );
 enDom.window.close();
 

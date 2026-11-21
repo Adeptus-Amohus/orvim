@@ -27,8 +27,8 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="assets/orvim.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=tour" />
+    <script src="app.js?v=tour" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip_link">К содержимому</a>
@@ -125,144 +125,68 @@
         <div class="section-heading">
           <h2 id="tour-title" data-i18n="tour_title">Внутри Orvim</h2>
         </div>
-        <div
-          class="tour-tabs"
-          role="tablist"
-          aria-label="Экраны приложения"
-          data-i18n-aria="tour_tabs_aria"
-        >
-          <button
-            id="tab-day"
-            class="active"
-            role="tab"
-            aria-selected="true"
-            aria-controls="panel-day"
-            type="button"
-            data-i18n="tab_day"
-          >
-            Ваш день
-          </button>
-          <button
-            id="tab-projects"
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-projects"
-            tabindex="-1"
-            type="button"
-            data-i18n="tab_projects"
-          >
-            Ваши проекты
-          </button>
-          <button
-            id="tab-mobile"
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-mobile"
-            tabindex="-1"
-            type="button"
-            data-i18n="tab_mobile"
-          >
-            Мобильный экран
-          </button>
-        </div>
-        <div
-          id="panel-day"
-          class="tour-panel"
-          role="tabpanel"
-          aria-labelledby="tab-day"
-          tabindex="0"
-        >
-          <div class="tour-text">
-            <h3 data-i18n="panel_day_title">Ваш день в одном окне</h3>
-            <p data-i18n="panel_day_desc">
-              Расписание и задачи рядом. Выберите день, запланируйте дело и
-              отметьте то, что уже получилось.
-            </p>
-            <a
-              class="text-link enlarge"
-              href="assets/home-desktop.jpg"
-              data-i18n-html="inspect_interface"
-              >Рассмотреть интерфейс <span aria-hidden="true">↗</span></a
-            >
+        <fieldset class="tour-tabs" hidden id="tour-devices">
+          <legend class="tour-sr-only" data-i18n="tour_device_label">
+            Версия интерфейса
+          </legend>
+          <label>
+            <input type="radio" name="tour-device" value="mobile" />
+            <span data-i18n="tour_mobile">Мобильная версия</span>
+          </label>
+          <label>
+            <input type="radio" name="tour-device" value="desktop" checked />
+            <span data-i18n="tour_desktop">ПК-версия</span>
+          </label>
+        </fieldset>
+        <div class="tour-panel" id="tour-carousel">
+          <div class="tour-header">
+            <div class="tour-text">
+              <h3 id="tour-slide-title">Ваш день в одном окне</h3>
+              <p id="tour-slide-description">
+                Расписание и задачи рядом. Выберите день и отмечайте выполненные
+                дела.
+              </p>
+              <a
+                class="text-link enlarge"
+                id="tour-enlarge"
+                href="assets/tour/home-desktop.webp"
+                data-i18n-html="inspect_interface"
+                >Рассмотреть интерфейс <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="tour-controls" id="tour-controls" hidden>
+              <button
+                type="button"
+                id="tour-prev"
+                aria-label="Предыдущий экран"
+                data-i18n-aria="tour_prev"
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <p id="tour-status" aria-live="polite" aria-atomic="true">
+                Главная · 1 / 5
+              </p>
+              <button
+                type="button"
+                id="tour-next"
+                aria-label="Следующий экран"
+                data-i18n-aria="tour_next"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
           </div>
-          <picture class="day-screenshot">
-            <source
-              media="(max-width: 600px)"
-              srcset="assets/home-mobile.jpg"
-              width="390"
-              height="844"
-            />
+          <div id="tour-stage" class="tour-stage">
             <img
-              src="assets/home-desktop.jpg"
+              id="tour-image"
+              src="assets/tour/home-desktop.webp"
               width="1280"
-              height="720"
+              height="840"
               alt="Расписание и задачи на главной Orvim"
-              data-i18n-alt="panel_day_alt"
               loading="lazy"
+              draggable="false"
             />
-          </picture>
-        </div>
-        <div
-          id="panel-projects"
-          class="tour-panel"
-          role="tabpanel"
-          aria-labelledby="tab-projects"
-          tabindex="0"
-          hidden
-        >
-          <div class="tour-text">
-            <h3 data-i18n="panel_projects_title">Всё по проекту рядом</h3>
-            <p data-i18n="panel_projects_desc">
-              Описание, материалы и задачи проекта собраны вместе. Мысли можно
-              записывать и отдельно, когда они ещё не стали планом.
-            </p>
-            <a
-              class="text-link enlarge"
-              href="assets/projects-desktop.jpg"
-              data-i18n-html="inspect_interface"
-              >Рассмотреть интерфейс <span aria-hidden="true">↗</span></a
-            >
           </div>
-          <img
-            src="assets/projects-desktop.jpg"
-            width="1280"
-            height="900"
-            alt="Проект в Orvim с описанием, материалами и задачами"
-            data-i18n-alt="panel_projects_alt"
-            loading="lazy"
-          />
-        </div>
-        <div
-          id="panel-mobile"
-          class="tour-panel mobile-panel"
-          role="tabpanel"
-          aria-labelledby="tab-mobile"
-          tabindex="0"
-          hidden
-        >
-          <div class="tour-text">
-            <h3 data-i18n="panel_mobile_title">
-              Интерфейс на небольшом экране
-            </h3>
-            <p data-i18n="panel_mobile_desc">
-              На Android можно добавить на главный экран телефона виджеты
-              расписания, задач, мыслей и питания.
-            </p>
-            <a
-              class="text-link enlarge"
-              href="assets/home-mobile.jpg"
-              data-i18n-html="inspect_interface"
-              >Рассмотреть интерфейс <span aria-hidden="true">↗</span></a
-            >
-          </div>
-          <img
-            src="assets/home-mobile.jpg"
-            width="390"
-            height="844"
-            alt="Мобильная компоновка главной Orvim"
-            data-i18n-alt="panel_mobile_alt"
-            loading="lazy"
-          />
         </div>
         <p class="image-note" data-i18n="image_note">Пример интерфейса</p>
       </section>
@@ -419,8 +343,7 @@
           href="https://github.com/Adeptus-Amohus/orvim/blob/main/README.ru.md"
           data-en-href="https://github.com/Adeptus-Amohus/orvim"
           >GitHub <span aria-hidden="true">↗</span></a
-        ><a href="privacy.html" data-i18n="footer_privacy"
-          >Приватность сайта</a
+        ><a href="privacy.html" data-i18n="footer_privacy">Приватность сайта</a
         ><span>© 2026 Orvim</span>
       </div>
     </footer>
