@@ -2,7 +2,7 @@
 
 English | [Русский](README.md)
 
-Start with the [Orvim overview](../README.md) or the [installation guide](INSTALLATION.en.md). The current release is [0.4.48](releases/0.4.48.en.md). The [public release](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48) includes installers, checksums, and verification results.
+Start with the [Orvim overview](../README.md) or the [installation guide](INSTALLATION.en.md). The current release is [0.4.49](releases/0.4.49.en.md). The [public release](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.49) includes installers, checksums, and verification results.
 
 ## Using Orvim
 
@@ -12,7 +12,7 @@ Start with the [Orvim overview](../README.md) or the [installation guide](INSTAL
 | [Backups and recovery](BACKUPS.en.md)                                   | Portable encrypted backups, restore checks, snapshots, and exports.                               |
 | [Data and privacy](PRIVACY.en.md)                                       | Local storage, credentials, permissions, and data sent to optional services.                      |
 | [Feedback and bug reports](../CONTRIBUTING.md#feedback-and-bug-reports) | Asking a question by email or reporting a reproducible issue.                                     |
-| [Release notes](releases/0.4.48.en.md)                                  | Public update checks and manual installation for older versions.                                  |
+| [Release notes](releases/0.4.49.en.md)                                  | Public update checks and manual installation for older versions.                                  |
 | [Sync and transfers](SYNC_0_4.en.md)                                    | LAN, file transfers, pairing, and conflicts.                                                      |
 | [Health Connect](HEALTH_CONNECT.en.md)                                  | Steps, sleep, workouts, and permissions.                                                          |
 | [OpenAI setup](OPENAI_CONNECTION.en.md)                                 | API key, model selection, and connection errors.                                                  |

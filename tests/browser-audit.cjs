@@ -178,6 +178,7 @@ async function scenario(label, run) {
         pinned: true,
       },
     ];
+    d.archiveCategories = ["Книги", "Фильмы", "Аниме"];
     d.archiveItems = [
       {
         id: 400,

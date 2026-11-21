@@ -1,19 +1,19 @@
-# Install or update Orvim 0.4.48
+# Install or update Orvim 0.4.49
 
 English | [Русский](INSTALLATION.md)
 
-The [public release](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.48) contains the APK, Windows installer, documentation, SHA-256 checksums, and licenses. Download the installer for your device and follow the steps below. A GitHub account and development tools are unnecessary.
+The [public release](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.49) contains the APK, Windows installer, documentation, SHA-256 checksums, and licenses. Download the installer for your device and follow the steps below. A GitHub account and development tools are unnecessary.
 
 ## Android
 
 You need Android 7.0 (API 24) or later, an ARM64 device (`arm64-v8a`), and an up-to-date Android WebView. The release contains an ARM64 APK. Health Connect has its own Android version and permission requirements.
 
-1. Download [Orvim-0.4.48-Android-arm64.apk](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Android-arm64.apk).
-2. Compare the downloaded file’s SHA-256 checksum with the entry in [SHA256SUMS.txt](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt).
+1. Download [Orvim-0.4.49-Android-arm64.apk](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/Orvim-0.4.49-Android-arm64.apk).
+2. Compare the downloaded file’s SHA-256 checksum with the entry in [SHA256SUMS.txt](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/SHA256SUMS.txt).
 3. Open the APK with your file manager. Android may ask you to allow that file manager to install apps. Confirm you downloaded the APK from the official release before granting permission.
 4. Open Orvim. If you are moving from another installation, restore your portable backup, restart Orvim, and check that your records are still there.
 
-The release uses app ID `local.lifeos.client`, version `0.4.48`, and `versionCode 4048`. Regular release updates retain the app ID and signing certificate and increase `versionCode`.
+The release uses app ID `local.lifeos.client`, version `0.4.49`, and `versionCode 4049`. Regular release updates retain the app ID and signing certificate and increase `versionCode`.
 
 ### Migrating from an older test APK
 
@@ -30,7 +30,7 @@ Automatic backups depend on a device key, and CSV exports contain only part of y
 
 You need Windows 10 or 11 (x64) and Microsoft Edge WebView2 Evergreen Runtime. If WebView2 is missing, the installer needs an internet connection to download it from Microsoft.
 
-1. Download [Orvim-0.4.48-Windows-x64-setup.exe](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Orvim-0.4.48-Windows-x64-setup.exe) and compare its SHA-256 with [SHA256SUMS.txt](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/SHA256SUMS.txt).
+1. Download [Orvim-0.4.49-Windows-x64-setup.exe](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/Orvim-0.4.49-Windows-x64-setup.exe) and compare its SHA-256 with [SHA256SUMS.txt](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/SHA256SUMS.txt).
 2. If you are updating, create a portable encrypted backup first. Then choose **Exit** in the Orvim system tray menu to close the app.
 3. Run the installer. For an update, use the existing installation folder so Orvim can continue to use your current data. Older Life OS paths are retained for compatibility.
 4. Open Orvim, then restart it and check your records.
@@ -49,6 +49,6 @@ To uninstall, use **Settings → Apps → Orvim → Uninstall**. Leave the optio
 
 ## Updates and verification
 
-If **Check GitHub** returns a 404 in 0.4.46 or 0.4.47, download 0.4.48 and install it over your existing release. Starting with 0.4.48, the app checks public releases and verifies a signed update manifest when one is available. Installation requires your confirmation. [0.4.48 release notes](releases/0.4.48.en.md)
+If **Check GitHub** returns a 404 in 0.4.46 or 0.4.47, download 0.4.49 and install it over your existing release. Starting with 0.4.48, the app checks public releases and verifies a signed update manifest when one is available. Installation requires your confirmation. [0.4.49 release notes](releases/0.4.49.en.md)
 
-Release checks covered installation, startup, updates or package replacement, and data retention in the available environments. Testing did not cover a physical ARM64 phone, every Android launcher, a physical device on API 24, a clean Windows installation without WebView2, or live AI, Google, Notion, and Health Connect accounts. [Verification report and build provenance](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.48/Verification.md)
+Release checks covered installation, startup, updates or package replacement, and data retention in the available environments. Testing did not cover a physical ARM64 phone, every Android launcher, a physical device on API 24, a clean Windows installation without WebView2, or live AI, Google, Notion, and Health Connect accounts. [Verification report and build provenance](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/Verification.md)
