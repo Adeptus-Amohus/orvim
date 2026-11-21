@@ -2,7 +2,7 @@
 
 Сайт: https://adeptus-amohus.github.io/orvim/
 
-Статический сайт для знакомства с Orvim, скачивания публичного выпуска и обратной связи. Проверенный адрес сайта и файлов распространения — `Adeptus-Amohus/orvim`. Текущий выпуск Orvim 0.4.49 включает установщик Windows x64 и APK для Android ARM64. Сайт находится в site/ основного репозитория Orvim рядом с приложением и документацией. Адрес сайта сохраняется.
+Статический сайт для знакомства с Orvim, скачивания публичного выпуска и обратной связи. Проверенный адрес сайта и файлов распространения — `Adeptus-Amohus/orvim`. Текущий выпуск Orvim 0.4.50 включает установщик Windows x64 и APK для Android ARM64. Сайт находится в site/ основного репозитория Orvim рядом с приложением и документацией. Адрес сайта сохраняется.
 
 ## Публикация
 
@@ -12,11 +12,11 @@ Workflow `.github/workflows/pages.yml` проверяет ссылки и пуб
 
 ## Сборки приложения
 
-[Стабильный Orvim 0.4.49](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.49): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/Orvim-0.4.49-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/Orvim-0.4.49-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.49/SHA256SUMS.txt). Скачивание без авторизации.
+[Стабильный Orvim 0.4.50](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.50): [Android ARM64 APK](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.50/Orvim-0.4.50-Android-arm64.apk), [Windows x64 EXE](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.50/Orvim-0.4.50-Windows-x64-setup.exe), [инструкции](https://github.com/Adeptus-Amohus/orvim/blob/main/docs/INSTALLATION.md), [SHA-256](https://github.com/Adeptus-Amohus/orvim/releases/download/v0.4.50/SHA256SUMS.txt). Скачивание без авторизации.
 
-Исходники 0.4.49 зафиксированы в [коммите caba559](https://github.com/Adeptus-Amohus/orvim/commit/caba5599ec7638c3c41e6d1940735ac87c7f38f1). [Заметки и проверки выпуска](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.49).
+Исходники 0.4.50 зафиксированы в [коммите d4c0dd8](https://github.com/Adeptus-Amohus/orvim/commit/d4c0dd8a09a108d2996783ee084ab0cb331a146c). [Заметки и проверки выпуска](https://github.com/Adeptus-Amohus/orvim/releases/tag/v0.4.50).
 
-`release.json` содержит ссылки на проверенные публичные файлы в Releases этого репозитория. Для 0.4.49 прямые ссылки также записаны в HTML: скачивание работает без JavaScript и при недоступности JSON. Короткие инструкции остаются рядом с кнопками, помощь и перенос данных вынесены в [help.html](help.html).
+`release.json` содержит ссылки на проверенные публичные файлы в Releases этого репозитория. Для 0.4.50 прямые ссылки также записаны в HTML: скачивание работает без JavaScript и при недоступности JSON. Короткие инструкции остаются рядом с кнопками, помощь и перенос данных вынесены в [help.html](help.html).
 
 После публикации APK/EXE укажите `version`, `windows`, `android`, `notes` и при необходимости `notice`. Windows — установщик x64, Android — APK ARM64. Не указывайте ссылки на приватный репозиторий: посетитель не сможет скачать файл. Версия исходников не является подтверждением версии установщика.
 

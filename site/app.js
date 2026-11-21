@@ -228,7 +228,7 @@ for (const el of document.querySelectorAll("[data-i18n-alt]")) {
   ruCache.alt.set(el.dataset.i18nAlt, el.getAttribute("alt") || "");
 }
 
-let currentReleaseVersion = "0.4.49";
+let currentReleaseVersion = "0.4.50";
 let currentLang = "ru";
 
 function detectInitialLanguage() {
