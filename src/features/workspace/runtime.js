@@ -7234,6 +7234,9 @@ export function mountWorkspace(root, initialDocument, services) {
     editCollection,
     deleteCollection,
     selectedCollection: () => selectedArchiveCategory,
+    openProjectMaterials: () => database?.openProjectMaterials(),
+    isProjectMaterials: () =>
+      selectedArchiveCategory === PROJECT_MATERIAL_CATEGORY,
     selectCollection: (name) => {
       selectedArchiveCategory = name;
     },

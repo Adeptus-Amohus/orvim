@@ -170,12 +170,37 @@ const w = dom.window,
     }
     w.__qa.showPage("archive");
     await wait();
-    check($("#archive-items").closest(".panel").hidden, "Database opens on the collection list");
-    const firstCollection = $("#archive-categories .db-collection-row").dataset.collection;
+    check(
+      $("#archive-items").closest(".panel").hidden,
+      "Database opens on the collection list",
+    );
+    check(
+      $(".database-tabs").children.length === 3,
+      "All three database tabs are visible at the top",
+    );
+    click('[data-database-view="completed"]');
+    check(!$("#completed-screen").hidden, "Archive opens independently");
+    click('[data-database-view="materials"]');
+    check(
+      $("#completed-screen").hidden &&
+        !$("#archive-items").closest(".panel").hidden,
+      "Project materials open outside the archive",
+    );
+    check(
+      $('[data-database-view="materials"]').getAttribute("aria-pressed") ===
+        "true",
+      "Project materials tab is selected",
+    );
+    click('[data-database-view="archive"]');
+    const firstCollection = $("#archive-categories .db-collection-row").dataset
+      .collection;
     $("#archive-categories .db-collection-handle").dispatchEvent(
       new w.KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
     );
-    check(w.__qa.snapshotData().archiveCategories[1] === firstCollection, "Collection reorder updates the saved order");
+    check(
+      w.__qa.snapshotData().archiveCategories[1] === firstCollection,
+      "Collection reorder updates the saved order",
+    );
     click("#archive-categories .archive-category");
     check(
       $(".collection-menu").contains($('[aria-label="Удалить коллекцию"]')),

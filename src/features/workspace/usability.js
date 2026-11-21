@@ -550,11 +550,12 @@ export function installUsability(ctx) {
   ).forEach((button) => button.remove());
   const databaseTabs = make("div", "segments database-tabs");
   databaseTabs.hidden = true;
-  for (const [page, label] of [
-    ["archive", "Коллекции"],
-    ["completed", "Архив"],
+  for (const [page, label, open] of [
+    ["archive", "Коллекции", () => ctx.showPage("archive")],
+    ["completed", "Архив", () => ctx.showPage("completed")],
+    ["materials", "Материалы проектов", () => ctx.openProjectMaterials()],
   ]) {
-    const button = action(label, () => ctx.showPage(page));
+    const button = action(label, open);
     button.dataset.databaseView = page;
     databaseTabs.append(button);
   }
@@ -752,6 +753,39 @@ export function installUsability(ctx) {
     ctx.openDialog("food-edit-dialog", opener);
     foodFields.name.focus();
   }
+  function saveFoodMoment() {
+    const before = foodRecordDateTime(editingFood);
+    if (
+      before.date === foodFields.date.value &&
+      before.time === foodFields.time.value
+    )
+      return false;
+    setFoodRecordDateTime(
+      editingFood,
+      foodFields.date.value,
+      foodFields.time.value,
+      ctx.extraState,
+    );
+    $("#food-day").value = editingFood.date;
+    return true;
+  }
+  listen(foodFields.time, "change", () => {
+    if (
+      $("#food-edit-dialog").hidden ||
+      !editingFood ||
+      !ctx.foodLogs.includes(editingFood)
+    )
+      return;
+    if (
+      !foodFields.date.checkValidity() ||
+      !foodFields.time.checkValidity() ||
+      !saveFoodMoment()
+    )
+      return;
+    ctx.renderFood();
+    ctx.persistState();
+    notify(t("Время сохранено", "Meal time saved"));
+  });
   listen(foodForm, "submit", (event) => {
     event.preventDefault();
     if (!editingFood || !ctx.foodLogs.includes(editingFood)) return;
@@ -775,22 +809,12 @@ export function installUsability(ctx) {
       );
       return;
     }
-    const beforeMoment = foodRecordDateTime(editingFood);
     Object.assign(editingFood, portion, {
       name: foodFields.name.value.trim(),
       nutritionBase: base,
       nutritionBasis: foodBasisField.input.value,
     });
-    if (
-      beforeMoment.date !== foodFields.date.value ||
-      beforeMoment.time !== foodFields.time.value
-    )
-      setFoodRecordDateTime(
-        editingFood,
-        foodFields.date.value,
-        foodFields.time.value,
-        ctx.extraState,
-      );
+    saveFoodMoment();
     if (foodGramsField.input.value)
       editingFood.grams = Number(foodGramsField.input.value);
     else delete editingFood.grams;
@@ -835,10 +859,12 @@ export function installUsability(ctx) {
         button.setAttribute("aria-current", "page"),
       );
     }
+    const databaseView =
+      page === "archive" && ctx.isProjectMaterials() ? "materials" : page;
     for (const button of databaseTabs.children)
       button.setAttribute(
         "aria-pressed",
-        String(button.dataset.databaseView === page),
+        String(button.dataset.databaseView === databaseView),
       );
     prefsButton.hidden = page !== "life" || $("#life-overview").hidden;
     categoryEdit.disabled = categoryDelete.disabled = !ctx.selectedCollection();

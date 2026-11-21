@@ -247,8 +247,10 @@ export const englishLabels = {
   "Проверить на GitHub": "Check GitHub",
   "Проверка выпусков GitHub и загрузка обновлений через интернет. Установка — после подтверждения.":
     "Check GitHub releases and download updates online. Installation requires confirmation.",
-  "Проверьте наличие новой версии. Если доступен подписанный пакет, здесь появятся кнопки загрузки и установки. Иначе откройте страницу выпуска для ручной установки. Перед встроенной установкой создаётся резервная копия; на Android последнее подтверждение показывает система.":
-    "Check for a new version. Download and install buttons appear when a signed package is available. Otherwise, open the release page for manual installation. An in-app installation creates a backup first; Android shows the final system confirmation.",
+  "Если доступно подписанное обновление, нажмите «Скачать и установить». Orvim проверит пакет и создаст резервную копию. На Android установку нужно подтвердить в системном окне.":
+    "When a signed update is available, select Download and install. Orvim verifies the package and creates a backup. On Android, confirm the installation in the system dialog.",
+  "Скачать и установить": "Download and install",
+  "Материалы проектов": "Project materials",
   "Найти устройства": "Find devices",
   "Ввести адрес вручную": "Enter address manually",
   "Сканировать QR-код": "Scan QR code",

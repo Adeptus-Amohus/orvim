@@ -1,3 +1,5 @@
+import { renderAssistantMarkdown } from "./assistant.js";
+
 export function installUpdateSettings(ctx, panel) {
   const { make, action, services } = ctx,
     card = make("section", "settings-data-card update-card"),
@@ -17,7 +19,8 @@ export function installUpdateSettings(ctx, panel) {
     if (busy) return;
     busy = true;
     check.disabled = true;
-    check.textContent = "Проверяем…";
+    const controls = [...list.querySelectorAll("button:not(:disabled)")];
+    controls.forEach((button) => (button.disabled = true));
     card.setAttribute("aria-busy", "true");
     try {
       status.textContent = "Выполняем…";
@@ -28,6 +31,7 @@ export function installUpdateSettings(ctx, panel) {
     } finally {
       busy = false;
       check.disabled = !services.localSync;
+      controls.forEach((button) => (button.disabled = false));
       check.textContent = "Проверить на GitHub";
       card.removeAttribute("aria-busy");
       progress.hidden = true;
@@ -38,6 +42,7 @@ export function installUpdateSettings(ctx, panel) {
     () =>
       run(async () => {
         checkStarted = true;
+        check.textContent = "Проверяем…";
         const result = await services.updates("check");
         if (disposed) return;
         versionLabel.textContent = "Установлена версия " + result.installed;
@@ -70,8 +75,9 @@ export function installUpdateSettings(ctx, panel) {
         older.append(make("summary", "", "Предыдущие версии и откат"));
         for (const release of result.releases || []) {
           const row = make("section", "update-release"),
-            notes = make("p", "", release.notes),
+            notes = make("div", "update-notes"),
             installed = release.version === result.installed;
+          renderAssistantMarkdown(notes, release.notes, services.openExternal);
           row.append(
             make(
               "h4",
@@ -85,46 +91,45 @@ export function installUpdateSettings(ctx, panel) {
               release.schema_min <= 3 &&
               release.schema_max >= 3 &&
               release.workspace_max >= 32;
-            const download = action(
-                "Загрузить",
-                () =>
-                  run(async () => {
-                    progress.hidden = false;
-                    await services.updates("download", release.version);
-                    status.textContent = "Пакет загружен и проверен.";
-                    install.disabled = false;
-                  }),
-                "button",
-              ),
-              install = action(
-                "Установить / перейти на эту версию",
-                () =>
-                  run(async () => {
-                    if (!compatible)
-                      throw Error(
-                        "Схема несовместима. Используйте восстановление подходящей копии; новые изменения будут потеряны.",
-                      );
-                    const result = await services.updates(
-                      "install",
-                      release.version,
-                    );
-                    status.textContent =
-                      result.message ||
-                      (result.permissionRequired
-                        ? "Разрешите установку приложений для Orvim и нажмите установить ещё раз."
-                        : "Открыт системный установщик. После завершения запустите Orvim.");
-                  }),
-                "button",
-              );
-            install.disabled = true;
-            download.disabled = !compatible;
-            row.append(download, install);
+            const install = action(
+              "Скачать и установить",
+              () =>
+                run(async () => {
+                  progress.hidden = false;
+                  progress.value = 0;
+                  status.textContent = "Загрузка…";
+                  await services.updates("download", release.version);
+                  progress.hidden = true;
+                  status.textContent = "Пакет проверен. Открываем установщик…";
+                  const result = await services.updates(
+                    "install",
+                    release.version,
+                  );
+                  status.textContent =
+                    result.message ||
+                    (result.permissionRequired
+                      ? "Разрешите установку приложений для Orvim и повторите действие. Проверенный пакет уже сохранён."
+                      : "Открыт системный установщик. После завершения запустите Orvim.");
+                }),
+              "button",
+            );
+            install.disabled =
+              !compatible || (services.mobile && !release.newer);
+            row.append(install);
             if (!compatible)
               row.append(
                 make(
                   "p",
                   "aux-note",
                   "Автоматическая установка заблокирована: несовместимая схема данных.",
+                ),
+              );
+            else if (services.mobile && !release.newer)
+              row.append(
+                make(
+                  "p",
+                  "aux-note",
+                  "Android блокирует установку более старой версии.",
                 ),
               );
           }
@@ -166,7 +171,7 @@ export function installUpdateSettings(ctx, panel) {
     make(
       "p",
       "aux-note",
-      "Проверьте наличие новой версии. Если доступен подписанный пакет, здесь появятся кнопки загрузки и установки. Иначе откройте страницу выпуска для ручной установки. Перед встроенной установкой создаётся резервная копия; на Android последнее подтверждение показывает система.",
+      "Если доступно подписанное обновление, нажмите «Скачать и установить». Orvim проверит пакет и создаст резервную копию. На Android установку нужно подтвердить в системном окне.",
     ),
     status,
     checkedLabel,

@@ -1052,6 +1052,23 @@
   padding: 12px 0;
   border-top: 1px solid var(--lo-line);
 }
+.update-notes {
+  margin: 8px 0 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.update-notes :is(h3, h4, h5, p, ul, ol, pre) {
+  margin: 0 0 8px;
+}
+.update-notes :is(ul, ol) {
+  padding-inline-start: 1.4em;
+}
+.update-notes li + li {
+  margin-top: 5px;
+}
+.update-notes pre {
+  white-space: pre-wrap;
+}
 .license-text {
   white-space: pre-wrap;
   overflow: auto;

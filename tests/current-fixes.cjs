@@ -306,8 +306,12 @@ const submit = (s) =>
       $("#food-edit-time").value === "05:15",
       "Editor shows the original meal time",
     );
-    set("#food-edit-time", "03:00");
-    submit("#food-edit-form");
+    click($("#food-edit-time").nextElementSibling);
+    const [hours, minutes] = all(".rounded-time-fields input");
+    hours.value = "3";
+    minutes.value = "0";
+    click(".rounded-picker-actions .button-primary");
+    click("#food-edit-dialog .close");
     check(
       food.date === "2026-11-19",
       "Editing meal time moves it to the previous personal day",

@@ -256,10 +256,21 @@
 }
 #life-os-workspace .database-tabs {
   width: fit-content;
+  max-width: 100%;
   margin-bottom: 20px;
 }
 #life-os-workspace .database-tabs button {
   padding: 8px 16px;
+  min-width: 0;
+  min-height: 40px;
+  white-space: normal;
+  border: 1px solid var(--lo-line);
+}
+@media (max-width: 420px) {
+  #life-os-workspace .database-tabs button {
+    padding-inline: 8px;
+    overflow-wrap: anywhere;
+  }
 }
 #life-os-workspace #archive-category-title[role="button"] {
   cursor: pointer;

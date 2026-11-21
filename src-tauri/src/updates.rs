@@ -129,11 +129,12 @@ fn target() -> String {
     format!("{}-{}", std::env::consts::OS, std::env::consts::ARCH)
 }
 fn root(app: &tauri::AppHandle) -> Result<PathBuf> {
-    Ok(app
-        .path()
-        .app_local_data_dir()
-        .map_err(|e| e.to_string())?
-        .join("updates"))
+    let data = app.path().app_local_data_dir().map_err(|e| e.to_string())?;
+    // Android's Tauri path resolver returns dataDir. The installer and its
+    // FileProvider can only share files from the private files/updates folder.
+    #[cfg(target_os = "android")]
+    let data = data.join("files");
+    Ok(data.join("updates"))
 }
 fn manifest(app: &tauri::AppHandle, service: &Updates) -> Result<Manifest> {
     if let Some(value) = service

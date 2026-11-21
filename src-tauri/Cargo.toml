@@ -1,6 +1,6 @@
 [package]
 name = "orvim"
-version = "0.4.49"
+version = "0.4.50"
 license = "Apache-2.0"
 description = "Orvim application foundation"
 edition = "2021"

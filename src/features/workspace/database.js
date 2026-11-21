@@ -618,6 +618,11 @@ export function installDatabase(ctx) {
     ctx.services.refreshIcons($("#archive-screen"));
   }
   function showCollections() {
+    if (ctx.selectedCollection() === PROJECT_MATERIAL_CATEGORY) {
+      ctx.showPage("archive");
+      $("#archive-categories .archive-category")?.focus();
+      return;
+    }
     collectionOpen = false;
     render();
     $("#archive-categories .archive-category")?.focus();
@@ -636,20 +641,15 @@ export function installDatabase(ctx) {
       !document.querySelector(".overlay:not([hidden])"),
     showCollections,
   );
-  const projectArchive = button(
-    t("Материалы проектов", "Project materials"),
-    () => {
-      ctx.selectCollection(PROJECT_MATERIAL_CATEGORY);
-      collectionOpen = true;
-      selecting = false;
-      selected.clear();
-      query = search.value = filter = genreFilter = "";
-      limit = 40;
-      ctx.showPage("archive", true);
-    },
-    "text-button",
-  );
-  $("#completed-screen .section-toolbar").append(projectArchive);
+  function openProjectMaterials() {
+    ctx.selectCollection(PROJECT_MATERIAL_CATEGORY);
+    collectionOpen = true;
+    selecting = false;
+    selected.clear();
+    query = search.value = filter = genreFilter = "";
+    limit = 40;
+    ctx.showPage("archive", true);
+  }
 
   function moveCollection(name, target) {
     const from = categories.indexOf(name),
@@ -1782,6 +1782,7 @@ export function installDatabase(ctx) {
   listen(window, "life-os:pause", saveDraft);
   return {
     render,
+    openProjectMaterials,
     resetCollectionView() {
       collectionOpen = false;
     },

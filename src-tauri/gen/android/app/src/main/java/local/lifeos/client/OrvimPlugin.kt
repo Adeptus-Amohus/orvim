@@ -190,7 +190,7 @@ class OrvimPlugin(private val activity: Activity): Plugin(activity) {
     check(!args.optBoolean("rollback")){"Android блокирует установку более старой версии. Сначала создайте внешнюю копию, затем удалите приложение и установите предыдущий подписанный APK. После установки восстановите совместимую копию."}
     val file=java.io.File(args.getString("path")).canonicalFile
     val root=java.io.File(activity.filesDir,"updates").canonicalFile
-    require(file.parentFile==root && file.name.startsWith("lifeos-")&&file.extension=="apk"&&file.isFile){"Некорректный пакет обновления"}
+    require(file.parentFile==root && file.name.startsWith("orvim-") && file.extension=="apk" && file.isFile){"Некорректный пакет обновления"}
     val flags=if(Build.VERSION.SDK_INT>=28)PackageManager.GET_SIGNING_CERTIFICATES else PackageManager.GET_SIGNATURES
     val archive=activity.packageManager.getPackageArchiveInfo(file.path,flags) ?: error("APK повреждён")
     val current=activity.packageManager.getPackageInfo(activity.packageName,flags)

@@ -22,6 +22,8 @@ let response = {
   message: "Доступна версия 0.4.47.",
 };
 let failure;
+let downloadFailure = false;
+let permissionRequired = true;
 function make(tag, className = "", text = "") {
   const node = document.createElement(tag);
   node.className = className;
@@ -45,6 +47,9 @@ const view = installUpdateSettings(
         if (operation === "status")
           return { installed: "0.4.46", configured: true };
         if (failure) throw new Error(failure);
+        if (operation === "download" && downloadFailure)
+          throw new Error("Не удалось загрузить обновление");
+        if (operation === "install") return { permissionRequired };
         return response;
       },
     },
@@ -73,7 +78,7 @@ response = {
     {
       version: "0.4.47",
       newer: true,
-      notes: "Test",
+      notes: "## Что нового\n\n- Первая правка\n- Вторая правка",
       schema_min: 3,
       schema_max: 3,
       workspace_max: 31,
@@ -87,6 +92,8 @@ assert.equal(
   "The previous release link is cleared",
 );
 let buttons = [...panel.querySelectorAll(".update-release button")];
+assert.equal(panel.querySelector(".update-notes h4").textContent, "Что нового");
+assert.equal(panel.querySelectorAll(".update-notes ul li").length, 2);
 assert.ok(
   buttons.every((button) => button.disabled),
   "Format 31 must not enable installation into a format 32 database",
@@ -95,10 +102,21 @@ response.releases[0].workspace_max = 32;
 await click(check);
 buttons = [...panel.querySelectorAll(".update-release button")];
 assert.equal(buttons[0].disabled, false);
-assert.equal(buttons[1].disabled, true);
+assert.equal(buttons.length, 1);
+downloadFailure = true;
 await click(buttons[0]);
-assert.equal(buttons[1].disabled, false);
 assert.deepEqual(calls.at(-1), ["download", "0.4.47"]);
+assert.equal(buttons[0].disabled, false);
+downloadFailure = false;
+await click(buttons[0]);
+assert.deepEqual(calls.slice(-2), [
+  ["download", "0.4.47"],
+  ["install", "0.4.47"],
+]);
+assert.match(panel.textContent, /Разрешите установку/);
+permissionRequired = false;
+await click(buttons[0]);
+assert.match(panel.textContent, /Открыт системный установщик/);
 
 failure = "Сервер обновлений временно недоступен.";
 await click(check);
